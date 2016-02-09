@@ -1,3 +1,5 @@
 class Stock < ActiveRecord::Base
-  unloadable
+	belongs_to(:category)
+	belongs_to(:unit)
+	has_many(:inventories)
 end

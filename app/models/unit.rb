@@ -1,3 +1,3 @@
 class Unit < ActiveRecord::Base
-  unloadable
+	has_many(:stocks)
 end

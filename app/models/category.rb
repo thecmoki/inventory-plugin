@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  unloadable
+	has_many(:stocks)
 end

@@ -1,3 +1,3 @@
 class Room < ActiveRecord::Base
-  unloadable
+	has_many(:inventories)
 end

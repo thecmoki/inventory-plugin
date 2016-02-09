@@ -1,3 +1,5 @@
 class Inventory < ActiveRecord::Base
-  unloadable
+	belongs_to(:stock)
+	belongs_to(:user)
+	belongs_to(:room)
 end

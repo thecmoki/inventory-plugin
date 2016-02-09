@@ -13,11 +13,27 @@
 			<th>Ngjyra</th>
 			<th>Sasia</th>
 			<th>Komenti</th>
+			<th>Operacionet</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td></td>
-		</tr>
+		<% @stocks.each do |stock| %>
+			<tr>
+				<td><%= stock.id %></td>
+				<td><%= stock.unit.name %></td>
+				<td><%= stock.category.name %></td>
+				<td><%= stock.serial_nr %></td>
+				<td><%= stock.product_name %></td>
+				<td><%= stock.buy_date %></td>
+				<td><%= stock.norma_amortizimit %></td>
+				<td><%= stock.amortizimi %></td>
+				<td><%= stock.neto_value %></td>
+				<td><%= stock.color %></td>
+				<td><%= stock.quantity %></td>
+				<td><%= stock.comment %></td>
+				<td><%= link_to("Show", "stocks/#{stock.id}") %> | <%= link_to("Edit", "stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "stocks/#{stock.id}/destroy", :method => :delete) %></td>
+			</tr>
+		<% end %>
 	</tbody>
 </table>
+<p><%= link_to("Shto nje Stock", :controller => "stocks", :action => "new") %></p>

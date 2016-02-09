@@ -1,0 +1,16 @@
+<H1>Edito nje Stock</H1>
+<%= form_for(:stock, :url => {:action => "update", :id => @stock.id}) do |f| %>
+	<p><%= f.text_field(:unit_id, :placeholder => "Emri i Njesis") %></p>
+	<p><%= f.text_field(:category_id, :placeholder => "Emri i Kategoris") %></p>
+	<p><%= f.text_field(:serial_nr, :placeholder => "Numri Serik") %></p>
+	<p><%= f.text_field(:product_name, :placeholder => "Emri i Produktit") %></p>
+	<p><%= f.date_field(:buy_date, :placeholder => "Data e Blerjes") %></p>
+	<p><%= f.text_field(:norma_amortizimit, :placeholder => "Norma e Amortizimit") %></p>
+	<p><%= f.text_field(:amortizimi, :placeholder => "Amortizimi") %></p>
+	<p><%= f.text_field(:neto_value, :placeholder => "Vlera Neto") %></p>
+	<p><%= f.text_field(:color, :placeholder => "Ngjyra") %></p>
+	<p><%= f.text_field(:quantity, :placeholder => "Sasia") %></p>
+	<p><%= f.text_area(:comment, :placeholder => "Komenti") %></p>
+	<p><%= f.submit("Edito Stock") %></p>
+<% end %>
+<p><%= link_to("Kthehu tek Indexi", :controller => "stocks", :action => "index") %></p>

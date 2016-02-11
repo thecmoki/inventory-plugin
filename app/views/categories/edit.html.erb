@@ -1,0 +1,7 @@
+<h1>Editimi i Kategorive</h1>
+<%= form_for(:category, :url => {:action => "update", :id => @category.id}) do |i| %>
+	<p><%= i.text_field(:name, :placeholder => "Kategoria") %></p>
+	<p><%= i.text_area(:comment, :placeholder => "Komenti") %></p>
+	<p><%= i.submit("Editimi i Kategorive")%></p>
+	<%end%>
+	<p><%= link_to("Kthehu tek Index", :controller => "categories", :action => "index") %></p>

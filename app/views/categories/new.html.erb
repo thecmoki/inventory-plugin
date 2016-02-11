@@ -1,0 +1,8 @@
+<h1>New Category</h1>
+
+<%= form_for(@category) do |c| %>
+	<p><%= c.text_field(:name, :placeholder => "Kategoria") %></p>
+	<p><%= c.text_area(:comment, :placeholder => "Komenti") %></p>
+	<p><%= c.submit("Krijo Kategori")%></p>
+<%end%>
+	<p><%= link_to("Kthehu tek Index", :controller => "categories", :action => "index")%></p>

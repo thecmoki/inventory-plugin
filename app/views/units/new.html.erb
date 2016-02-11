@@ -1,0 +1,7 @@
+<H1>Shto Unit te ri</H1>
+<%= form_for(@unit) do |u| %>
+	<p><%= u.text_field(:name, :placeholder => "Emri") %></p>
+	<p><%= u.text_field(:comment, :placeholder => "Komenti") %></p>
+	<p><%= u.submit("Krojo Unit") %></p>
+<% end %>
+<p><%= link_to("Kthehu tek indeksi", :controller => "units", :action => "index") %></p>

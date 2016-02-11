@@ -31,7 +31,7 @@
 				<td><%= stock.color %></td>
 				<td><%= stock.quantity %></td>
 				<td><%= stock.comment %></td>
-				<td><%= link_to("Show", "stocks/#{stock.id}") %> | <%= link_to("Edit", "stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "stocks/#{stock.id}/destroy", :method => :delete) %></td>
+				<td><%= link_to("Show", "/stocks/#{stock.id}") %> | <%= link_to("Edit", "stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "stocks/#{stock.id}/destroy", :method => :delete) %></td>
 			</tr>
 		<% end %>
 	</tbody>

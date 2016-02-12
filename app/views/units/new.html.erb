@@ -1,5 +1,19 @@
+<style>
+	ul li{
+		color:red;
+	}
+</style>
 <H1>Shto Unit te ri</H1>
 <%= form_for(@unit) do |u| %>
+
+	<% if @unit.errors.any? %>
+		<ul>
+			<% @unit.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
 	<p><%= u.text_field(:name, :placeholder => "Emri") %></p>
 	<p><%= u.text_field(:comment, :placeholder => "Komenti") %></p>
 	<p><%= u.submit("Krojo Unit") %></p>

@@ -1,5 +1,19 @@
+<style>
+	ul li {
+		color:red;
+	}
+</style>
 <H1>Edito nje Room</H1>
 <%= form_for(:room, :url => {:action => "update", :id => @room.id}) do |r| %>
+
+	<% if @room.errors.any? %>
+		<ul>
+			<% @room.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
 	<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
 	<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
 	<p><%= r.submit("Edito nje Room")  %></p>

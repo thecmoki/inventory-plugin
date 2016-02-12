@@ -1,0 +1,7 @@
+<H1>Shto nje Room</H1>
+<%= form_for(@room) do |r| %>
+	<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
+	<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
+	<p><%= r.submit("Krijo Room") %></p>
+<% end %>
+<p><%= link_to("Kthehu tek indeksi", :controller => "rooms", :action => "index") %></p>

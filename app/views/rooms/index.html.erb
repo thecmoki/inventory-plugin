@@ -1,0 +1,21 @@
+<table border = "1">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Emri</td>
+			<td>Komenti</td>
+			<td>Operacionet</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @rooms.each do |room| %>
+			<tr>
+				<td><%= room.id %></td>
+				<td><%= room.name %></td>
+				<td><%= room.comment%></td>
+				<td><%= link_to("Show", "/rooms/#{room.id}") %> | <%= link_to("Edit", "/rooms/#{room.id}/edit") %> | <%= link_to("Delete", "rooms/#{room.id}/destroy", :method => :delete) %> </td>	
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<p><%= link_to("Shto nje Rooom", :controller => "rooms", :action => "new") %></p>

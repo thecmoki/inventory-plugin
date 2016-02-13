@@ -1,0 +1,30 @@
+<h2>Inventory</h2>
+<table border="1">
+
+<thead>
+	<tr>
+		<th>ID Inventarit</th>
+		<th>ID Stokut</th>
+		<th>Perdoruesi</th>
+		<th>Lokacioni</th>
+		<th>Koha e Shfrytezimit</th>
+		<th>Ndryshimet</th>
+		
+	</tr>
+</thead>
+<tbody>
+	<% @inventories.each do |inventories| %>
+		<tr>
+			<td><%= inventories.id %></td>
+			<td><%= inventories.stock.id %></td>
+			<td><%= "#{inventories.user.firstname} #{inventories.user.lastname}" %></td>
+			<td><%= inventories.room.name %></td>
+			<td><%= inventories.time_of_use %></td>
+			<td><%= link_to("Show", "inventories/#{inventories.id}") %> | <%= link_to("Edit", "inventories/#{inventories.id}/edit") %> | <%= link_to("Delete", "inventories/#{inventories.id}/destroy", :method => :delete) %></td>
+			</tr>
+			<%end%>
+</tbody>
+</table>
+<p><%= link_to("Shto Inventar", :controller => "inventories", :action => "new") %></p>
+
+

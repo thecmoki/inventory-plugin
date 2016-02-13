@@ -1,4 +1,20 @@
 <table border = "1">
+<h1>Listing Stocks</h1>
+
+<%= search_form_for @search, url: search_stocks_path, method: :post do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%#= link_to_add_fields "Add Conditions", f, :condition %></p>
+  <div class="field">
+    Sort:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -20,7 +36,7 @@
 		<% @stocks.each do |stock| %>
 			<tr>
 				<td><%= stock.id %></td>
-				<td><%= stock.unit.name %></td>
+				<td><%= stock.unit_id %></td>
 				<td><%= stock.category.name %></td>
 				<td><%= stock.serial_nr %></td>
 				<td><%= stock.product_name %></td>
@@ -31,7 +47,11 @@
 				<td><%= stock.color %></td>
 				<td><%= stock.quantity %></td>
 				<td><%= stock.comment %></td>
+<<<<<<< HEAD
 				<td><%= link_to("Show", "/stocks/#{stock.id}") %> | <%= link_to("Edit", "/stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "/stocks/#{stock.id}/destroy", :method => :delete) %></td>
+=======
+				<td><%= link_to("Show", "/stocks/#{stock.id}") %> | <%= link_to("Edit", "stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "stocks/#{stock.id}/destroy", :method => :delete) %></td>
+>>>>>>> 950bea830e8493bcf2cf567183371ce8b77d0dbc
 			</tr>
 		<% end %>
 	</tbody>

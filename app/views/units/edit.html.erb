@@ -1,0 +1,21 @@
+<style>
+	ul li{
+		color:red;
+	}
+</style>
+<H1>Edito nje Unit</H1>
+<%= form_for(:unit, :url => {:action => "update", :id => @unit.id}) do |u| %>
+
+	<% if @unit.errors.any? %> 
+		<ul>
+			<% @unit.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+		<% end %>
+
+	<p><%= u.text_field(:name, :placeholder => "Emri")%></p>
+	<p><%= u.text_field(:comment, :placeholder => "Komenti")%></p>
+	<p><%= u.submit("Edito Unit")%></p>
+<% end %>
+<p><%= link_to("Kthehu tek Indeksi", :controller => "units", :action => "index")%></p>

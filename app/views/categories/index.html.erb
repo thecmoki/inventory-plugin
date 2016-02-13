@@ -1,0 +1,28 @@
+<h2>Kategorite e Inventarit</h2>
+<table border ="1">
+  <thead>
+  	<tr>
+  		<th>Kategori ID</th>
+  		<th>Kategoria</th>
+  		<th>Komenti</th>
+  		<th>Ndryshimet</th>
+  		</tr>
+	
+  </thead>
+  	<tbody>
+  		
+  	<% @categories.each do |categories| %>
+  		<tr>
+  			<td><%= categories.id %></td>
+  			<td><%= categories.name%></td>
+  			<td><%= categories.comment %></td>
+  			<td><%= link_to("Show", "categories/#{categories.id}") %> | <%= link_to("Edit", "categories/#{categories.id}/edit") %> | <%= link_to("Delete", "categories/#{categories.id}/destroy", :method => :delete) %></td>
+  			</tr>
+  			<%end%>
+
+
+  	</tbody>
+
+</table>
+<p><%= link_to("Shto Kategori", :controller => "categories", :action => "new") %></p>
+

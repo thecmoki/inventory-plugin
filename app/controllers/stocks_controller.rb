@@ -1,7 +1,12 @@
 class StocksController < ApplicationController
+  before_action :set_stock, only: [:show, :edit, :update, :destroy]
   def index
-  	@stocks = Stock.all
-  end
+  	#@stocks = Stock.all
+  @search = Stock.search(params[:q])
+  @stocks = @search.result
+  @search.build_condition if @search.conditions.empty?
+  @search.build_sort if @search.sorts.empty?
+     end
   def show
   	@stock = Stock.find(params[:id])
   end

@@ -13,7 +13,7 @@
 				<td><%= room.id %></td>
 				<td><%= room.name %></td>
 				<td><%= room.comment%></td>
-				<td><%= link_to("Show", "/rooms/#{room.id}") %> | <%= link_to("Edit", "/rooms/#{room.id}/edit") %> | <%= link_to("Delete", "rooms/#{room.id}/destroy", :method => :delete) %> </td>	
+				<td><%= link_to("Show", rooms_show_path(:id => room.id)) %> | <%= link_to("Edit", rooms_edit_path(:id => room.id)) %> | <%= link_to("Delete", rooms_destroy_path(:id => room.id), :method => :delete) %> </td>	
 			</tr>
 		<% end %>
 	</tbody>

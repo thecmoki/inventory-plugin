@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  unloadable
 
+  before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def edit
   	@room = Room.find(params[:id])
@@ -43,7 +43,14 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
   	params.require(:room).permit(:name, :comment)
   end
+
+  def find_project
+    # @project variable must be set before calling the authorize filter
+    @project = Project.find(params[:project_id])
+  end
+
 end

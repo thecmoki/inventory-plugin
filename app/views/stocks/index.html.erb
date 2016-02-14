@@ -14,7 +14,6 @@
   </div>
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
-
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -47,13 +46,13 @@
 				<td><%= stock.color %></td>
 				<td><%= stock.quantity %></td>
 				<td><%= stock.comment %></td>
-<<<<<<< HEAD
-				<td><%= link_to("Show", "/stocks/#{stock.id}") %> | <%= link_to("Edit", "/stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "/stocks/#{stock.id}/destroy", :method => :delete) %></td>
-=======
-				<td><%= link_to("Show", "/stocks/#{stock.id}") %> | <%= link_to("Edit", "stocks/#{stock.id}/edit") %> | <%= link_to("Delete", "stocks/#{stock.id}/destroy", :method => :delete) %></td>
->>>>>>> 950bea830e8493bcf2cf567183371ce8b77d0dbc
+				<td><%= link_to("Show", stocks_show_path(:id => stock.id)) %> | <%= link_to("Edit", stocks_edit_path(:id => stock.id)) %> | <%= link_to("Delete", stocks_destroy_path(:id => stock.id), :method => :delete) %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
 <p><%= link_to("Shto nje Stock", :controller => "stocks", :action => "new") %></p>
+<p><%= link_to("Shko tek Njesit", units_path) %></p>
+<p><%= link_to("Shko tek Inventari", inventories_path) %></p>
+<p><%= link_to("Shko tek Dhoma", rooms_path) %></p>
+<p><%= link_to("Shko tek Kategoria", categories_path) %></p>

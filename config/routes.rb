@@ -24,6 +24,7 @@ get("projects/:project_id/inventories/:id" => "inventories#show", :as => "invent
 get("projects/:project_id/inventories/:id/edit" => "inventories#edit", :as => "inventories_edit")
 post("projects/:project_id/inventories/update" => "inventories#update")
 delete("projects/:project_id/inventories/:id/destroy" => "inventories#destroy", :as => "inventories_destroy")
+post("projects/:project_id/inventories/search" => "inventories#index", :as => "search_inventories")
 
 get("projects/:project_id/categories" => "categories#index", :as => "categories")
 get("projects/:project_id/categories/new" => "categories#new")

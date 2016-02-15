@@ -1,24 +1,54 @@
 <h2>Inventory</h2>
+<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
+ Listimi:
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%#= link_to_add_fields "Add Conditions", f, :condition %></p>
+  <div class="field">
+    Sortimi:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
 <table border="1">
 	<thead>
 		<tr>
 			<th>ID Inventarit</th>
-			<th>ID Stokut</th>
+			<th>Nr. Serik</th>
 			<th>Perdoruesi</th>
 			<th>Lokacioni</th>
+			<th>Kategoria</th>
+			<th>Emri i Produktit</th>
+			<th>Data E Blerjes</th>
+			<th>Data e Aktivizimit</th>
+			<th>Norma e Amortizimit</th>
+			<th>Amortizimi</th>
+			<th>Vlera Neto</th>
 			<th>Koha e Shfrytezimit</th>
+			<th>Komenti</th>
 			<th>Ndryshimet</th>
-			
 		</tr>
 	</thead>
 	<tbody>
 		<% @inventories.each do |inventory| %>
 			<tr>
 				<td><%= inventory.id %></td>
-				<td><%= inventory.stock.id %></td>
+				<td><%= inventory.stock.serial_nr %></td>
 				<td><%= "#{inventory.user.firstname} #{inventory.user.lastname}" %></td>
 				<td><%= inventory.room.name %></td>
+				<td><%= inventory.stock.category.name %></td>
+				<td><%= inventory.stock.product_name %></td>
+				<td><%= inventory.stock.buy_date %></td>
+				<td><%=  %></td>
+				<td><%= inventory.stock.norma_amortizimit %></td>
+				<td><%= inventory.stock.amortizimi %></td>
+				<td><%= inventory.stock.neto_value %></td>
 				<td><%= inventory.time_of_use %></td>
+				<td><%= inventory.stock.comment %></td>
 				<td><%= link_to("Show", inventories_show_path(:id => inventory.id)) %> | <%= link_to("Edit", inventories_edit_path(:id => inventory.id)) %> | <%= link_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %>
 				</td>
 			</tr>
@@ -26,3 +56,4 @@
 	</tbody>
 </table>
 <p><%= link_to("Shto Inventar", :controller => "inventories", :action => "new") %></p>
+<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>

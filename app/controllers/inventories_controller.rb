@@ -3,7 +3,11 @@ class InventoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
-  	@inventories = Inventory.all
+  	#@inventories = Inventory.all
+    @search = Inventory.search(params[:q])
+    @inventories = @search.result
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
   end
 
   def show

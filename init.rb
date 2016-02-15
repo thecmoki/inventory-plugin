@@ -12,7 +12,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
   									   :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
   									   :rooms => [:index, :show, :edit, :new, :create, :update, :destroy],
   									   :categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
-    menu(:project_menu, :regjistrimi_inventarit, {:controller => "stocks", :action => "index"},
+    menu(:project_menu, :regjistrimi_inventarit, {:controller => "inventories", :action => "index"},
   						:caption => "AdaptivIT", :after => :activity, :param => :project_id)
   end
 end

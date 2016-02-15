@@ -1,4 +1,19 @@
 <h2>Inventory</h2>
+<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
+ Listimi:
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%#= link_to_add_fields "Add Conditions", f, :condition %></p>
+  <div class="field">
+    Sortimi:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
 <table border="1">
 	<thead>
 		<tr>
@@ -26,3 +41,4 @@
 	</tbody>
 </table>
 <p><%= link_to("Shto Inventar", :controller => "inventories", :action => "new") %></p>
+<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>

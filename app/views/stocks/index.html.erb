@@ -1,19 +1,23 @@
 <table border = "1">
-<h1>Listing Stocks</h1>
+<h1>Listimi i te dhenave</h1>
 
 <%= search_form_for @search, url: search_stocks_path, method: :post do |f| %>
+ Listimi:
   <%= f.condition_fields do |c| %>
     <%= render "condition_fields", f: c %>
   <% end %>
   <p><%#= link_to_add_fields "Add Conditions", f, :condition %></p>
   <div class="field">
-    Sort:
+    Sortimi:
     <%= f.sort_fields do |s| %>
       <%= s.sort_select %>
     <% end %>
   </div>
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
+
+
+<h1>Shfaqja e te dhenave</h1>
 	<thead>
 		<tr>
 			<th>ID</th>

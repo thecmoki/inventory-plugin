@@ -1,5 +1,4 @@
 <table border = "1">
-	
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -15,11 +14,10 @@
 					<td><%= unit.id %></td>
 					<td><%= unit.name %></td>
 					<td><%= unit.comment%></td>
-					<td><%= link_to("Show", "/units/#{unit.id}") %> | <%= link_to("Edit", "/units/#{unit.id}/edit")%> | <%= link_to("Delete", "units/#{unit.id}/destroy", :method => :delete) %></td>
+					<td><%= link_to("Show", units_show_path(:id => unit.id)) %> | <%= link_to("Edit", units_edit_path(:id => unit.id))%> | <%= link_to("Delete", units_destroy_path(:id => unit.id), :method => :delete) %></td>
 			</tr>
 		<% end %>
-
 	</tbody>
 </table>
 <p><%= link_to("Shto Unit", :controller => "units", :action => "new") %></p>
-<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index")%></p>
+<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>

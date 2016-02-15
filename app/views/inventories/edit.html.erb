@@ -1,9 +1,10 @@
 <h1>Editimi i Inventarit</h1>
-<%= form_for(:inventory, :url => {:action => "update", :id => @inventory.id}) do |i| %>
-	<p><%= i.text_field(:room_id, :placeholder => "Lokacioni") %></p>
-	<p><%= i.text_field(:user_id, :placeholder => "Perdoruesi") %></p>
-	<p><%= i.text_field(:time_of_use, :placeholder => "Koha e shfrytezimit") %></p>
-	<p><%= i.submit("Editimi i Inventarit")%></p>
-	<%end%>
-	<p><%= link_to("Kthehu tek Index", :controller => "inventories", :action => "index") %></p>
+<%= form_for(:inventory, :url => {:action => "update", :id => @inventory.id}) do |f| %>
+	<p><%= f.text_field(:stock_id, :placeholder => "Stoku")%></p>
+	<p><%= f.text_field(:room_id, :placeholder => "Lokacioni") %></p>
+	<p><%= f.text_field(:user_id, :placeholder => "Perdoruesi") %></p>
+	<p><%= f.text_field(:time_of_use, :placeholder => "Koha e shfrytezimit") %></p>
+	<p><%= f.submit("Editimi i Inventarit")%></p>
+<%end%>
+<p><%= link_to("Kthehu tek Index", :controller => "inventories", :action => "index") %></p>
 

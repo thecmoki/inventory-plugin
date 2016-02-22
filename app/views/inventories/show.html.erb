@@ -1,6 +1,21 @@
 <p><b>Inventari ID :</b><%= @inventory.id %></p>
-<p><b>Stock ID :</b><%= @inventory.stock.id %></p>
+<p><b>Perdoruesi :</b><%= @inventory.user_name %></p>
 <p><b>Perdoruesi :</b><%=  "#{@inventory.user.firstname} #{@inventory.user.lastname}" %></p>
 <p><b>Koha e shfrytezimit :</b><%= @inventory.time_of_use %></p>
 <p><b>Lokacioni :</b><%= @inventory.room.name %></p>
 <p><%= link_to("Kthehu tek Index", :controller => "inventories", :action => "index") %></p>
+
+
+
+ t.string :user_name
+      t.string :user_login
+      t.string :room_name
+      t.string :product_name
+      t.string :serial_number
+      t.date :buy_date
+      t.date :activation_date
+      t.string :amortization_norm
+      t.string :amortization
+      t.string :neto_value
+      t.string :time_of_use
+      t.string :comment

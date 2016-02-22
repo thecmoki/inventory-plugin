@@ -3,7 +3,8 @@ class InventoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
-  	#@inventories = Inventory.all
+    @units = Unit.all
+  	@inventories = Inventory.all
     @search = Inventory.search(params[:q])
     @inventories = @search.result
     @search.build_condition if @search.conditions.empty?
@@ -25,6 +26,10 @@ class InventoriesController < ApplicationController
   def create
   	@inventory = Inventory.new(inventory_params)
   	if(@inventory.save)
+      inv = Inventory.last
+      user = User.find(inv.user_name)
+      inv.update(:user_name => user.firstname+" "+user.lastname)
+      inv.update(:user_login => user.login)
   		redirect_to(:action => "index")
   	else
   		render("new")
@@ -49,7 +54,7 @@ class InventoriesController < ApplicationController
   	private
     
   	def inventory_params
-  		params.require(:inventory).permit(:room_id, :time_of_use, :user_id, :stock_id)
+  		params.require(:inventory).permit(:user_name, :user_login, :room_name, :product_name, :serial_number, :buy_date, :activation_date, :amortization_norm, :amortization, :neto_value, :time_of_use, :comment)
   	end
 
     def find_project
@@ -57,4 +62,6 @@ class InventoriesController < ApplicationController
       @project = Project.find(params[:project_id])
     end
 
-  end
+end
+
+  

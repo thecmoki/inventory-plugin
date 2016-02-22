@@ -1,9 +1,16 @@
 <h1>Editimi i Inventarit</h1>
 <%= form_for(:inventory, :url => {:action => "update", :id => @inventory.id}) do |f| %>
-	<p><%= f.text_field(:stock_id, :placeholder => "Stoku")%></p>
-	<p><%= f.text_field(:room_id, :placeholder => "Lokacioni") %></p>
-	<p><%= f.text_field(:user_id, :placeholder => "Perdoruesi") %></p>
-	<p><%= f.text_field(:time_of_use, :placeholder => "Koha e shfrytezimit") %></p>
+	<p><%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%></p>
+	<p><%= f.collection_select(:room_name, Room.all, :name, :name, :prompt => "Select Room") %></p>
+	<p><%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %></p>
+	<p><%= f.text_field(:serial_number, :placeholder => "Serial Number") %></p>
+	<p><%= f.date_select(:buy_date) %></p>
+	<p><%= f.date_select(:activation_date) %></p>
+	<p><%= f.text_field(:amortization_norm, :placeholder => "amortization Norm") %></p>
+	<p><%= f.text_field(:amortization, :placeholder => "amortization") %></p>
+	<p><%= f.text_field(:neto_value, :placeholder => "Neto Value") %></p>
+	<p><%= f.text_field(:time_of_use, :placeholder => "Time Of Use") %></p>
+	<p><%= f.text_area(:comment, :placeholder => "Comment") %></p>
 	<p><%= f.submit("Editimi i Inventarit")%></p>
 <%end%>
 <p><%= link_to("Kthehu tek Index", :controller => "inventories", :action => "index") %></p>

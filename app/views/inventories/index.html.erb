@@ -17,12 +17,12 @@
 <table border="1">
 	<thead>
 		<tr>
-			<th>ID Inventarit</th>
-			<th>Nr. Serik</th>
+			<th>ID</th>
 			<th>Perdoruesi</th>
+			<th>Login</th>
 			<th>Lokacioni</th>
-			<th>Kategoria</th>
 			<th>Emri i Produktit</th>
+			<th>Nr. Serik</th>
 			<th>Data E Blerjes</th>
 			<th>Data e Aktivizimit</th>
 			<th>Norma e Amortizimit</th>
@@ -36,19 +36,20 @@
 	<tbody>
 		<% @inventories.each do |inventory| %>
 			<tr>
+
 				<td><%= inventory.id %></td>
-				<td><%= inventory.stock.serial_nr %></td>
-				<td><%= "#{inventory.user.firstname} #{inventory.user.lastname}" %></td>
-				<td><%= inventory.room.name %></td>
-				<td><%= inventory.stock.category.name %></td>
-				<td><%= inventory.stock.product_name %></td>
-				<td><%= inventory.stock.buy_date %></td>
-				<td><%=  %></td>
-				<td><%= inventory.stock.norma_amortizimit %></td>
-				<td><%= inventory.stock.amortizimi %></td>
-				<td><%= inventory.stock.neto_value %></td>
+				<td><%= inventory.user_name %></td>
+				<td><%= inventory.user_login %></td>
+				<td><%= inventory.room_name %></td>
+				<td><%= inventory.product_name %></td>
+				<td><%= inventory.serial_number %></td>
+				<td><%= inventory.buy_date %></td>
+				<td><%= inventory.activation_date %></td>
+				<td><%= inventory.amortization_norm %></td>
+				<td><%= inventory.amortization %></td>
+				<td><%= inventory.neto_value %></td>
 				<td><%= inventory.time_of_use %></td>
-				<td><%= inventory.stock.comment %></td>
+				<td><%= inventory.comment %></td>
 				<td><%= link_to("Show", inventories_show_path(:id => inventory.id)) %> | <%= link_to("Edit", inventories_edit_path(:id => inventory.id)) %> | <%= link_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %>
 				</td>
 			</tr>
@@ -57,3 +58,15 @@
 </table>
 <p><%= link_to("Shto Inventar", :controller => "inventories", :action => "new") %></p>
 <p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>
+<!-- t.string :user_name
+      t.string :user_login
+      t.string :room_name
+      t.string :product_name
+      t.string :serial_number
+      t.date :buy_date
+      t.date :activation_date
+      t.string :amortization_norm
+      t.string :amortization
+      t.string :neto_value
+      t.string :time_of_use
+      t.string :comment -->

@@ -4,6 +4,7 @@ class UnitsController < ApplicationController
   
   def index
   	@units = Unit.all
+    @categories = Category.all
   end
   
   def show
@@ -45,7 +46,7 @@ class UnitsController < ApplicationController
   private
   
   def unit_params
-    params.require(:unit).permit(:name, :comment)
+    params.require(:unit).permit(:name, :comment, :category_id, :quantity, :color)
   end
 
   def find_project

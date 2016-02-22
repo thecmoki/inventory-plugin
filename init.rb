@@ -7,8 +7,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
   author_url 'http://example.com/about'
 
   project_module :regjistrimi_inventarit do
-    permission(:regjistrimi_inventarit, {:stocks => [:index, :show, :edit, :new, :create, :update, :destroy],
-  									   :units => [:index, :show, :edit, :new, :create, :update, :destroy],
+    permission(:regjistrimi_inventarit, {:units => [:index, :show, :edit, :new, :create, :update, :destroy],
   									   :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
   									   :rooms => [:index, :show, :edit, :new, :create, :update, :destroy],
   									   :categories => [:index, :show, :edit, :new, :create, :update, :destroy]})

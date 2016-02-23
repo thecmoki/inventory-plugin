@@ -1,3 +1,4 @@
+<div class ="permbajtja">
 <h2>Kategorite e Inventarit</h2>
 <table border ="1">
   <thead>
@@ -24,5 +25,9 @@
   	</tbody>
 
 </table>
-<p><%= link_to("Shto Kategori", :controller => "categories", :action => "new") %></p>
-<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>
+
+<p><%= button_to("Shto Kategori", categories_new_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

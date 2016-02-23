@@ -1,5 +1,10 @@
-<p><b>ID :</b><%= @unit.id%></p>
-<p><b>Emri :</b><%= @unit.name %></p>
-<p><b>Komenti :</b><%= @unit.comment %></p>
+<div class = "permbajtja">
+	<p><b>ID :</b><%= @unit.id%></p>
+	<p><b>Emri :</b><%= @unit.name %></p>
+	<p><b>Komenti :</b><%= @unit.comment %></p>
 
-<p><%= link_to("Kthehu tek Indexi", :controller => "units", :action => "index") %></p>
+<p><%= button_to("Kthehu tek Indexi", units_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

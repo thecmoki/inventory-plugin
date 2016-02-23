@@ -1,0 +1,28 @@
+table, th, td {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+	background-color: #f0f0f0;
+}
+
+th {
+	background-color: 	#90acff;
+}
+
+.permbajtja{
+	width:960px;
+	margin: 0 auto;
+}
+
+.permbajtja ul{
+	padding:0px;
+}
+.permbajtja ul li{
+	border-radius: 10%;
+	display: inline;
+	margin-left: 5px;
+
+}

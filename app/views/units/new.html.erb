@@ -1,3 +1,4 @@
+<div class = "permbajtja">
 <style>
 	ul li{
 		color:red;
@@ -20,4 +21,8 @@
 	<p><%= u.text_field(:comment, :placeholder => "Komenti") %></p>
 	<p><%= u.submit("Krojo Unit") %></p>
 <% end %>
-<p><%= link_to("Kthehu tek indeksi", :controller => "units", :action => "index") %></p>
+<p><%= button_to("Kthehu tek indeksi", units_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

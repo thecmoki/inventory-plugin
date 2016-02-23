@@ -1,7 +1,12 @@
-<h1>Editimi i Kategorive</h1>
-<%= form_for(:category, :url => {:action => "update", :id => @category.id}) do |i| %>
-	<p><%= i.text_field(:name, :placeholder => "Kategoria") %></p>
-	<p><%= i.text_area(:comment, :placeholder => "Komenti") %></p>
-	<p><%= i.submit("Editimi i Kategorive")%></p>
+<div class = "permbajtja">
+	<h1>Editimi i Kategorive</h1>
+	<%= form_for(:category, :url => {:action => "update", :id => @category.id}) do |i| %>
+		<p><%= i.text_field(:name, :placeholder => "Kategoria") %></p>
+		<p><%= i.text_area(:comment, :placeholder => "Komenti") %></p>
+		<p><%= i.submit("Editimi i Kategorive")%></p>
 	<%end%>
-	<p><%= link_to("Kthehu tek Index", :controller => "categories", :action => "index") %></p>
+	<p><%= button_to("Kthehu tek Index", categories_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

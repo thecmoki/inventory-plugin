@@ -1,6 +1,10 @@
-<h1>Shfaqja e te dhenave</h1>
-
-<p><b>Kategoria ID :</b> <%= @category.id %></p>
-<p><b>Emri i Kategorise :</b> <%= @category.name %></p>
-<p><b>Komenti :</b><%= @category.comment %></p>
-<p><%= link_to("Kthehu tek Index", :controller => "categories", :action => "index") %></p>
+<div class= "permbajtja">
+	<h1>Shfaqja e te dhenave</h1>
+	<p><b>Kategoria ID :</b> <%= @category.id %></p>
+	<p><b>Emri i Kategorise :</b> <%= @category.name %></p>
+	<p><b>Komenti :</b><%= @category.comment %></p>
+	<p><%= button_to("Kthehu tek Index", categories_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

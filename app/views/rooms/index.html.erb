@@ -1,22 +1,26 @@
-<table border = "1">
-	<thead>
-		<tr>
-			<td>ID</td>
-			<td>Emri</td>
-			<td>Komenti</td>
-			<td>Operacionet</td>
-		</tr>
-	</thead>
-	<tbody>
-		<% @rooms.each do |room| %>
+<div class = "permbajtja">
+	<table border = "1">
+		<thead>
 			<tr>
-				<td><%= room.id %></td>
-				<td><%= room.name %></td>
-				<td><%= room.comment%></td>
-				<td><%= link_to("Show", rooms_show_path(:id => room.id)) %> | <%= link_to("Edit", rooms_edit_path(:id => room.id)) %> | <%= link_to("Delete", rooms_destroy_path(:id => room.id), :method => :delete) %> </td>	
+				<th>ID</th>
+				<th>Emri</th>
+				<th>Komenti</th>
+				<th>Operacionet</th>
 			</tr>
-		<% end %>
-	</tbody>
-</table>
-<p><%= link_to("Shto nje Rooom", :controller => "rooms", :action => "new") %></p>
-<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>
+		</thead>
+		<tbody>
+			<% @rooms.each do |room| %>
+				<tr>
+					<td><%= room.id %></td>
+					<td><%= room.name %></td>
+					<td><%= room.comment%></td>
+					<td><%= link_to("Show", rooms_show_path(:id => room.id)) %> | <%= link_to("Edit", rooms_edit_path(:id => room.id)) %> | <%= link_to("Delete", rooms_destroy_path(:id => room.id), :method => :delete) %> </td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p><%= button_to("Shto nje Rooom", rooms_new_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

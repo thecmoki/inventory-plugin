@@ -1,5 +1,9 @@
-<p><b>ID :</b><%= @room.id%></p>
-<p><b>Emri :</b><%= @room.name%></p>
-<p><b>Komenti :</b><%= @room.comment %></p>
-
-<p><%= link_to("Kthehu tek Index", :controller => "rooms", :action => "index") %></p>
+<div class = "permbajtja">
+	<p><b>ID :</b><%= @room.id%></p>
+	<p><b>Emri :</b><%= @room.name%></p>
+	<p><b>Komenti :</b><%= @room.comment %></p>
+	<p><%= button_to("Kthehu tek Index", rooms_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

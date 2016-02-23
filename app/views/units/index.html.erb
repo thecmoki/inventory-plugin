@@ -1,3 +1,4 @@
+<div class ="permbajtja">
 <table border = "1">
 	<thead>
 		<tr>
@@ -30,4 +31,8 @@
 		<% end %>
 	</tbody>
 </table>
-<p><%= link_to("Shto Unit", :controller => "units", :action => "new") %></p>
+<p><%= button_to("Shto Unit", units_new_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

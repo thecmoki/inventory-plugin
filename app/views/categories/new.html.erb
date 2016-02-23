@@ -1,8 +1,12 @@
-<h1>New Category</h1>
-
-<%= form_for(@category) do |c| %>
-	<p><%= c.text_field(:name, :placeholder => "Kategoria") %></p>
-	<p><%= c.text_area(:comment, :placeholder => "Komenti") %></p>
-	<p><%= c.submit("Krijo Kategori")%></p>
-<%end%>
-	<p><%= link_to("Kthehu tek Index", :controller => "categories", :action => "index")%></p>
+<div class = "permbajtja">
+	<h1>New Category</h1>
+	<%= form_for(@category) do |c| %>
+		<p><%= c.text_field(:name, :placeholder => "Kategoria") %></p>
+		<p><%= c.text_area(:comment, :placeholder => "Komenti") %></p>
+		<p><%= c.submit("Krijo Kategori")%></p>
+	<%end%>
+	<p><%= button_to("Kthehu tek Index", categories_path, :method => "get")%></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

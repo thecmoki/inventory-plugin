@@ -1,72 +1,73 @@
-<h2>Inventory</h2>
-<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
- Listimi:
-  <%= f.condition_fields do |c| %>
-    <%= render "condition_fields", f: c %>
-  <% end %>
-  <p><%#= link_to_add_fields "Add Conditions", f, :condition %></p>
-  <div class="field">
-    Sortimi:
-    <%= f.sort_fields do |s| %>
-      <%= s.sort_select %>
-    <% end %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div class="permbajtja">
+		<h1>Inventory</h1>
+		<h2>Listimi i te dhenave</h2>
+		<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
+		 Listimi:
+		  <%= f.condition_fields do |c| %>
+		    <%= render "condition_fields", f: c %>
+		  <% end %>
+		  <div class="actions"><%= f.submit "Search" %></div>
+		<% end %>
+		<br>
+		<br>
+		<h1>Shfaqja e te dhenave</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Perdoruesi</th>
+					<th>Login</th>
+					<th>Lokacioni</th>
+					<th>Emri i Produktit</th>
+					<th>Nr. Serik</th>
+					<th>Data E Blerjes</th>
+					<th>Data e Aktivizimit</th>
+					<th>Norma e Amortizimit</th>
+					<th>Amortizimi</th>
+					<th>Vlera Neto</th>
+					<th>Koha e Shfrytezimit</th>
+					<th>Komenti</th>
+					<th>Ndryshimet</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @inventories.each do |inventory| %>
+					<tr>
+
+						<td><%= inventory.id %></td>
+						<td><%= inventory.user_name %></td>
+						<td><%= inventory.user_login %></td>
+						<td><%= inventory.room_name %></td>
+						<td><%= inventory.product_name %></td>
+						<td><%= inventory.serial_number %></td>
+						<td><%= inventory.buy_date %></td>
+						<td><%= inventory.activation_date %></td>
+						<td><%= inventory.amortization_norm %></td>
+						<td><%= inventory.amortization %></td>
+						<td><%= inventory.neto_value %></td>
+						<td><%= inventory.time_of_use %></td>
+						<td><%= inventory.comment %></td>
+						<td><%= link_to("Show", inventories_show_path(:id => inventory.id)) %> | <%= link_to("Edit", inventories_edit_path(:id => inventory.id)) %> | <%= link_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %>
+						</td>
+					</tr>
+				<%end%>
+			</tbody>
+		</table>
+		<ul >
+			<li><%= button_to("Shto nje Inventar", inventories_new_path, :method => "get") %></li>
+			<li><%= button_to "Shko tek Njesit", units_path, :method => "get" %></li>
+			<li><%= button_to "Shko tek Dhoma", rooms_path, :method => "get" %></li>
+			<li><%= button_to "Shko tek Kategoria", categories_path, :method => "get" %></li>
+		</ul>
+
+</div>
+</body>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>
-
-<table border="1">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Perdoruesi</th>
-			<th>Login</th>
-			<th>Lokacioni</th>
-			<th>Emri i Produktit</th>
-			<th>Nr. Serik</th>
-			<th>Data E Blerjes</th>
-			<th>Data e Aktivizimit</th>
-			<th>Norma e Amortizimit</th>
-			<th>Amortizimi</th>
-			<th>Vlera Neto</th>
-			<th>Koha e Shfrytezimit</th>
-			<th>Komenti</th>
-			<th>Ndryshimet</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @inventories.each do |inventory| %>
-			<tr>
-
-				<td><%= inventory.id %></td>
-				<td><%= inventory.user_name %></td>
-				<td><%= inventory.user_login %></td>
-				<td><%= inventory.room_name %></td>
-				<td><%= inventory.product_name %></td>
-				<td><%= inventory.serial_number %></td>
-				<td><%= inventory.buy_date %></td>
-				<td><%= inventory.activation_date %></td>
-				<td><%= inventory.amortization_norm %></td>
-				<td><%= inventory.amortization %></td>
-				<td><%= inventory.neto_value %></td>
-				<td><%= inventory.time_of_use %></td>
-				<td><%= inventory.comment %></td>
-				<td><%= link_to("Show", inventories_show_path(:id => inventory.id)) %> | <%= link_to("Edit", inventories_edit_path(:id => inventory.id)) %> | <%= link_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %>
-				</td>
-			</tr>
-		<%end%>
-	</tbody>
-</table>
-<p><%= link_to("Shto Inventar", :controller => "inventories", :action => "new") %></p>
-<p><%= link_to("Shko tek Stoku", :controller => "stocks", :action => "index") %></p>
-<!-- t.string :user_name
-      t.string :user_login
-      t.string :room_name
-      t.string :product_name
-      t.string :serial_number
-      t.date :buy_date
-      t.date :activation_date
-      t.string :amortization_norm
-      t.string :amortization
-      t.string :neto_value
-      t.string :time_of_use
-      t.string :comment -->
+</html>

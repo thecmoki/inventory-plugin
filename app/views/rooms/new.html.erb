@@ -1,21 +1,25 @@
-<style>	
-	ul li {
-		color: red;
-	}
-</style>
-<H1>Shto nje Room</H1>
-<%= form_for(@room) do |r| %>
-	
-	<% if @room.errors.any? %>
-		<ul>
-			<% @room.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-			<% end %>
-		</ul>
+<div class = "permbajtja">
+	<style>	
+		ul li {
+			color: red;
+		}
+	</style>
+	<H1>Shto nje Room</H1>
+	<%= form_for(@room) do |r| %>
+		
+		<% if @room.errors.any? %>
+			<ul>
+				<% @room.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		<% end %>
+		<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
+		<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
+		<p><%= r.submit("Krijo Room") %></p>
 	<% end %>
-
-	<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
-	<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
-	<p><%= r.submit("Krijo Room") %></p>
+	<p><%= button_to("Kthehu tek indeksi", rooms_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>
-<p><%= link_to("Kthehu tek indeksi", :controller => "rooms", :action => "index") %></p>

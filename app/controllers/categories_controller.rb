@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
   def index
   	@categories = Category.all

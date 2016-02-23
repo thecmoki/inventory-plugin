@@ -1,9 +1,16 @@
 <div class= "permbajtja">
 	<p><b>Inventari ID :</b><%= @inventory.id %></p>
 	<p><b>Perdoruesi :</b><%= @inventory.user_name %></p>
-	<p><b>Perdoruesi :</b><%=  "#{@inventory.user.firstname} #{@inventory.user.lastname}" %></p>
+	<p><b>Login :</b><%= @inventory.user_login %></p>
+	<p><b>Lokacioni :</b><%= @inventory.room_name %></p>
+	<p><b>Produkti :</b><%= @inventory.product_name %></p>
+	<p><b>Nr. Serik :</b><%= @inventory.serial_number %></p>
+	<p><b>Data e Blerjes :</b><%= @inventory.buy_date %></p>
+	<p><b>Norma Amortizimit :</b><%= @inventory.amortization_norm %></p>
+	<p><b>Amortizimi :</b><%= @inventory.amortization %></p>
+	<p><b>Vlera Neto :</b><%= @inventory.neto_value %></p>
 	<p><b>Koha e shfrytezimit :</b><%= @inventory.time_of_use %></p>
-	<p><b>Lokacioni :</b><%= @inventory.room.name %></p>
+	<p><b>Komenti :</b><%= @inventory.comment %></p>
 	<p><%= button_to("Kthehu tek Index", inventories_path, :method => "get") %></p>
 </div>
 <% content_for :header_tags do %>

@@ -26,7 +26,7 @@
 					<td><%= unit.quantity %></td>
 					<td><%= unit.color %></td>
 					<td><%= unit.comment %></td>
-					<td><%= link_to("Show", units_show_path(:id => unit.id)) %> | <%= link_to("Edit", units_edit_path(:id => unit.id))%> | <%= link_to("Delete", units_destroy_path(:id => unit.id), :method => :delete) %></td>
+					<td><%= button_to("Show", units_show_path(:id => unit.id), :method => "get") %> <%= button_to("Edit", units_edit_path(:id => unit.id), :method => "get")%> <%= button_to("Delete", units_destroy_path(:id => unit.id), :method => :delete) %></td>
 			</tr>
 		<% end %>
 	</tbody>

@@ -19,7 +19,6 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Perdoruesi</th>
 					<th>Login</th>
 					<th>Lokacioni</th>
@@ -32,14 +31,12 @@
 					<th>Vlera Neto</th>
 					<th>Koha e Shfrytezimit</th>
 					<th>Komenti</th>
-					<th>Ndryshimet</th>
+					<th style = "padding: 0px 44px;">Ndryshimet</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @inventories.each do |inventory| %>
 					<tr>
-
-						<td><%= inventory.id %></td>
 						<td><%= inventory.user_name %></td>
 						<td><%= inventory.user_login %></td>
 						<td><%= inventory.room_name %></td>
@@ -52,7 +49,7 @@
 						<td><%= inventory.neto_value %></td>
 						<td><%= inventory.time_of_use %></td>
 						<td><%= inventory.comment %></td>
-						<td><%= link_to("Show", inventories_show_path(:id => inventory.id)) %> | <%= link_to("Edit", inventories_edit_path(:id => inventory.id)) %> | <%= link_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %>
+						<td><p><%= button_to("Show", inventories_show_path(:id => inventory.id), :method => "get") %> <%= button_to("Edit", inventories_edit_path(:id => inventory.id), :method => "get") %>  <%= button_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %></p>
 						</td>
 					</tr>
 				<%end%>

@@ -17,7 +17,7 @@
   			<td><%= categories.id %></td>
   			<td><%= categories.name%></td>
   			<td><%= categories.comment %></td>
-  			<td><%= link_to("Show", "categories/#{categories.id}") %> | <%= link_to("Edit", "categories/#{categories.id}/edit") %> | <%= link_to("Delete", "categories/#{categories.id}/destroy", :method => :delete) %></td>
+  			<td><%= button_to("Show", categories_show_path(:id => categories.id), :method => "get") %> <%= button_to("Edit", categories_edit_path(:id => categories.id), :method => "get") %> <%= button_to("Delete", categories_destroy_path(:id => categories.id), :method => :delete) %></td>
   			</tr>
   			<%end%>
 

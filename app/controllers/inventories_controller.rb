@@ -39,6 +39,9 @@ class InventoriesController < ApplicationController
   def update
   	@inventory = Inventory.find(params[:id])
   	if (@inventory.update_attributes(inventory_params))
+      user = User.find(@inventory.user_name)
+      @inventory.update(:user_name => user.firstname + " " + user.lastname)
+      @inventory.update(:user_login => user.login)
   		redirect_to(:action => "index")
   	else
   		render("edit")

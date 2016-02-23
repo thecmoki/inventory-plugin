@@ -8,9 +8,9 @@ Redmine::Plugin.register :regjistrimi_inventarit do
 
   project_module :regjistrimi_inventarit do
     permission(:regjistrimi_inventarit, {:units => [:index, :show, :edit, :new, :create, :update, :destroy],
-  									   :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
-  									   :rooms => [:index, :show, :edit, :new, :create, :update, :destroy],
-  									   :categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
+  									                     :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
+								                         :rooms => [:index, :show, :edit, :new, :create, :update, :destroy],
+  									                     :categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     menu(:project_menu, :regjistrimi_inventarit, {:controller => "inventories", :action => "index"},
   						:caption => "AdaptivIT", :after => :activity, :param => :project_id)
   end

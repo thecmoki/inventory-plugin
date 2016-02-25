@@ -1,4 +1,6 @@
 <div class = "permbajtja">
+<h2>Lokacionet e Inventarit</h2>
+
 	<table border = "1">
 		<thead>
 			<tr>
@@ -19,7 +21,11 @@
 			<% end %>
 		</tbody>
 	</table>
-	<p><%= button_to("Shto nje Rooom", rooms_new_path, :method => "get") %></p>
+
+	<ul>
+	<li><%= button_to("Shto nje Rooom", rooms_new_path, :method => "get") %></li>
+	<li><%= button_to("Kthehu tek Inventari", inventories_path, :method => "get") %></li>
+	</ul>
 </div>
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

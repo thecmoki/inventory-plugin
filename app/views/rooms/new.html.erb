@@ -1,16 +1,11 @@
 <div class = "permbajtja">
-	<style>	
-		ul li {
-			color: red;
-		}
-	</style>
 	<H1>Shto nje Room</H1>
 	<%= form_for(@room) do |r| %>
 		
 		<% if @room.errors.any? %>
 			<ul>
 				<% @room.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
+					<li><%= message %></li>
 				<% end %>
 			</ul>
 		<% end %>

@@ -1,6 +1,14 @@
 <div class = "permbajtja">
 	<h1>New Inventory</h1>
 	<%= form_for(@inventory) do |f| %>
+		<% if @inventory.errors.any? %>
+			<ul>
+				<% @inventory.errors.full_messages.each do |message| %>
+					<li><%= message %></li><br>
+				<% end %>
+			</ul>
+		<% end %>
+
 		<p><%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%></p>
 		<p><%= f.collection_select(:room_name, Room.all, :name, :name, :prompt => "Select Room") %></p>
 		<p><%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %></p>

@@ -5,9 +5,8 @@
 	<body>
 		<div class="permbajtja">
 		<h1>Inventory</h1>
-		<h2>Listimi i te dhenave</h2>
 		<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
-		 Listimi:
+		 <b>Listimi:</b>
 		  <%= f.condition_fields do |c| %>
 		    <%= render "condition_fields", f: c %>
 		  <% end %>

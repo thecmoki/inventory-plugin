@@ -1,6 +1,13 @@
 <div class = "permbajtja">
 	<h1>New Category</h1>
 	<%= form_for(@category) do |c| %>
+		<% if @category.errors.any? %>
+			<ul>
+				<% @category.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		<% end %>
 		<p><%= c.text_field(:name, :placeholder => "Kategoria") %></p>
 		<p><%= c.text_area(:comment, :placeholder => "Komenti") %></p>
 		<p><%= c.submit("Krijo Kategori")%></p>

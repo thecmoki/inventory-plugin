@@ -10,7 +10,7 @@
 	<% if @unit.errors.any? %>
 		<ul>
 			<% @unit.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
+				<li><%= message %></li><br>
 			<% end %>
 		</ul>
 	<% end %>
@@ -18,7 +18,7 @@
 	<p><%= u.text_field(:name, :placeholder => "Emri") %></p>
 	<p><%= u.text_field(:quantity, :placeholder => "Quantity") %></p>
 	<p><%= u.text_field(:color, :placeholder => "Color") %> </p>
-	<p><%= u.text_field(:comment, :placeholder => "Komenti") %></p>
+	<p><%= u.text_area(:comment, :placeholder => "Komenti") %></p>
 	<p><%= u.submit("Krojo Unit") %></p>
 <% end %>
 <p><%= button_to("Kthehu tek indeksi", units_path, :method => "get") %></p>

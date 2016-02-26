@@ -14,7 +14,7 @@
 			</ul>
 		<% end %>
 		<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
-		<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
+		<p><%= r.text_area(:comment, :placeholder => "Komenti") %></p>
 		<p><%= r.submit("Edito nje Room")  %></p>
 	<% end %>
 	<p><%= button_to("Kthehu tek Indeksi", rooms_path, :method => "get") %></p>

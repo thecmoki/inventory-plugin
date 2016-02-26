@@ -3,22 +3,45 @@ class CategoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:notice] = "You have successfully logged out."
+     else
   	@categories = Category.all
+    end
   end
 
   def show
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@category = Category.find(params[:id])
   end
+end
 
   def edit
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@category = Category.find(params[:id])
+    end
   end
 
   def new
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@category = Category.new
   end
+end
 
   def create
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@category = Category.new(category_params)
   	if(@category.save)
   		redirect_to(:action => "index")
@@ -26,8 +49,11 @@ class CategoriesController < ApplicationController
   		render("new")
   	end
   end
-
+end
   def update
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@category = Category.find(params[:id])
     if (@category.update_attributes(category_params))
       redirect_to(:action => "index") 
@@ -35,12 +61,17 @@ class CategoriesController < ApplicationController
       render("edit") 
   	end 
   end
+end
 
   def destroy
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@category = Category.find(params[:id])
   	@category.delete
   	redirect_to(:action => "index")
  end
+end
 
  private
 

@@ -3,10 +3,11 @@ class InventoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
+    @users = User.all
     @units = Unit.all
-  	@inventories = Inventory.all
+  	#@inventories = Inventory.all
     @search = Inventory.search(params[:q])
-    @inventories = @search.result
+    @inventories = @search.result.paginate(:page => params[:page], :per_page => 15)
     @search.build_condition if @search.conditions.empty?
     @search.build_sort if @search.sorts.empty?
   end
@@ -16,14 +17,27 @@ class InventoriesController < ApplicationController
   end
 
   def edit
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@inventory = Inventory.find(params[:id])
   end
+end
 
   def new
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@inventory = Inventory.new
   end
+end
 
   def create
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@inventory = Inventory.new(inventory_params)
   	if(@inventory.save)
       inv = Inventory.last
@@ -34,9 +48,12 @@ class InventoriesController < ApplicationController
   	else
   		render("new")
   	end
-  end
+  end end
 
   def update
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@inventory = Inventory.find(params[:id])
   	if (@inventory.update_attributes(inventory_params))
       user = User.find(@inventory.user_name)
@@ -46,13 +63,16 @@ class InventoriesController < ApplicationController
   	else
   		render("edit")
   	end
-  end
+  end end
 
   def destroy
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@inventory = Inventory.find(params[:id])
   	@inventory.delete
   	redirect_to(:action => "index")
-  	end
+  	end end
 
   	private
     

@@ -18,7 +18,7 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>Perdoruesi</th>
+					<th><%= link_to("Perdoruesi", user_path(User.current.id)) %></th>
 					<th>Login</th>
 					<th>Lokacioni</th>
 					<th>Emri i Produktit</th>
@@ -30,13 +30,25 @@
 					<th>Vlera Neto</th>
 					<th>Koha e Shfrytezimit</th>
 					<th>Komenti</th>
-					<th style = "padding: 0px 44px;">Ndryshimet</th>
+					<% if(User.current.admin == true) %>
+						<th style = "padding: 0px 44px;">Ndryshimet</th>
+					<% else %>
+						<th>Ndryshimet</th>
+					<% end %>
 				</tr>
 			</thead>
+			<% if(User.current.admin == true) %>
 			<tbody>
 				<% @inventories.each do |inventory| %>
+
 					<tr>
-						<td><%= inventory.user_name %></td>
+						<td>
+							<% @users.each do |user| %>
+								<% if(inventory.user_login == user.login) %>
+									<%= link_to("#{inventory.user_name}", user_path(user.id)) %>
+								<% end %>
+							<% end %>
+						</td>
 						<td><%= inventory.user_login %></td>
 						<td><%= inventory.room_name %></td>
 						<td><%= inventory.product_name %></td>
@@ -51,6 +63,7 @@
 						<td><p><%= button_to("Show", inventories_show_path(:id => inventory.id), :method => "get") %> <%= button_to("Edit", inventories_edit_path(:id => inventory.id), :method => "get") %>  <%= button_to("Delete", inventories_destroy_path(:id => inventory.id), :method => :delete) %></p>
 						</td>
 					</tr>
+
 				<%end%>
 			</tbody>
 		</table>
@@ -61,9 +74,40 @@
 			<li><%= button_to "Shko tek Kategoria", categories_path, :method => "get" %></li>
 		</ul>
 
+
+
+<% else %>
+	<tbody>
+		<% @inventories.each do |inventory| %>
+			<tr>
+				<% @users.each do |user| %>
+					<%if(inventory.user_login == User.current.login)%>
+					<td><%= link_to("#{inventory.user_name}", user_path(User.current.id)) %></td>
+					<td><%= inventory.user_login %></td>
+					<td><%= inventory.room_name %></td>
+					<td><%= inventory.product_name %></td>
+					<td><%= inventory.serial_number %></td>
+					<td><%= inventory.buy_date %></td>
+					<td><%= inventory.activation_date %></td>
+					<td><%= inventory.amortization_norm %></td>
+					<td><%= inventory.amortization %></td>
+					<td><%= inventory.neto_value %></td>
+					<td><%= inventory.time_of_use %></td>
+					<td><%= inventory.comment %></td>
+					<td><p><%= button_to("Show", inventories_show_path(:id => inventory.id), :method => "get") %></p></td>
+				<% end %>
+			</tr>
+			<% break %>
+			<% end %>
+
+		<%end%>
+	</tbody>
+</table>
+<% end %>
+<%= will_paginate @posts %>
 </div>
-</body>
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>
+</body>
 </html>

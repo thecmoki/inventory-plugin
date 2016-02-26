@@ -5,12 +5,12 @@
 		<% if @room.errors.any? %>
 			<ul>
 				<% @room.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
+					<li><%= message %></li><br>
 				<% end %>
 			</ul>
 		<% end %>
 		<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
-		<p><%= r.text_field(:comment, :placeholder => "Komenti") %></p>
+		<p><%= r.text_area(:comment, :placeholder => "Komenti") %></p>
 		<p><%= r.submit("Krijo Room") %></p>
 	<% end %>
 	<p><%= button_to("Kthehu tek indeksi", rooms_path, :method => "get") %></p>

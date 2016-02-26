@@ -3,45 +3,71 @@ class UnitsController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
   
   def index
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@units = Unit.all
     @categories = Category.all
-  end
+  end end
   
   def show
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@unit = Unit.find(params[:id])
-  end
+  end end
   
   def edit
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@unit = Unit.find(params[:id])
-  end
+  end end
   
   def update
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@unit = Unit.find(params[:id])
   	if (@unit.update_attributes(unit_params))
   		redirect_to(:action => "index")
   	else
   		render(:controller => "units", :action => "edit")
-  	end
+  	end end
   end
   
   def new
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = "You have no access."
+     else
   	@unit = Unit.new
-  end 
+  end end
   
   def create
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@unit = Unit.new(unit_params)
   	if(@unit.save)
   		redirect_to(:action => "index")
   	else
   		render("new")
   	end
-  end
+  end end
   
   def destroy
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+     else
   	@unit = Unit.find(params[:id])
   	@unit.delete
   	redirect_to(:action => "index")
   end
+end
 
   private
   

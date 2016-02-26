@@ -5,9 +5,10 @@
   		<% end %>
 	</div>
   <div style = "float: left; padding-right: 20px;">
-  	<%= f.predicate_select :only => [:cont], compounds: false %>
+  	<div style="display:none;"><%= f.predicate_select :only => [:cont], compounds: false %></div>
   	<%= f.value_fields do |v| %>
     	<%= v.text_field :value %>
   	<% end %>
   </div>
 </div>
+

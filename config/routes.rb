@@ -9,6 +9,7 @@ post("projects/:project_id/units/update" => "units#update")
 delete("projects/:project_id/units/:id/destroy" => "units#destroy", :as => "units_destroy")
 
 get("projects/:project_id/inventories" => "inventories#index", :as => "inventories")
+get("projects/:project_id/inventories/search" => "inventories#index")
 get("projects/:project_id/inventories/new" => "inventories#new", :as => "inventories_new")
 post("projects/:project_id/inventories" => "inventories#create")
 get("projects/:project_id/inventories/:id" => "inventories#show", :as => "inventories_show")

@@ -7,6 +7,10 @@ class Inventory < ActiveRecord::Base
 	validates(:product_name, :presence => true)
 	validates(:serial_number, :presence => true, :uniqueness => true)
 	def self.ransackable_attributes(auth_object = nil)
-		super - ['id', 'created_at', 'updated_at']
+		if(User.current.admin == true)
+			super - ['id', 'created_at', 'updated_at']
+		else
+			super - ['id', 'created_at', 'updated_at', 'user_name', 'room_name', 'user_login']
+		end
 	end
 end

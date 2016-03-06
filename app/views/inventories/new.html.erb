@@ -1,32 +1,88 @@
-
-<div class = "permbajtja">
-	<h1>New Inventory</h1>
+<% if(session[:lan] == "en") %>
+	<h2><%= link_to("Inventories", inventories_path) %>  » New Inventory</h2>
+<% else %>
+	<h2><%= link_to("Inventari", inventories_path) %>  » Shto Inventarin</h2>
+<% end %>
+<% if @inventory.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @inventory.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div class = "splitcontentleft">
 	<%= form_for(@inventory) do |f| %>
-		<% if @inventory.errors.any? %>
-			<ul>
-				<% @inventory.errors.full_messages.each do |message| %>
-					<li><%= message %></li><br>
-				<% end %>
-			</ul>
+		<fieldset class = "box tabular">
+			<% if(session[:lan] == "en") %>
+				<legend>Required</legend>
+			<% else %>
+				<legend>Te Nevojshme</legend>
+			<% end %>
+			<p>
+				<%= f.label(userName(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%>
+			</p>
+			<p>
+				<%= f.label(roomName(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:room_name, Room.all, :name, :name, :prompt => "Select Room") %>
+			</p>
+			<p>
+				<%= f.label(productName(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %>
+			</p>
+			<p>
+				<%= f.label(serialNumber(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:serial_number) %>
+			</p>
+			</fieldset>
+		<fieldset class = "box tabular">
+			<% if(session[:lan] == "en") %>
+				<legend>Information</legend>
+			<% else %>
+				<legend>Informacionet</legend>
+			<% end %>
+			<p>
+				<%= f.label(buyDate(session[:lan])) %>
+				<%= f.date_field(:buy_date) %>
+			</p>
+			<p>
+				<%= f.label(activationDate(session[:lan])) %>
+				<%= f.date_field(:activation_date, :value => Time.now) %>
+			</p>
+			<p>
+				<%= f.label(amortizationNorm(session[:lan])) %>
+				<%= f.text_field(:amortization_norm) %>
+			</p>
+			<p>
+				<%= f.label(amortization(session[:lan])) %>
+				<%= f.text_field(:amortization) %>
+			</p>
+			<p>
+				<%= f.label(netoValue(session[:lan])) %>
+				<%= f.text_field(:neto_value) %>
+			</p>
+			<p>
+				<%= f.label(timeOfUse(session[:lan])) %>
+				<%= f.text_field(:time_of_use) %>
+			</p>
+			<p>
+				<%= f.label(comment(session[:lan])) %>
+				<%= f.text_area(:comment) %>
+			</p>
+		</fieldset>
+		<% if(session[:lan] = "en") %>
+			<%= f.submit("Add Inventory")%>
+		<% else %>
+			<%= f.submit("Shto Inventarin")%>
 		<% end %>
-
-		<p><%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%></p>
-		<p><%= f.collection_select(:room_name, Room.all, :name, :name, :prompt => "Select Room") %></p>
-		<p><%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %></p>
-		<p><%= f.text_field(:serial_number, :placeholder => "Serial Number") %></p>
-		<p><b><%= f.label("Buy Date: ")%></b></p>
-		<p><%= f.date_select(:buy_date) %></p>
-		<p><b><%= f.label("Activation Date: ")%></b></p>
-		<p><%= f.date_select(:activation_date) %></p>
-		<p><%= f.text_field(:amortization_norm, :placeholder => "Amortization Norm") %></p>
-		<p><%= f.text_field(:amortization, :placeholder => "Amortization") %></p>
-		<p><%= f.text_field(:neto_value, :placeholder => "Neto Value") %></p>
-		<p><%= f.text_field(:time_of_use, :placeholder => "Time Of Use") %></p>
-		<p><%= f.text_area(:comment, :placeholder => "Comment") %></p>
-		<p><%= f.submit("Krijo Inventarin")%></p>
 	<%end%>
-	<p><%= button_to("Kthehu tek Index", inventories_path, :method => "get")%></p>
 </div>
 <% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>

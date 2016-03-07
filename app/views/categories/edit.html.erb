@@ -1,11 +1,41 @@
-z<div class = "permbajtja">
-	<h1>Editimi i Kategorive</h1>
-	<%= form_for(:category, :url => {:action => "update", :id => @category.id}) do |i| %>
-		<p><%= i.text_field(:name, :placeholder => "Kategoria") %></p>
-		<p><%= i.text_area(:comment, :placeholder => "Komenti") %></p>
-		<p><%= i.submit("Editimi i Kategorive")%></p>
+<% if(session[:lan] == "en") %>
+	<h2><%= link_to("Categories", categories_path) %>  » Edit Category</h2>
+<% else %>
+	<h2><%= link_to("Kategoria", categories_path) %>  » Ndrysho Kategori</h2>
+<% end %>
+<% if @category.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @category.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div class = "splitcontentleft">
+	<%= form_for(:category, :url => {:action => "update", :id => @category.id}) do |c| %>
+		<fieldset class = "box tabular">
+			<% if(session[:lan] == "en") %>
+				<legend>Information</legend>
+			<% else %>
+				<legend>Te dhenat</legend>
+			<% end %>
+			<p>
+				<%= c.label(name(session[:lan]))%>
+				<span class = "required">*</span>
+				<%= c.text_field(:name) %>
+			</p>
+			<p>
+				<%= c.label(comment(session[:lan])) %>
+				<%= c.text_area(:comment) %>
+			</p>
+		</fieldset>
+		<% if(session[:lan] == "en") %>
+			<%= c.submit("Edit") %>
+		<% else %>
+			<%= c.submit("Ndrysho") %>
+		<% end %>
 	<%end%>
-	<p><%= button_to("Kthehu tek Index", categories_path, :method => "get") %></p>
 </div>
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

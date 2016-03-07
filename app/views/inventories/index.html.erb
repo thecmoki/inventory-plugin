@@ -3,27 +3,34 @@
 	<head>
 	</head>
 	<body>
+		<div style = "text-align: right; font-size: 0.9em;">
+			<%= link_to "English", "#{inventories_path}?lan=en" %> |
+			<%= link_to "Albanian", "#{inventories_path}?lan=al" %>
+		</div>
 		<% if(User.current.admin == true) %>
 			<div class = "contextual">
 				<%= link_to(addInventory(session[:lan]), inventories_new_path, :class => "icon icon-add") %>
-				 | <%= link_to "English", "#{inventories_path}?lan=en" %>
-				 | <%= link_to "Albanian", "#{inventories_path}?lan=al" %>
 			</div>
 		<% end %>
 		<h2><%= inventoryHeader(session[:lan]) %></h2>
 		<fieldset>
 			<legend><%= inventoryLegend3(session[:lan]) %></legend>
-			<div class = "contextual">
-				<%= link_to(goCategories(session[:lan]), categories_path) %> | 
-				<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
-				<%= link_to(goUnits(session[:lan]), units_path) %>
-			</div>
+			<% if(User.current.admin == true) %>
+				<div class = "contextual">
+					<%= link_to(goCategories(session[:lan]), categories_path) %> | 
+					<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
+					<%= link_to(goUnits(session[:lan]), units_path) %>
+				</div>
+			<% end %>
 			<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
 				<%= f.condition_fields do |c| %>
 		    		<%= render "condition_fields", f: c %>
 		  		<% end %>
-		  		<div class="actions">
+		  		<div class = "actions" style = "float: left">
 		  			<%= f.submit(inventoryApply(session[:lan])) %>
+		  		</div>
+		  		<div style = "padding: 3px 15px;">
+		  			<%= link_to "remove", inventories_path, class: "icon icon-reload" %>
 		  		</div>
 			<% end %>
 		</fieldset>

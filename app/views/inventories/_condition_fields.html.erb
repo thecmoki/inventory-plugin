@@ -6,14 +6,13 @@
       <%= "Listimi:" %>
     <% end %>
     <%= f.attribute_fields do |a| %>
-    		<%= a.attribute_select associations: [:inventory] %>
-  		<% end %>
+    	<%= a.attribute_select associations: [:inventory] %>
+  	<% end %>
 	</div>
   <div style = "float: left; padding-right: 20px;">
   	<div style="display:none;"><%= f.predicate_select :only => [:cont], compounds: false %></div>
-  	<%= f.value_fields do |v| %>
-    	<%= v.text_field :value %>
-  	<% end %>
+  	  <%= f.value_fields do |v| %>
+    	  <%= v.text_field :value %>
+  	  <% end %>
   </div>
 </div>
-

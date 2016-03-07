@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def index
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      flash[:notice] = "You have successfully logged out."
+      flash[:error] = "You have no access."
     else
   	  @categories = Category.all
     end

@@ -12,6 +12,6 @@ Redmine::Plugin.register :regjistrimi_inventarit do
 								                         :rooms => [:index, :show, :edit, :new, :create, :update, :destroy],
   									                     :categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     menu(:project_menu, :regjistrimi_inventarit, {:controller => "inventories", :action => "index"},
-  						:caption => "Inventory", :after => :activity, :param => :project_id)
+  						:caption => "Inventory", :after => :activity, :param => :project_id, :class => "activity")
   end
 end

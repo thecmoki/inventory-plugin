@@ -10,34 +10,23 @@
 				 | <%= link_to "Albanian", "#{inventories_path}?lan=al" %>
 			</div>
 		<% end %>
-		<h2>
-			<% if(session[:lan] == "en") %>
-				<%= "Inventory" %>
-			<% else %>
-				<%= "Inventari" %>
-			<% end %>
-		</h2>
+		<h2><%= inventoryHeader(session[:lan]) %></h2>
 		<fieldset>
-			<legend>
-				<% if(session[:lan] == "en") %>
-					<%= "Filters" %>
-				<% else %>
-					<%= "Filtrimi" %>
-				<% end %>
-			</legend>
+			<legend><%= inventoryLegend3(session[:lan]) %></legend>
+			<div class = "contextual">
+				<%= link_to(goCategories(session[:lan]), categories_path) %> | 
+				<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
+				<%= link_to(goUnits(session[:lan]), units_path) %>
+			</div>
 			<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
 				<%= f.condition_fields do |c| %>
 		    		<%= render "condition_fields", f: c %>
 		  		<% end %>
 		  		<div class="actions">
-		  			<% if(session[:lan] == "en") %>
-		  				<%= f.submit "Apply" %>
-		  			<% else %>
-		  				<%= f.submit "Kerko" %>
-		  			<% end %>
+		  			<%= f.submit(inventoryApply(session[:lan])) %>
 		  		</div>
 			<% end %>
-			</fieldset>
+		</fieldset>
 		<br>
 		<div class = "autoscroll">
 			<table class = "list">
@@ -82,11 +71,7 @@
 								<td><%= inventory.comment %></td>
 								<td class = "buttons">
 									<%= link_to(editInventory(session[:lan]), inventories_edit_path(:id => inventory.id), :class => "icon icon-edit") %>  
-									<% if(session[:lan] == "en") %>
-										<%= link_to(deleteInventory(session[:lan]), inventories_destroy_path(:id => inventory.id), :method => :delete, :class => "icon icon-del", data: { confirm: 'Are you sure?' }) %>
-									<% else %>
-										<%= link_to(deleteInventory(session[:lan]), inventories_destroy_path(:id => inventory.id), :method => :delete, :class => "icon icon-del", data: { confirm: 'A jeni te sigurt?' }) %>
-									<% end %>
+									<%= link_to(deleteInventory(session[:lan]), inventories_destroy_path(:id => inventory.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
 								</td>
 							</tr>
 						<% else %>
@@ -115,9 +100,6 @@
 				</tbody>
 			</table>
 			<%= will_paginate @posts %>
-			<%= link_to("Categories", categories_path) %>
-			<%= link_to("Rooms", rooms_path) %>
-			<%= link_to("Units", units_path) %>
 		</div>
 		<% content_for :header_tags do %>
     		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

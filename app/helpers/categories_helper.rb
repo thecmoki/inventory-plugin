@@ -23,9 +23,9 @@ module CategoriesHelper
 	end
 	def categoryHeader(lan = "en")
 		if(lan == "en")
-			"Category"
+			"Categories"
 		elsif(lan == "al")
-			"Kategoria"
+			"Kategorit"
 		end
 	end
 	def dataConfirm(lan = "en")
@@ -53,7 +53,7 @@ module CategoriesHelper
 	#keto metoda jane brenda new.html.erb
 	def categoryPathNew(lan = "en")
 		if(lan == "en")
-			link_to("Category", categories_path) + " » New Category"
+			link_to("Categories", categories_path) + " » New Category"
 		elsif(lan == "al")
 			link_to("Kategorit", categories_path) + " » Krijo Kategori"
 		end

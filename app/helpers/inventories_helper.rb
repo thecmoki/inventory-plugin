@@ -1,4 +1,120 @@
 module InventoriesHelper
+	# Keto metoda jane brenda index.html.erb
+	def addInventory(lan = "en")
+		if(lan == "en")
+			"New Inventory"
+		elsif(lan == "al")
+			"Shto Inventar"
+		end
+	end
+	def editInventory(lan = "en")
+		if(lan == "en")
+			"Edit"
+		elsif(lan == "al")
+			"Ndrysho"
+		end
+	end
+	def deleteInventory(lan = "en")
+		if(lan == "en")
+			"Delete"
+		elsif(lan == "al")
+			"Fshi"
+		end
+	end
+	def inventoryHeader(lan = "en")
+		if(lan == "en")
+			"Inventories"
+		elsif(lan == "al")
+			"Inventaret"
+		end
+	end
+	def inventoryLegend3(lan = "en")
+		if(lan == "en")
+			"Filters"
+		elsif(lan == "al")
+			"Filtrimi"
+		end
+	end
+	def inventoryApply(lan = "en")
+		if(lan == "en")
+			"Apply"
+		elsif(lan == "al")
+			"Kerko"
+		end
+	end
+	def dataConfirm(lan = "en")
+		if(lan == "en")
+			{ confirm: 'Are you sure?' }
+		elsif(lan == "al")
+			{ confirm: 'A jeni te sigurt?' }
+		end
+	end
+	def goCategories(lan = "en")
+		if(lan == "en")
+			"Categories"
+		elsif(lan == "al")
+			"Kategorit"
+		end
+	end
+	def goUnits(lan = "en")
+		if(lan == "en")
+			"Products"
+		elsif(lan == "al")
+			"Produktet"
+		end
+	end
+	def goRooms(lan = "en")
+		if(lan == "en")
+			"Rooms"
+		elsif(lan == "al")
+			"Dhomat"
+		end
+	end
+	#keto metoda jane brenda edit.html.erb
+	def inventoryPathEdit(lan = "en")
+		if(lan == "en")
+			link_to("Inventories", inventories_path) + " » Edit Inventory"
+		elsif(lan == "al")
+			link_to("Inventaret", inventories_path) + " » Ndrysho Inventar"
+		end
+	end
+	def inventoryEditSubmit(lan = "en")
+		if(lan == "en")
+			"Edit"
+		elsif(lan == "al")
+			"Ndrysho"
+		end
+	end
+	#keto metoda jane brenda new.html.erb
+	def inventoryPathNew(lan = "en")
+		if(lan == "en")
+			link_to("Inventories", inventories_path) + " » New Inventory"
+		elsif(lan == "al")
+			link_to("Inventaret", inventories_path) + " » Krijo Inventar"
+		end
+	end
+	def inventoryNewSubmit(lan = "en")
+		if(lan == "en")
+			"Create"
+		elsif(lan == "al")
+			"Krijo"
+		end
+	end
+	#keto metoda jane brenda new.html.erb dhe edit.html.erb dhe index.html.erb
+	def inventoryLegend1(lan = "en")
+		if(lan == "en")
+			"Required"
+		elsif(lan == "al")
+			"Te Nevojshme"
+		end
+	end
+	def inventoryLegend2(lan = "en")
+		if(lan == "en")
+			"Information"
+		elsif(lan == "al")
+			"Informacionet"
+		end
+	end
 	def userName(lan = "en")
 		if(lan == "en")
 			"User Name"
@@ -81,27 +197,6 @@ module InventoriesHelper
 			"Comment"
 		elsif(lan == "al")
 			"Komenti"
-		end
-	end
-	def addInventory(lan = "en")
-		if(lan == "en")
-			"New Inventory"
-		elsif(lan == "al")
-			"Inventar i Ri"
-		end
-	end
-	def editInventory(lan = "en")
-		if(lan == "en")
-			"Edit"
-		elsif(lan == "al")
-			"Ndrysho"
-		end
-	end
-	def deleteInventory(lan = "en")
-		if(lan == "en")
-			"Delete"
-		elsif(lan == "al")
-			"Fshije"
 		end
 	end
 end

@@ -1,32 +1,32 @@
-<div class = "permbajtja">
-<h2>Lokacionet e Inventarit</h2>
-
-	<table border = "1">
+<div class = "contextual">
+	<%= link_to(addRoom(session[:lan]), rooms_new_path, :class => "icon icon-add") %>
+</div>
+<h2><%= roomHeader(session[:lan]) %></h2>
+<div class = "autoscroll">
+	<table class = "list">
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Emri</th>
-				<th>Komenti</th>
-				<th>Operacionet</th>
+				<th><%= roomName(session[:lan]) %></th>
+				<th><%= roomComment(session[:lan]) %></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @rooms.each do |room| %>
-				<tr>
+				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= room.id %></td>
 					<td><%= room.name %></td>
 					<td><%= room.comment%></td>
-					<td><%= button_to("Show", rooms_show_path(:id => room.id), :method => "get") %> <%= button_to("Edit", rooms_edit_path(:id => room.id), :method => "get") %> <%= button_to("Delete", rooms_destroy_path(:id => room.id), :method => :delete) %> </td>	
+					<td class = "buttons">
+						<%= link_to(editRoom(session[:lan]), rooms_edit_path(:id => room.id), :class => "icon icon-edit") %>
+						<%= link_to(deleteRoom(session[:lan]), rooms_destroy_path(:id => room.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
+					</td>	
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
-
-	<ul>
-	<li><%= button_to("Shto nje Rooom", rooms_new_path, :method => "get") %></li>
-	<li><%= button_to("Kthehu tek Inventari", inventories_path, :method => "get") %></li>
-	</ul>
 </div>
 <% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+	<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>

@@ -1,24 +1,27 @@
-<div class = "permbajtja">
-	<style>
-	ul li {
-		color:red;
-	}
-	</style>
-	<H1>Edito nje Room</H1>
-	<%= form_for(:room, :url => {:action => "update", :id => @room.id}) do |r| %>
-		<% if @room.errors.any? %>
-			<ul>
-				<% @room.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
-		<p><%= r.text_field(:name, :placeholder => "Emri") %></p>
-		<p><%= r.text_area(:comment, :placeholder => "Komenti") %></p>
-		<p><%= r.submit("Edito nje Room")  %></p>
-	<% end %>
-	<p><%= button_to("Kthehu tek Indeksi", rooms_path, :method => "get") %></p>
-</div>
-<% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<h2><%= roomPathEdit(session[:lan]) %></h2>
+<% if @room.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @room.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
+<div class = "splitcontentleft">
+	<%= form_for(:room, :url => {:action => "update", :id => @room.id}) do |f| %>
+		<fieldset class = "box tabular">
+			<legend><%= roomLegend(session[:lan]) %></legend>
+			<p>
+				<%= f.label(roomName(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:name) %>
+			</p>
+			<p>
+				<%= f.label(roomComment(session[:lan])) %>
+				<%= f.text_area(:comment) %>
+			</p>
+		</fieldset>
+		<p><%= f.submit(roomEditSubmit(session[:lan])) %></p>
+	<% end %>
+<div>

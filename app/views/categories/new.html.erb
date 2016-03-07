@@ -1,4 +1,4 @@
-<h2><%= link_to("Kategoria", categories_path) %>  » Shto Kategori</h2>
+<h2><%= categoryPathNew(session[:lan]) %></h2>
 <% if @category.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -9,22 +9,19 @@
 	</div>
 <% end %>
 <div class = "splitcontentleft">
-	<%= form_for(@category) do |c| %>
+	<%= form_for(@category) do |f| %>
 		<fieldset class = "box tabular">
-			<legend>Te dhenat</legend>
+			<legend><%= categoryLegend(session[:lan]) %></legend>
 			<p>
-				<%= c.label(:name)%>
+				<%= f.label(categoryName(session[:lan])) %>
 				<span class = "required">*</span>
-				<%= c.text_field(:name) %>
+				<%= f.text_field(:name) %>
 			</p>
 			<p>
-				<%= c.label(:comment) %>
-				<%= c.text_area(:comment) %>
+				<%= f.label(categoryComment(session[:lan])) %>
+				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<%= c.submit("Krijo")%>
-	<%end%>
-</div>
-<% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
-<% end %>
+		<p><%= f.submit(categoryNewSubmit(session[:lan])) %></p>
+	<% end %>
+<div>

@@ -10,18 +10,31 @@
 		<h2><%= historyHeader(session[:lan]) %></h2>
 		<fieldset>
 			<legend><%= historyLegend3(session[:lan]) %></legend>
-			<div class = "contextual">
-				<%= link_to(goCategories(session[:lan]), categories_path) %> | 
-				<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
-				<%= link_to(goUnits(session[:lan]), units_path) %>
-			</div>
-	
+			<% if(User.current.admin == true) %>
+				<div class = "contextual">
+					<%= link_to(goCategories(session[:lan]), categories_path) %> | 
+					<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
+					<%= link_to(goUnits(session[:lan]), units_path) %>
+				</div>
+			<% end %>
+			<%= search_form_for @search, url: search_histories_path, method: :post do |f| %>
+				<%= f.condition_fields do |c| %>
+		    		<%= render "condition_fields", f: c %>
+		  		<% end %>
+		  		<div class = "actions" style = "float: left">
+		  			<%= f.submit(historyApply(session[:lan])) %>
+		  		</div>
+		  		<div style = "padding: 3px 15px;">
+		  			<%= link_to historyClear(session[:lan]), histories_path, class: "icon icon-reload" %>
+		  		</div>
+			<% end %>
 		</fieldset>
 		<br>
 		<div class = "autoscroll">
 			<table class = "list">
 				<thead>
 					<tr>
+						<th><%= inventoryId(session[:lan]) %></th>
 						<th><%= link_to(userName(session[:lan]), user_path(User.current.id)) %></th>
 						<th><%= userLogin(session[:lan]) %></th>
 						<th><%= roomName(session[:lan]) %></th>
@@ -35,13 +48,13 @@
 						<th><%= timeOfUse(session[:lan]) %></th>
 						<th><%= comment(session[:lan]) %></th>
 						<th><%= updatedAt(session[:lan]) %></th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @histories.each do |history| %>
 						<% if(User.current.admin == true) %>
 							<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+								<td><%= history.inventory_id %></td>
 								<td>
 									<% @users.each do |user| %>
 										<% if(history.user_login == user.login) %>
@@ -66,7 +79,9 @@
 							<% @users.each do |user| %>
 								<tr class = "<%= cycle('user active odd', 'user active even') -%>">
 									<% if(history.user_login == User.current.login) %>
-										<td><%= link_to("#{history.user_name}", user_path(User.current.id)) %>
+										<td><%= history.inventory_id %></td>
+										<td>
+											<%= link_to("#{history.user_name}", user_path(User.current.id)) %>
 										</td>
 										<td><%= history.user_login %></td>
 										<td><%= history.room_name %></td>

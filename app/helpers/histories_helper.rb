@@ -65,6 +65,13 @@ module HistoriesHelper
 			"Informacionet"
 		end
 	end
+	def inventoryId(lan = "en")
+		if(lan == "en")
+			"Inventory Id"
+		elsif(lan == "al")
+			"Id e Inventarit"
+		end
+	end 
 	def userName(lan = "en")
 		if(lan == "en")
 			"User Name"

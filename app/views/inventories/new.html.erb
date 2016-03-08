@@ -32,6 +32,11 @@
 				<span class = "required">*</span>
 				<%= f.text_field(:serial_number) %>
 			</p>
+			<p>
+				<%= f.label(productId(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:product_id) %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= inventoryLegend2(session[:lan]) %></legend>

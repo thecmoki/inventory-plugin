@@ -206,4 +206,11 @@ module InventoriesHelper
 			"Komenti"
 		end
 	end
+	def productId(lan = "en")
+		if(lan == "en")
+			"Product Id"
+		elsif(lan == "al")
+			"Id e Produktit"
+		end
+	end
 end

@@ -5,6 +5,10 @@ class HistoriesController < ApplicationController
   def index
   	@histories = History.all
   	@users = User.all
+    @search = History.search(params[:q])
+    @histories = @search.result.paginate(:page => params[:page], :per_page => 15)
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
   	if(session[:lan] == nil)
       session[:lan] = "en"
     elsif(params[:lan] == "en" || params[:lan] == "al")

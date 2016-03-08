@@ -43,6 +43,7 @@
 						<th><%= userLogin(session[:lan]) %></th>
 						<th><%= roomName(session[:lan]) %></th>
 						<th><%= productName(session[:lan]) %></th>
+						<th><%= productId(session[:lan]) %></th>
 						<th><%= serialNumber(session[:lan]) %></th>
 						<th><%= buyDate(session[:lan]) %></th>
 						<th><%= activationDate(session[:lan]) %></th>
@@ -68,6 +69,7 @@
 								<td><%= inventory.user_login %></td>
 								<td><%= inventory.room_name %></td>
 								<td><%= inventory.product_name %></td>
+								<td><%= inventory.product_id %></td>
 								<td><%= inventory.serial_number %></td>
 								<td><%= inventory.buy_date %></td>
 								<td><%= inventory.activation_date %></td>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div style = "text-align: right; font-size: 0.9em;">
+			<%= link_to "English", "#{histories_path}?lan=en" %> |
+			<%= link_to "Albanian", "#{histories_path}?lan=al" %>
+		</div>
+		<h2><%= historyHeader(session[:lan]) %></h2>
+		<fieldset>
+			<legend><%= historyLegend3(session[:lan]) %></legend>
+			<div class = "contextual">
+				<%= link_to(goCategories(session[:lan]), categories_path) %> | 
+				<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
+				<%= link_to(goUnits(session[:lan]), units_path) %>
+			</div>
+	
+		</fieldset>
+		<br>
+		<div class = "autoscroll">
+			<table class = "list">
+				<thead>
+					<tr>
+						<th><%= link_to(userName(session[:lan]), user_path(User.current.id)) %></th>
+						<th><%= userLogin(session[:lan]) %></th>
+						<th><%= roomName(session[:lan]) %></th>
+						<th><%= productName(session[:lan]) %></th>
+						<th><%= serialNumber(session[:lan]) %></th>
+						<th><%= buyDate(session[:lan]) %></th>
+						<th><%= activationDate(session[:lan]) %></th>
+						<th><%= amortizationNorm(session[:lan]) %></th>
+						<th><%= amortization(session[:lan]) %></th>
+						<th><%= netoValue(session[:lan]) %></th>
+						<th><%= timeOfUse(session[:lan]) %></th>
+						<th><%= comment(session[:lan]) %></th>
+						<th><%= updatedAt(session[:lan]) %></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @histories.each do |history| %>
+						<% if(User.current.admin == true) %>
+							<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+								<td>
+									<% @users.each do |user| %>
+										<% if(history.user_login == user.login) %>
+											<%= link_to("#{history.user_name}", user_path(user.id)) %>
+										<% end %>
+									<% end %>
+								</td>
+								<td><%= history.user_login %></td>
+								<td><%= history.room_name %></td>
+								<td><%= history.product_name %></td>
+								<td><%= history.serial_number %></td>
+								<td><%= history.buy_date %></td>
+								<td><%= history.activation_date %></td>
+								<td><%= history.amortization_norm %></td>
+								<td><%= history.amortization %></td>
+								<td><%= history.neto_value %></td>
+								<td><%= history.time_of_use %></td>
+								<td><%= history.comment %></td>
+								<td><%= history.updated_at %></td>
+							</tr>
+						<% else %>
+							<% @users.each do |user| %>
+								<tr class = "<%= cycle('user active odd', 'user active even') -%>">
+									<% if(history.user_login == User.current.login) %>
+										<td><%= link_to("#{history.user_name}", user_path(User.current.id)) %>
+										</td>
+										<td><%= history.user_login %></td>
+										<td><%= history.room_name %></td>
+										<td><%= history.product_name %></td>
+										<td><%= history.serial_number %></td>
+										<td><%= history.buy_date %></td>
+										<td><%= history.activation_date %></td>
+										<td><%= history.amortization_norm %></td>
+										<td><%= history.amortization %></td>
+										<td><%= history.neto_value %></td>
+										<td><%= history.time_of_use %></td>
+										<td><%= history.comment %></td>
+										<td><%= history.updated_at %></td>
+									<% end %>
+									<% break %>
+								</tr>
+							<% end%>
+						<% end %>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+		<% content_for :header_tags do %>
+    		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+		<% end %>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+<table class = "list">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th><%= "Name "%></th>
+					<th><%= "Comment" %></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @amortnorms.each do |amortnorm| %>
+					<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+						<td><%= amortnorm.id %></td>
+						<td><%= amortnorm.name %></td>
+						<td><%= amortnorm.comment%></td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>

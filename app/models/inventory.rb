@@ -2,6 +2,8 @@ class Inventory < ActiveRecord::Base
 	belongs_to(:user)
 	belongs_to(:room)
 	belongs_to(:unit)
+	belongs_to(:amortnorm)
+	has_many(:histories)
 	validates(:user_name, :presence => true)
 	validates(:room_name, :presence => true)
 	validates(:product_name, :presence => true)

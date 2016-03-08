@@ -1,6 +1,7 @@
-class CreateInventories < ActiveRecord::Migration
+class CreateHistories < ActiveRecord::Migration
   def change
-    create_table :inventories do |t|
+    create_table :histories do |t|
+      t.integer :inventory_id
       t.string :user_name
       t.string :user_login
       t.string :room_name

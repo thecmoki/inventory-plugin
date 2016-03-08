@@ -1,0 +1,27 @@
+<h2>Edit</h2>
+<% if @amortnorm.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @amortnorm.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div class = "splitcontentleft">
+	<%= form_for(:amortnorm, :url => {:action => "update", :id => @amortnorm.id}) do |f| %>
+		<fieldset class = "box tabular">
+			
+			<p>
+				<%= f.label(:name) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:name) %>
+			</p>
+			<p>
+				<%= f.label(:comment) %>
+				<%= f.text_area(:comment) %>
+			</p>
+		</fieldset>
+		<p><%= f.submit("Edit") %></p>
+	<% end %>
+<div>

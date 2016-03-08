@@ -33,3 +33,13 @@ get("projects/:project_id/rooms/:id" => "rooms#show", :as => "rooms_show")
 get("projects/:project_id/rooms/:id/edit" => "rooms#edit", :as => "rooms_edit")
 post("projects/:project_id/rooms/update" => "rooms#update")
 delete("projects/:project_id/rooms/:id/destroy" => "rooms#destroy", :as => "rooms_destroy")
+
+get("projects/:project_id/amortnorms" => "amortnorms#index", :as => "amortnorms")
+get("projects/:project_id/amortnorms/new" => "amortnorms#new", :as => "amortnorms_new")
+post("projects/:project_id/amortnorms" => "amortnorms#create")
+get("projects/:project_id/amortnorms/:id" => "amortnorms#show", :as => "amortnorms_show")
+get("projects/:project_id/amortnorms/:id/edit" => "amortnorms#edit", :as => "amortnorms_edit")
+post("projects/:project_id/amortnorms/update" => "amortnorms#update")
+delete("projects/:project_id/amortnorms/:id/destroy" => "amortnorms#destroy", :as => "amortnorms_destroy")
+
+get("projects/:project_id/histories" => "histories#index", :as => "histories")

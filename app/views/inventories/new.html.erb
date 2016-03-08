@@ -3,7 +3,7 @@
 	<div id = "errorExplanation">
 		<ul>
 			<% @inventory.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
+				<li><%= message.capitalize %></li>
 			<% end %>
 		</ul>
 	</div>
@@ -37,16 +37,17 @@
 				<span class = "required">*</span>
 				<%= f.text_field(:product_id) %>
 			</p>
+			<p>
+				<%= f.label(activationDate(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.date_field(:activation_date) %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= inventoryLegend2(session[:lan]) %></legend>
 			<p>
 				<%= f.label(buyDate(session[:lan])) %>
 				<%= f.date_field(:buy_date) %>
-			</p>
-			<p>
-				<%= f.label(activationDate(session[:lan])) %>
-				<%= f.date_field(:activation_date) %>
 			</p>
 			<p>
 				<%= f.label(amortizationNorm(session[:lan])) %>

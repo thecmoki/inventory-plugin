@@ -42,6 +42,13 @@ module InventoriesHelper
 			"Kerko"
 		end
 	end
+	def inventoryClear(lan = "en")
+		if(lan == "en")
+			"Clear"
+		elsif(lan == "al")
+			"Pastro"
+		end
+	end
 	def dataConfirm(lan = "en")
 		if(lan == "en")
 			{ confirm: 'Are you sure?' }

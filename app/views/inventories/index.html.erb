@@ -30,7 +30,7 @@
 		  			<%= f.submit(inventoryApply(session[:lan])) %>
 		  		</div>
 		  		<div style = "padding: 3px 15px;">
-		  			<%= link_to "remove", inventories_path, class: "icon icon-reload" %>
+		  			<%= link_to inventoryClear(session[:lan]), inventories_path, class: "icon icon-reload" %>
 		  		</div>
 			<% end %>
 		</fieldset>

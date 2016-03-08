@@ -37,7 +37,7 @@ class UnitsController < ApplicationController
   	  @unit = Unit.find(params[:id])
   	  if (@unit.update_attributes(unit_params))
   		  redirect_to(:action => "index")
-        flash[:notice] = "Successful created."
+        flash[:notice] = "Successful update."
   	  else
   		  render(:controller => "units", :action => "edit")
   	  end

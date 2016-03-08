@@ -1,27 +1,43 @@
-<div class = "permbajtja">
-	<style>
-		ul li{
-			color:red;
-		}
-	</style>
-	<H1>Edito nje Unit</H1>
-	<%= form_for(:unit, :url => {:action => "update", :id => @unit.id}) do |u| %>
-		<% if @unit.errors.any? %> 
-			<ul>
-				<% @unit.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
-		<p><%= u.collection_select(:category_id, Category.all, :id, :name, :prompt => "Select Category") %></p>
-		<p><%= u.text_field(:name, :placeholder => "Emri") %></p>
-		<p><%= u.text_field(:quantity, :placeholder => "Quantity") %></p>
-		<p><%= u.text_field(:color, :placeholder => "Color") %> </p>
-		<p><%= u.text_area(:comment, :placeholder => "Komenti") %></p>
-		<p><%= u.submit("Edito Produktin") %></p>
-	<% end %>
-<p><%= button_to("Kthehu tek Indeksi", units_path, :method => "get")%></p>
-</div>
-<% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<h2><%= productPathEdit(session[:lan]) %></h2>
+<% if @unit.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @unit.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
+<div class = "splitcontentleft">
+	<%= form_for(:unit, :url => {:action => "update", :id => @unit.id}) do |f| %>
+		<fieldset class = "box tabular">
+			<legend><%= productLegend1(session[:lan]) %></legend>
+			<p>
+				<%= f.label(productCategoryId(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => true)%>
+			</p>
+			<p>
+				<%= f.label(productName(session[:lan])) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:name) %>
+			</p>
+		</fieldset>
+		<fieldset class = "box tabular">
+			<legend><%= productLegend2(session[:lan]) %></legend>
+			<p>
+				<%= f.label(productQuantity(session[:lan])) %>
+				<%= f.text_field(:quantity) %>
+			</p>
+			<p>
+				<%= f.label(productColor(session[:lan])) %>
+				<%= f.text_field(:color) %>
+			</p>
+			<p>
+				<%= f.label(productComment(session[:lan])) %>
+				<%= f.text_area(:comment) %>
+			</p>
+		</fieldset>
+		<p><%= f.submit(productEditSubmit(session[:lan])) %></p>
+	<% end %>
+<div>

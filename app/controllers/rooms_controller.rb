@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   	  @room = Room.find(params[:id])
   	  if (@room.update_attributes(room_params))
   		  redirect_to(:action => "index")
-        flash[:notice] = "Successful created."
+        flash[:notice] = "Successful update."
   	  else
   		  render("edit")
   	  end

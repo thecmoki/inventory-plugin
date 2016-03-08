@@ -1,43 +1,38 @@
-<div class ="permbajtja">
-<h2>Njesite e Inventarit</h2>
-
-<table border = "1">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Kategoria</th>
-			<th>Emri</th>
-			<th>Sasia</th>
-			<th>Ngjyra</th>
-			<th>Komenti</th>
-			<th>Operacionet</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @units.each do |unit| %>
+<div class = "contextual">
+	<%= link_to(addProduct(session[:lan]), units_new_path, :class => "icon icon-add") %>
+</div>
+<h2><%= productHeader(session[:lan]) %></h2>
+<div class = "autoscroll">
+	<table class = "list">
+		<thead>
 			<tr>
+				<th>ID</th>
+				<th><%= productCategoryId(session[:lan]) %></th>
+				<th><%= productName(session[:lan]) %></th>
+				<th><%= productQuantity(session[:lan]) %></th>
+				<th><%= productColor(session[:lan]) %></th>
+				<th><%= productComment(session[:lan]) %></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @units.each do |unit| %>
+				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= unit.id %></td>
-					<td><% @categories.each do |c| %>
-						<% if unit.category_id == c.id %>
-							<%= c.name %>
-						<%end%>
-					<%end%>
-					</td>
+					<td><%= unit.category_id %></td>
 					<td><%= unit.name %></td>
 					<td><%= unit.quantity %></td>
 					<td><%= unit.color %></td>
-					<td><%= unit.comment %></td>
-					<td><%= button_to("Show", units_show_path(:id => unit.id), :method => "get") %> <%= button_to("Edit", units_edit_path(:id => unit.id), :method => "get")%> <%= button_to("Delete", units_destroy_path(:id => unit.id), :method => :delete) %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
-<ul>
-<li><%= button_to("Shto Unit", units_new_path, :method => "get") %></li>
-<li><%= button_to("Kthehu tek Inventari", inventories_path, :method => "get") %></li>
-</ul>
+					<td><%= unit.comment%></td>
+					<td class = "buttons">
+						<%= link_to(editProduct(session[:lan]), units_edit_path(:id => unit.id), :class => "icon icon-edit") %>
+						<%= link_to(deleteProduct(session[:lan]), units_destroy_path(:id => unit.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
+					</td>	
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>
 <% content_for :header_tags do %>
-    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+	<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 <% end %>

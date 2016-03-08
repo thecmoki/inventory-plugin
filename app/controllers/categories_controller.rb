@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
   	  @category = Category.find(params[:id])
       if (@category.update_attributes(category_params))
         redirect_to(:action => "index")
-        flash[:notice] = "Successful created."
+        flash[:notice] = "Successful update."
       else 
         render("edit") 
   	  end 

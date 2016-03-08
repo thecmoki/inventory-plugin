@@ -19,7 +19,9 @@
 				<div class = "contextual">
 					<%= link_to(goCategories(session[:lan]), categories_path) %> | 
 					<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
-					<%= link_to(goUnits(session[:lan]), units_path) %>
+					<%= link_to(goUnits(session[:lan]), units_path) %> |
+					<%= link_to(goAmortNorms(session[:lan]), amortnorms_path) %> |
+					<%= link_to(goHistories(session[:lan]), histories_path) %>
 				</div>
 			<% end %>
 			<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>

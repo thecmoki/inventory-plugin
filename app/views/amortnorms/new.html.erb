@@ -1,4 +1,4 @@
-<h2>New</h2>
+<h2><%= amortnormPathNew(session[:lan]) %></h2>
 <% if @amortnorm.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -9,19 +9,19 @@
 	</div>
 <% end %>
 <div class = "splitcontentleft">
-	<%= form_for(@amortnorm) do |f|%>
+	<%= form_for(@amortnorm) do |f| %>
 		<fieldset class = "box tabular">
-			
+			<legend><%= amortnormLegend(session[:lan]) %></legend>
 			<p>
-				<%= f.label(:name) %>
+				<%= f.label(amortnormName(session[:lan])) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
 			<p>
-				<%= f.label(:comment) %>
+				<%= f.label(amortnormComment(session[:lan])) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit("New") %></p>
+		<p><%= f.submit(amortnormNewSubmit(session[:lan])) %></p>
 	<% end %>
 <div>

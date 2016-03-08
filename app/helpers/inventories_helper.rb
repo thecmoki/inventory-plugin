@@ -77,6 +77,20 @@ module InventoriesHelper
 			"Dhomat"
 		end
 	end
+	def goAmortNorms(lan = "en")
+		if(lan == "en")
+			"Amortization Norms"
+		elsif(lan == "al")
+			"Normat e Amortizimit"
+		end
+	end
+	def goHistories(lan = "en")
+		if(lan == "en")
+			"History"
+		elsif(lan == "al")
+			"Historia"
+		end
+	end
 	#keto metoda jane brenda edit.html.erb
 	def inventoryPathEdit(lan = "en")
 		if(lan == "en")

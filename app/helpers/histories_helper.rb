@@ -67,9 +67,16 @@ module HistoriesHelper
 	end
 	def inventoryId(lan = "en")
 		if(lan == "en")
-			"Inventory Id"
+			"Inventory ID"
 		elsif(lan == "al")
-			"Id e Inventarit"
+			"ID e Inventarit"
+		end
+	end 
+	def productId(lan = "en")
+		if(lan == "en")
+			"Product ID"
+		elsif(lan == "al")
+			"ID e Produktit"
 		end
 	end 
 	def userName(lan = "en")

@@ -50,7 +50,7 @@
 			</p>
 			<p>
 				<%= f.label(amortizationNorm(session[:lan])) %>
-				<%= f.text_field(:amortization_norm) %>
+				<%= f.collection_select(:amortization_norm, Amortnorm.all, :name, :name, :prompt => "Select Amortization Norm")%>
 			</p>
 			<p>
 				<%= f.label(amortization(session[:lan])) %>

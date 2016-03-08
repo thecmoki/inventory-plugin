@@ -15,7 +15,7 @@ class AmortnormsController < ApplicationController
     @amortnorm = Amortnorm.new(amortnorm_params)
     if(@amortnorm.save)
       redirect_to(:action => "index")
-        flash[:notice] = "Inventory successful created."
+        flash[:notice] = "Amortization Norm successful created."
       else
         render("new")
       end

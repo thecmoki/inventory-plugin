@@ -6,6 +6,7 @@ class CreateHistories < ActiveRecord::Migration
       t.string :user_login
       t.string :room_name
       t.string :product_name
+      t.string :product_id
       t.string :serial_number
       t.date :buy_date
       t.date :activation_date

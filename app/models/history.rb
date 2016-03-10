@@ -3,18 +3,13 @@ class History < ActiveRecord::Base
   belongs_to(:inventory)
   def self.ransackable_attributes(auth_object = nil)
 		if(User.current.admin == true)
-			super - ['id', 'created_at', 'updated_at']
+			super - ['id', 'created_at', 'updated_at', 'inventory_id', 'time_of_use', 'comment']
 		else
-			super - ['id', 'created_at', 'updated_at', 'user_name', 'room_name', 'user_login']
+			super - ['id', 'created_at', 'updated_at', 'user_name', 'room_name', 'user_login', 'inventory_id', 'time_of_use', 'comment']
 		end
 	end
 
-	def toDays
-		years = updated_at.year - activation_date.year
-		yd = years * 365.25
-		months = updated_at.month - activation_date.month
-		md = (months / 12.0) * 365.25
-		days = updated_at.day - activation_date.day
-		(yd + md + days).to_i
+	def days
+		((updated_at.to_date - activation_date)).to_i
 	end
 end

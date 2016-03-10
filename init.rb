@@ -6,6 +6,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 
+
   project_module :regjistrimi_inventarit do
     permission(:regjistrimi_inventarit, {:units => [:index, :show, :edit, :new, :create, :update, :destroy],
   									                     :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],

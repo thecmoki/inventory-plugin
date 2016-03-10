@@ -50,6 +50,48 @@ module AmortnormsHelper
 			"Ndrysho"
 		end
 	end
+	def goCategories(lan = "en")
+		if(lan == "en")
+			"Categories"
+		elsif(lan == "al")
+			"Kategorit"
+		end
+	end
+	def goUnits(lan = "en")
+		if(lan == "en")
+			"Products"
+		elsif(lan == "al")
+			"Produktet"
+		end
+	end
+	def goRooms(lan = "en")
+		if(lan == "en")
+			"Rooms"
+		elsif(lan == "al")
+			"Dhomat"
+		end
+	end
+	def goAmortNorms(lan = "en")
+		if(lan == "en")
+			"Amortization Norms"
+		elsif(lan == "al")
+			"Normat e Amortizimit"
+		end
+	end
+	def goHistories(lan = "en")
+		if(lan == "en")
+			"History"
+		elsif(lan == "al")
+			"Historia"
+		end
+	end
+	def goInventories(lan = "en")
+		if(lan == "en")
+			"Inventories"
+		elsif(lan == "al")
+			"Inventaret"
+		end
+	end
 	#keto metoda jane brenda new.html.erb
 	def amortnormPathNew(lan = "en")
 		if(lan == "en")
@@ -75,9 +117,9 @@ module AmortnormsHelper
 	end
 	def amortnormName(lan = "en")
 		if(lan == "en")
-			"Amortization Norm Name"
+			"Amortization Norm"
 		elsif(lan == "al")
-			"Emri i Normes se Amortizimit"
+			"Normes se Amortizimit"
 		end
 	end
 	def amortnormComment(lan = "en")

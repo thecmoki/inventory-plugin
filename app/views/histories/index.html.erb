@@ -8,15 +8,21 @@
 			<%= link_to "Albanian", "#{histories_path}?lan=al" %>
 		</div>
 		<h2><%= historyHeader(session[:lan]) %></h2>
+		<div class = "tabs">
+			<ul>
+				<li><%= link_to(goInventories(session[:lan]), inventories_path) %></li>
+				<% if User.current.admin == true %>
+					<li><%= link_to(goUnits(session[:lan]), units_path) %></li>
+					<li><%= link_to(goCategories(session[:lan]), categories_path) %></li>
+					<li><%= link_to(goRooms(session[:lan]), rooms_path) %></li>
+					<li><%= link_to(goAmortNorms(session[:lan]), amortnorms_path) %></li>
+				<% end %>
+				<li><%= link_to(goHistories(session[:lan]), histories_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+			</ul>
+			<div class = "tabs-buttons"></div>
+		</div>
 		<fieldset>
 			<legend><%= historyLegend3(session[:lan]) %></legend>
-			<% if(User.current.admin == true) %>
-				<div class = "contextual">
-					<%= link_to(goCategories(session[:lan]), categories_path) %> | 
-					<%= link_to(goRooms(session[:lan]), rooms_path) %> | 
-					<%= link_to(goUnits(session[:lan]), units_path) %>
-				</div>
-			<% end %>
 			<%= search_form_for @search, url: search_histories_path, method: :post do |f| %>
 				<%= f.condition_fields do |c| %>
 		    		<%= render "condition_fields", f: c %>
@@ -34,7 +40,6 @@
 			<table class = "list">
 				<thead>
 					<tr>
-						<th><%= inventoryId(session[:lan]) %></th>
 						<th><%= link_to(userName(session[:lan]), user_path(User.current.id)) %></th>
 						<th><%= userLogin(session[:lan]) %></th>
 						<th><%= roomName(session[:lan]) %></th>
@@ -55,7 +60,6 @@
 					<% @histories.each do |history| %>
 						<% if(User.current.admin == true) %>
 							<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
-								<td><%= history.inventory_id %></td>
 								<td>
 									<% @users.each do |user| %>
 										<% if(history.user_login == user.login) %>
@@ -73,30 +77,30 @@
 								<td><%= history.amortization_norm %></td>
 								<td><%= history.amortization %></td>
 								<td><%= history.neto_value %></td>
-								<td><%= history.toDays %></td>
+								<td><%= history.days.to_s + " Dite" %></td>
 								<td><%= history.comment %></td>
-								<td><%= history.updated_at %></td>
+								<td><%= history.updated_at.to_date %></td>
 							</tr>
 						<% else %>
 							<% @users.each do |user| %>
 								<tr class = "<%= cycle('user active odd', 'user active even') -%>">
 									<% if(history.user_login == User.current.login) %>
-										<td><%= history.inventory_id %></td>
 										<td>
 											<%= link_to("#{history.user_name}", user_path(User.current.id)) %>
 										</td>
 										<td><%= history.user_login %></td>
 										<td><%= history.room_name %></td>
 										<td><%= history.product_name %></td>
+										<td><%= history.product_id %></td>
 										<td><%= history.serial_number %></td>
 										<td><%= history.buy_date %></td>
 										<td><%= history.activation_date %></td>
 										<td><%= history.amortization_norm %></td>
 										<td><%= history.amortization %></td>
 										<td><%= history.neto_value %></td>
-										<td><%= history.toDays %></td>
+										<td><%= history.days.to_s + " Dite" %></td>
 										<td><%= history.comment %></td>
-										<td><%= history.updated_at %></td>
+										<td><%= history.updated_at.to_date %></td>
 									<% end %>
 									<% break %>
 								</tr>
@@ -105,6 +109,7 @@
 					<%end%>
 				</tbody>
 			</table>
+			<%= will_paginate @posts %>
 		</div>
 		<% content_for :header_tags do %>
     		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

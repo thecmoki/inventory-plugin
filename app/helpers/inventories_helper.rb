@@ -1,5 +1,12 @@
 module InventoriesHelper
 	# Keto metoda jane brenda index.html.erb
+	def errorMessage(lan = "en")
+		if(lan == "en")
+			flash[:error] = "You have no access."
+		elsif(lan == "al")
+			flash[:error] = "Ju nuk keni qasje."
+		end
+	end
 	def addInventory(lan = "en")
 		if(lan == "en")
 			"New Inventory"
@@ -89,6 +96,13 @@ module InventoriesHelper
 			"History"
 		elsif(lan == "al")
 			"Historia"
+		end
+	end
+	def goInventories(lan = "en")
+		if(lan == "en")
+			"Inventories"
+		elsif(lan == "al")
+			"Inventaret"
 		end
 	end
 	#keto metoda jane brenda edit.html.erb

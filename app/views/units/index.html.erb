@@ -1,7 +1,21 @@
+<div style = "text-align: right; font-size: 0.9em;">
+	<%= link_to "English", "#{units_path}?lan=en" %> |
+	<%= link_to "Albanian", "#{units_path}?lan=al" %>
+</div>
 <div class = "contextual">
 	<%= link_to(addProduct(session[:lan]), units_new_path, :class => "icon icon-add") %>
 </div>
 <h2><%= productHeader(session[:lan]) %></h2>
+<div class = "tabs">
+	<ul>
+		<li><%= link_to(goInventories(session[:lan]), inventories_path) %></li>
+		<li><%= link_to(goUnits(session[:lan]), units_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+		<li><%= link_to(goCategories(session[:lan]), categories_path) %></li>
+		<li><%= link_to(goRooms(session[:lan]), rooms_path) %></li>
+		<li><%= link_to(goAmortNorms(session[:lan]), amortnorms_path) %></li>
+		<li><%= link_to(goHistories(session[:lan]), histories_path) %></li>
+	</ul>
+</div>
 <div class = "autoscroll">
 	<table class = "list">
 		<thead>

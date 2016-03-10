@@ -3,9 +3,16 @@ class UnitsController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
   
   def index
+    if(session[:lan] == nil)
+        session[:lan] = "en"
+    elsif(params[:lan] == "en" || params[:lan] == "al")
+      session[:lan] = params[:lan]
+    else
+      session[:lan]
+    end
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = "You have no access."
+      errorMessage(session[:lan])
     else
   	  @units = Unit.all
       @categories = Category.all
@@ -15,7 +22,7 @@ class UnitsController < ApplicationController
   def show
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = "You have no access."
+      errorMessage(session[:lan])
     else
   	  @unit = Unit.find(params[:id])
     end
@@ -24,7 +31,7 @@ class UnitsController < ApplicationController
   def edit
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = "You have no access."
+      errorMessage(session[:lan])
     else
   	  @unit = Unit.find(params[:id])
     end
@@ -37,7 +44,7 @@ class UnitsController < ApplicationController
   	  @unit = Unit.find(params[:id])
   	  if (@unit.update_attributes(unit_params))
   		  redirect_to(:action => "index")
-        flash[:notice] = "Successful update."
+        updateMessage(session[:lan])
   	  else
   		  render(:controller => "units", :action => "edit")
   	  end
@@ -47,7 +54,7 @@ class UnitsController < ApplicationController
   def new
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = "You have no access."
+      errorMessage(session[:lan])
     else
   	  @unit = Unit.new
     end
@@ -60,7 +67,7 @@ class UnitsController < ApplicationController
   	  @unit = Unit.new(unit_params)
   	  if(@unit.save)
   		  redirect_to(:action => "index")
-        flash[:notice] = "Product successful created."
+        createMessage(session[:lan])
   	  else
   		  render("new")
   	  end
@@ -86,5 +93,26 @@ class UnitsController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
+  end
+  def errorMessage(lan = "en")
+    if(lan == "en")
+      flash[:error] = "You have no access."
+    elsif(lan == "al")
+      flash[:error] = "Ju nuk keni qasje."
+    end
+  end
+  def updateMessage(lan = "en")
+    if(lan == "en")
+      flash[:notice] = "Successful update."
+    elsif(lan == "al")
+      flash[:notice] = "U ndryshua me sukses."
+    end
+  end
+  def createMessage(lan = "en")
+    if(lan == "en")
+      flash[:notice] = "Successful created."
+    elsif(lan == "al")
+      flash[:notice] = "U krijua me sukses"
+    end
   end
 end

@@ -49,6 +49,27 @@ module HistoriesHelper
 			"Dhomat"
 		end
 	end
+	def goAmortNorms(lan = "en")
+		if(lan == "en")
+			"Amortization Norms"
+		elsif(lan == "al")
+			"Normat e Amortizimit"
+		end
+	end
+	def goHistories(lan = "en")
+		if(lan == "en")
+			"History"
+		elsif(lan == "al")
+			"Historia"
+		end
+	end
+	def goInventories(lan = "en")
+		if(lan == "en")
+			"Inventories"
+		elsif(lan == "al")
+			"Inventaret"
+		end
+	end
 	
 	#keto metoda jane brenda new.html.erb dhe edit.html.erb dhe index.html.erb
 	def historyLegend1(lan = "en")
@@ -67,16 +88,16 @@ module HistoriesHelper
 	end
 	def inventoryId(lan = "en")
 		if(lan == "en")
-			"Inventory ID"
+			"InvID"
 		elsif(lan == "al")
-			"ID e Inventarit"
+			"IDInv"
 		end
 	end 
 	def productId(lan = "en")
 		if(lan == "en")
-			"Product ID"
+			"Prod. ID"
 		elsif(lan == "al")
-			"ID e Produktit"
+			"ID e Prod."
 		end
 	end 
 	def userName(lan = "en")
@@ -95,16 +116,16 @@ module HistoriesHelper
 	end
 	def roomName(lan = "en")
 		if(lan == "en")
-			"Room Name"
+			"Room"
 		elsif(lan == "al")
-			"Emri i Dhomes"
+			"Dhoma"
 		end
 	end
 	def productName(lan = "en")
 		if(lan == "en")
-			"Product Name"
+			"Product"
 		elsif(lan == "al")
-			"Emri i Produktit"
+			"Produkti"
 		end
 	end
 	def serialNumber(lan = "en")

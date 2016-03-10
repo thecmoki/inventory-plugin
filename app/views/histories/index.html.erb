@@ -57,8 +57,8 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% if(User.current.admin == true) %>
 					<% @histories.each do |history| %>
-						<% if(User.current.admin == true) %>
 							<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 								<td>
 									<% @users.each do |user| %>
@@ -81,7 +81,12 @@
 								<td><%= history.comment %></td>
 								<td><%= history.updated_at.to_date %></td>
 							</tr>
+							<%end%>
+							</tbody>
+						</table>
+							<%= will_paginate @posts %>
 						<% else %>
+						<% @histories.each do |history| %>
 							<% @users.each do |user| %>
 								<tr class = "<%= cycle('user active odd', 'user active even') -%>">
 									<% if(history.user_login == User.current.login) %>
@@ -109,7 +114,7 @@
 					<%end%>
 				</tbody>
 			</table>
-			<%= will_paginate @posts %>
+			
 		</div>
 		<% content_for :header_tags do %>
     		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

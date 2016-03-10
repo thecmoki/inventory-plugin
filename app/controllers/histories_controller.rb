@@ -3,12 +3,27 @@ class HistoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index])
 
   def index
-  	@histories = History.all
+  	#@histories = History.all
   	@users = User.all
-    @search = History.search(params[:q])
-    @histories = @search.result.paginate(:page => params[:page], :per_page => 15)
-    @search.build_condition if @search.conditions.empty?
-    @search.build_sort if @search.sorts.empty?
+    if(User.current.admin == true)
+      if params[:q]  == nil
+        @search = History.search(params[:q])
+        @histories = @search.result.paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
+        @search.build_condition if @search.conditions.empty?
+        @search.build_sort if @search.sorts.empty?
+      else
+        @search = History.search(params[:q])
+        @histories = @search.result.paginate(:page => params[:page]).order("created_at DESC")
+        @search.build_condition if @search.conditions.empty?
+        @search.build_sort if @search.sorts.empty?
+      end
+    else
+      @histories = History.all
+      @search = History.search(params[:q])
+      @search.build_condition if @search.conditions.empty?
+      @search.build_sort if @search.sorts.empty?
+    end
+
   	if(session[:lan] == nil)
       session[:lan] = "en"
     elsif(params[:lan] == "en" || params[:lan] == "al")

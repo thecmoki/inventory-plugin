@@ -13,10 +13,24 @@ class InventoriesController < ApplicationController
     @users = User.all
     @units = Unit.all
   	#@inventories = Inventory.all
-    @search = Inventory.search(params[:q])
-    @inventories = @search.result.paginate(:page => params[:page], :per_page => 15)
-    @search.build_condition if @search.conditions.empty?
-    @search.build_sort if @search.sorts.empty?
+    if(User.current.admin == true)
+      if params[:q]  == nil
+        @search = Inventory.search(params[:q])
+        @inventories = @search.result.paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
+        @search.build_condition if @search.conditions.empty?
+        @search.build_sort if @search.sorts.empty?
+      else
+        @search = Inventory.search(params[:q])
+        @inventories = @search.result.paginate(:page => params[:page]).order("created_at DESC")
+        @search.build_condition if @search.conditions.empty?
+        @search.build_sort if @search.sorts.empty?
+      end
+    else
+      @inventories = Inventory.all
+      @search = Inventory.search(params[:q])
+      @search.build_condition if @search.conditions.empty?
+      @search.build_sort if @search.sorts.empty?
+    end
   end
 
   def show

@@ -1,26 +1,33 @@
 ---
 en:
-  addInventory: New Inventory
-  editInventory: Edit
-  deleteInventory: Delete
-  inventoryHeader: Inventories
-  inventoryLegend3: Filters
-  inventoryLegend4: List
-  inventoryApply: Apply
-  inventoryClear: Clear
-  dataConfirm: Are you sure?
+
+  # For All
+  legend1: Required
+  legend2: Information
+  legend3: Filters
+  legend4: List
   goCategories: Categories
   goUnits: Products
   goRooms: Rooms
   goAmortNorms: Amortization Norms
   goHistories: History
   goInventories: Inventories
+  apply: Apply
+  clear: Clear
+  edit: Edit
+  delete: Delete
+  newSubmit: Create
+  editSubmit: Edit
+  dataConfirm: Are you sure?
+  
+  # Inventory and History
+  inventoryId: Inv-ID # History
+  historyHeader: History # History
+  days: Days
+  inventoryHeader: Inventories
+  addInventory: New Inventory
   inventoryPathEdit: » Edit Inventory
-  inventoryEditSubmit: Edit
   inventoryPathNew: » New Inventory
-  inventoryNewSubmit: Create
-  inventoryLegend1: Required
-  inventoryLegend2: Information
   userName: User Name
   userLogin: User Login
   roomName: Room Name
@@ -34,23 +41,40 @@ en:
   timeOfUse: Time Of Use
   comment: Comment
   productId: Product Id
+  createdAt: Created At
+  updatedAt: Updated At
 
-
-  addAmortnorm: New Amortization Norm
-  editAmortnorm: Edit
-  deleteAmortnorm: Delete
+  # Amortization Norm
   amortnormHeader: Amortization Norms
-  dataConfirm: Are you sure?
+  addAmortnorm: New Amortization Norm
   amortnormPathEdit: » Edit Amort Norm
-  amortnormEditSubmit: Edit
-  goCategories: Categories
-  goUnits: Products
-  goRooms: Rooms
-  goAmortNorms: Amortization Norms
-  goHistories: History
-  goInventories: Inventories
   amortnormPathNew: » New Amort Norm
-  amortnormNewSubmit: Create
-  amortnormLegend: Required
   amortnormName: Amortization Norm
   amortnormComment: Amortization Norm Comment
+
+  # Category
+  categoryHeader: Categories
+  addCategory: New Category
+  categoryPathNew: » New Category
+  categoryPathEdit: » Edit Category
+  categoryName: Category Name
+  categoryComment: Category Comment
+
+  # Room
+  roomHeader: Rooms
+  addRoom: New Room
+  roomPathNew: » New Category
+  roomPathEdit: » Edit Category
+  roomName: Room Name
+  roomComment: Room Comment
+
+  # Product
+  productHeader: Products
+  addProduct: New Product
+  productPathNew: » New Product
+  productPathEdit: » Edit Product
+  productName: Product Name
+  productComment: Product Comment
+  productCategoryId: Category
+  productQuantity: Quantity
+  productColor: Color

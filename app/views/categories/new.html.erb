@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= categoryPathNew(session[:lan]) %></h2>
+<h2><%= link_to(l(:categoryHeader), categories_path) + " " + l(:categoryPathNew) %></h2>
 <% if @category.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -23,17 +23,17 @@
 <div class = "splitcontentleft">
 	<%= form_for(@category) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= categoryLegend(session[:lan]) %></legend>
+			<legend><%= l(:legend1) %></legend>
 			<p>
-				<%= f.label(categoryName(session[:lan])) %>
+				<%= f.label(l(:categoryName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
 			<p>
-				<%= f.label(categoryComment(session[:lan])) %>
+				<%= f.label(l(:categoryComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit(categoryNewSubmit(session[:lan])) %></p>
+		<p><%= f.submit(l(:newSubmit)) %></p>
 	<% end %>
 <div>

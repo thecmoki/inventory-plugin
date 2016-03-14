@@ -20,16 +20,16 @@
 			</ul>
 		</div>
 		<fieldset>
-			<legend><%= l(:inventoryLegend3) %></legend>
+			<legend><%= l(:legend3) %></legend>
 			<%= search_form_for @search, url: search_inventories_path, method: :post do |f| %>
 				<%= f.condition_fields do |c| %>
 		    		<%= render "condition_fields", f: c %>
 		  		<% end %>
 		  		<div class = "actions" style = "float: left">
-		  			<%= f.submit(l(:inventoryApply)) %>
+		  			<%= f.submit(l(:apply)) %>
 		  		</div>
 		  		<div style = "padding: 3px 15px;">
-		  			<%= link_to l(:inventoryClear), inventories_path, class: "icon icon-reload" %>
+		  			<%= link_to l(:clear), inventories_path, class: "icon icon-reload" %>
 		  		</div>
 			<% end %>
 		</fieldset>
@@ -75,11 +75,11 @@
 									<td><%= inventory.amortization_norm %></td>
 									<td><%= inventory.amortization %></td>
 									<td><%= inventory.neto_value %></td>
-									<td><%= inventory.days.to_s + " Dite" %></td>
+									<td><%= inventory.days.to_s + " " + l(:days) %></td>
 									<td><%= inventory.comment %></td>
 									<td class = "buttons">
-										<%= link_to(l(:editInventory), inventories_edit_path(:id => inventory.id), :class => "icon icon-edit") %>  
-										<%= link_to(l(:deleteInventory), inventories_destroy_path(:id => inventory.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
+										<%= link_to(l(:edit), inventories_edit_path(:id => inventory.id), :class => "icon icon-edit") %>  
+										<%= link_to(l(:delete), inventories_destroy_path(:id => inventory.id), :method => :delete, :class => "icon icon-del", data: { confirm: l(:dataConfirm) }) %>
 									</td>
 
 								</tr>
@@ -104,7 +104,7 @@
 										<td><%= inventory.amortization_norm %></td>
 										<td><%= inventory.amortization %></td>
 										<td><%= inventory.neto_value %></td>
-										<td><%= inventory.days.to_s + " Dite" %></td>
+										<td><%= inventory.days.to_s + " " + l(:days) %></td>
 										<td><%= inventory.comment %></td>
 									<% end %>
 									<% break %>

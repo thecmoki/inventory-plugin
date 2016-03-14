@@ -23,7 +23,7 @@
 <div class = "splitcontentleft">
 	<%= form_for(@inventory) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= l(:inventoryLegend1) %></legend>
+			<legend><%= l(:legend1) %></legend>
 			<p>
 				<%= f.label(l(:userName)) %>
 				<span class = "required">*</span>
@@ -56,7 +56,7 @@
 			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
-			<legend><%= l(:inventoryLegend2) %></legend>
+			<legend><%= l(:legend2) %></legend>
 			<p>
 				<%= f.label(l(:buyDate)) %>
 				<%= f.date_field(:buy_date) %>
@@ -82,6 +82,6 @@
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-			<%= f.submit(l(:inventoryNewSubmit))%>
+			<%= f.submit(l(:newSubmit))%>
 	<%end%>
 </div>

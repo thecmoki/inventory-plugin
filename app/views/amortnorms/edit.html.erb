@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= amortnormPathEdit(session[:lan]) %></h2>
+<h2><%= link_to(l(:amortnormHeader), amortnorms_path) + " " + l(:amortnormPathEdit) %></h2>
 <% if @amortnorm.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -23,17 +23,17 @@
 <div class = "splitcontentleft">
 	<%= form_for(:amortnorm, :url => {:action => "update", :id => @amortnorm.id}) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= amortnormLegend(session[:lan]) %></legend>
+			<legend><%= l(:legend1) %></legend>
 			<p>
-				<%= f.label(amortnormName(session[:lan])) %>
+				<%= f.label(l(:amortnormName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
 			<p>
-				<%= f.label(amortnormComment(session[:lan])) %>
+				<%= f.label(l(:amortnormComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit(amortnormEditSubmit(session[:lan])) %></p>
+		<p><%= f.submit(l(:editSubmit)) %></p>
 	<% end %>
 <div>

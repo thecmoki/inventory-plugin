@@ -3,35 +3,31 @@
 	<head>
 	</head>
 	<body>
-		<div style = "text-align: right; font-size: 0.9em;">
-			<%= link_to "English", "#{histories_path}?lan=en" %> |
-			<%= link_to "Albanian", "#{histories_path}?lan=al" %>
-		</div>
-		<h2><%= historyHeader(session[:lan]) %></h2>
+		<h2><%= l(:historyHeader) %></h2>
 		<div class = "tabs">
 			<ul>
-				<li><%= link_to(goInventories(session[:lan]), inventories_path) %></li>
+				<li><%= link_to(l(:goInventories), inventories_path) %></li>
 				<% if User.current.admin == true %>
-					<li><%= link_to(goUnits(session[:lan]), units_path) %></li>
-					<li><%= link_to(goCategories(session[:lan]), categories_path) %></li>
-					<li><%= link_to(goRooms(session[:lan]), rooms_path) %></li>
-					<li><%= link_to(goAmortNorms(session[:lan]), amortnorms_path) %></li>
+					<li><%= link_to(l(:goUnits), units_path) %></li>
+					<li><%= link_to(l(:goCategories), categories_path) %></li>
+					<li><%= link_to(l(:goRooms), rooms_path) %></li>
+					<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
 				<% end %>
-				<li><%= link_to(goHistories(session[:lan]), histories_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+				<li><%= link_to(l(:goHistories), histories_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
 			</ul>
 			<div class = "tabs-buttons"></div>
 		</div>
 		<fieldset>
-			<legend><%= historyLegend3(session[:lan]) %></legend>
+			<legend><%= l(:legend3) %></legend>
 			<%= search_form_for @search, url: search_histories_path, method: :post do |f| %>
 				<%= f.condition_fields do |c| %>
 		    		<%= render "condition_fields", f: c %>
 		  		<% end %>
 		  		<div class = "actions" style = "float: left">
-		  			<%= f.submit(historyApply(session[:lan])) %>
+		  			<%= f.submit(l(:apply)) %>
 		  		</div>
 		  		<div style = "padding: 3px 15px;">
-		  			<%= link_to historyClear(session[:lan]), histories_path, class: "icon icon-reload" %>
+		  			<%= link_to l(:clear), histories_path, class: "icon icon-reload" %>
 		  		</div>
 			<% end %>
 		</fieldset>
@@ -40,20 +36,20 @@
 			<table class = "list">
 				<thead>
 					<tr>
-						<th><%= link_to(userName(session[:lan]), user_path(User.current.id)) %></th>
-						<th><%= userLogin(session[:lan]) %></th>
-						<th><%= roomName(session[:lan]) %></th>
-						<th><%= productName(session[:lan]) %></th>
-						<th><%= productId(session[:lan]) %></th>
-						<th><%= serialNumber(session[:lan]) %></th>
-						<th><%= buyDate(session[:lan]) %></th>
-						<th><%= activationDate(session[:lan]) %></th>
-						<th><%= amortizationNorm(session[:lan]) %></th>
-						<th><%= amortization(session[:lan]) %></th>
-						<th><%= netoValue(session[:lan]) %></th>
-						<th><%= timeOfUse(session[:lan]) %></th>
-						<th><%= comment(session[:lan]) %></th>
-						<th><%= updatedAt(session[:lan]) %></th>
+						<th><%= link_to(l(:userName), user_path(User.current.id)) %></th>
+						<th><%= l(:userLogin) %></th>
+						<th><%= l(:roomName) %></th>
+						<th><%= l(:productName) %></th>
+						<th><%= l(:productId) %></th>
+						<th><%= l(:serialNumber) %></th>
+						<th><%= l(:buyDate) %></th>
+						<th><%= l(:activationDate) %></th>
+						<th><%= l(:amortizationNorm) %></th>
+						<th><%= l(:amortization) %></th>
+						<th><%= l(:netoValue) %></th>
+						<th><%= l(:timeOfUse) %></th>
+						<th><%= l(:comment) %></th>
+						<th><%= l(:updatedAt) %></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,7 +73,7 @@
 								<td><%= history.amortization_norm %></td>
 								<td><%= history.amortization %></td>
 								<td><%= history.neto_value %></td>
-								<td><%= history.days.to_s + " Dite" %></td>
+								<td><%= history.days.to_s + " " + l(:days) %></td>
 								<td><%= history.comment %></td>
 								<td><%= history.updated_at.to_date %></td>
 							</tr>
@@ -103,7 +99,7 @@
 										<td><%= history.amortization_norm %></td>
 										<td><%= history.amortization %></td>
 										<td><%= history.neto_value %></td>
-										<td><%= history.days.to_s + " Dite" %></td>
+										<td><%= history.days.to_s + " " + l(:days) %></td>
 										<td><%= history.comment %></td>
 										<td><%= history.updated_at.to_date %></td>
 									<% end %>

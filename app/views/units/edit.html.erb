@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= productPathEdit(session[:lan]) %></h2>
+<h2><%= link_to(l(:productHeader), units_path) + " " + l(:productPathEdit) %></h2>
 <% if @unit.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -23,33 +23,33 @@
 <div class = "splitcontentleft">
 	<%= form_for(:unit, :url => {:action => "update", :id => @unit.id}) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= productLegend1(session[:lan]) %></legend>
+			<legend><%= l(:legend1) %></legend>
 			<p>
-				<%= f.label(productCategoryId(session[:lan])) %>
+				<%= f.label(l(:productCategoryId)) %>
 				<span class = "required">*</span>
 				<%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => true)%>
 			</p>
 			<p>
-				<%= f.label(productName(session[:lan])) %>
+				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
-			<legend><%= productLegend2(session[:lan]) %></legend>
+			<legend><%= l(:legend2) %></legend>
 			<p>
-				<%= f.label(productQuantity(session[:lan])) %>
+				<%= f.label(l(:productQuantity)) %>
 				<%= f.text_field(:quantity) %>
 			</p>
 			<p>
-				<%= f.label(productColor(session[:lan])) %>
+				<%= f.label(l(:productColor)) %>
 				<%= f.text_field(:color) %>
 			</p>
 			<p>
-				<%= f.label(productComment(session[:lan])) %>
+				<%= f.label(l(:productComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit(productEditSubmit(session[:lan])) %></p>
+		<p><%= f.submit(l(:editSubmit)) %></p>
 	<% end %>
 <div>

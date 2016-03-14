@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= roomPathEdit(session[:lan]) %></h2>
+<h2><%= link_to(l(:roomHeader), rooms_path) + " " + l(:roomPathEdit) %></h2>
 <% if @room.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -23,17 +23,17 @@
 <div class = "splitcontentleft">
 	<%= form_for(:room, :url => {:action => "update", :id => @room.id}) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= roomLegend(session[:lan]) %></legend>
+			<legend><%= l(:legend1) %></legend>
 			<p>
-				<%= f.label(roomName(session[:lan])) %>
+				<%= f.label(l(:roomName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
 			<p>
-				<%= f.label(roomComment(session[:lan])) %>
+				<%= f.label(l(:roomComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit(roomEditSubmit(session[:lan])) %></p>
+		<p><%= f.submit(l(:editSubmit)) %></p>
 	<% end %>
 <div>

@@ -1,19 +1,15 @@
-<div style = "text-align: right; font-size: 0.9em;">
-	<%= link_to "English", "#{categories_path}?lan=en" %> |
-	<%= link_to "Albanian", "#{categories_path}?lan=al" %>
-</div>
 <div class = "contextual">
-	<%= link_to(addCategory(session[:lan]), categories_new_path, :class => "icon icon-add") %>
+	<%= link_to(l(:addCategory), categories_new_path, :class => "icon icon-add") %>
 </div>
-<h2><%= categoryHeader(session[:lan]) %></h2>
+<h2><%= l(:categoryHeader) %></h2>
 <div class = "tabs">
 	<ul>
-		<li><%= link_to(goInventories(session[:lan]), inventories_path) %></li>
-		<li><%= link_to(goUnits(session[:lan]), units_path) %></li>
-		<li><%= link_to(goCategories(session[:lan]), categories_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
-		<li><%= link_to(goRooms(session[:lan]), rooms_path) %></li>
-		<li><%= link_to(goAmortNorms(session[:lan]), amortnorms_path) %></li>
-		<li><%= link_to(goHistories(session[:lan]), histories_path) %></li>
+		<li><%= link_to(l(:goInventories), inventories_path) %></li>
+		<li><%= link_to(l(:goUnits), units_path) %></li>
+		<li><%= link_to(l(:goCategories), categories_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+		<li><%= link_to(l(:goRooms), rooms_path) %></li>
+		<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
+		<li><%= link_to(l(:goHistories), histories_path) %></li>
 	</ul>
 </div>
 <div style = "width: 50%">
@@ -22,8 +18,8 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th><%= categoryName(session[:lan]) %></th>
-					<th><%= categoryComment(session[:lan]) %></th>
+					<th><%= l(:categoryName) %></th>
+					<th><%= l(:categoryComment) %></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -34,8 +30,8 @@
 						<td><%= category.name %></td>
 						<td><%= category.comment %></td>
 						<td class = "buttons">
-							<%= link_to(editCategory(session[:lan]), categories_edit_path(:id => category.id), :class => "icon icon-edit") %>
-							<%= link_to(deleteCategory(session[:lan]), categories_destroy_path(:id => category.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
+							<%= link_to(l(:edit), categories_edit_path(:id => category.id), :class => "icon icon-edit") %>
+							<%= link_to(l(:delete), categories_destroy_path(:id => category.id), :method => :delete, :class => "icon icon-del", data: { confirm: l(:dataConfirm) }) %>
 						</td>	
 					</tr>
 				<% end %>

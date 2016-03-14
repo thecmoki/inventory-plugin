@@ -1,10 +1,6 @@
 <div class="field">
 	<div style = "float: left; padding-right: 20px;">
-		<% if(session[:lan] == "en") %>
-      <%= "List:" %>
-    <% else %>
-      <%= "Listimi:" %>
-    <% end %>
+		<%= l(:inventoryLegend4)%>
     <%= f.attribute_fields do |a| %>
     	<%= a.attribute_select associations: [:inventory] %>
   	<% end %>

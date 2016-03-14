@@ -1,0 +1,55 @@
+---
+sq:
+  addInventory: Shto Inventar
+  editInventory: Ndrysho
+  deleteInventory: Fshi
+  inventoryHeader: Inventaret
+  inventoryLegend3: Filtrimi
+  inventoryLegend4: Lista
+  inventoryApply: Kerko
+  inventoryClear: Pastro
+  dataConfirm: A jeni te sigurt?
+  goCategories: Kategorit
+  goUnits: Produktet
+  goRooms: Dhomat
+  goAmortNorms: Normat e Amortizimit
+  goHistories: Historia
+  goInventories: Inventaret
+  inventoryPathEdit: » Ndrysho Inventar
+  inventoryEditSubmit: Ndrysho
+  inventoryPathNew: » Krijo Inventar
+  inventoryNewSubmit: Krijo
+  inventoryLegend1: Te Nevojshme
+  inventoryLegend2: Informacionet
+  userName: Emri i Perdoruesit
+  userLogin: Qasja e Perdoruesit
+  roomName: Emri i Dhomes
+  productName: Emri i Produktit
+  serialNumber: Numri Serik
+  buyDate: Data e Blerjes
+  activationDate: Data e Aktivizimit
+  amortizationNorm: Norma e Amortizimit
+  amortization: Amortizimi
+  netoValue: Vlera Neto
+  timeOfUse: Koha e Perdorimit
+  comment: Komenti
+  productId: Id e Produktit
+
+  addAmortnorm: Shto Norm te Amortizimit
+  editAmortnorm: Ndrysho
+  deleteAmortnorm: Fshi
+  amortnormHeader: Normat e Amortizimit
+  dataConfirm: A jeni te sigurt?
+  amortnormPathEdit: » Ndrysho Normen e Amortizimit
+  amortnormEditSubmit: Ndrysho
+  goCategories: Kategorit
+  goUnits: Produktet
+  goRooms: Dhomat
+  goAmortNorms: Normat e Amortizimit
+  goHistories: Historia
+  goInventories: Inventaret
+  amortnormPathNew: » Krijo Norm te Amortizimit
+  amortnormNewSubmit: Krijo
+  amortnormLegend: Te Nevojshme
+  amortnormName: Normes se Amortizimit
+  amortnormComment: Komenti i Normes se Amortizimit

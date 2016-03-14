@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= inventoryPathEdit(session[:lan]) %></h2>
+<h2><%= link_to(l(:inventoryHeader), inventories_path) + " " + l(:inventoryPathEdit) %></h2>
 <% if @inventory.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -23,65 +23,65 @@
 <div class = "splitcontentleft">
 	<%= form_for(:inventory, :url => {:action => "update", :id => @inventory.id}) do |f| %>
 		<fieldset class = "box tabular">
-			<legend><%= inventoryLegend1(session[:lan]) %></legend>
+			<legend><%= l(:inventoryLegend1) %></legend>
 			<p>
-				<%= f.label(userName(session[:lan])) %>
+				<%= f.label(l(:userName)) %>
 				<span class = "required">*</span>
 				<%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%>
 			</p>
 			<p>
-				<%= f.label(roomName(session[:lan])) %>
+				<%= f.label(l(:roomName)) %>
 				<span class = "required">*</span>
 				<%= f.collection_select(:room_name, Room.all, :name, :name, :prompt => "Select Room") %>
 			</p>
 			<p>
-				<%= f.label(productName(session[:lan])) %>
+				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
 				<%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %>
 			</p>
 			<p>
-				<%= f.label(serialNumber(session[:lan])) %>
+				<%= f.label(l(:serialNumber)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:serial_number) %>
 			</p>
 			<p>
-				<%= f.label(productId(session[:lan])) %>
+				<%= f.label(l(:productId)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:product_id) %>
 			</p>
 			<p>
-				<%= f.label(activationDate(session[:lan])) %>
+				<%= f.label(l(:activationDate)) %>
 				<span class = "required">*</span>
 				<%= f.date_field(:activation_date) %>
 			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
-			<legend><%= inventoryLegend2(session[:lan]) %></legend>
+			<legend><%= l(:inventoryLegend2) %></legend>
 			<p>
-				<%= f.label(buyDate(session[:lan])) %>
+				<%= f.label(l(:buyDate)) %>
 				<%= f.date_field(:buy_date) %>
 			</p>
 			<p>
-				<%= f.label(amortizationNorm(session[:lan])) %>
+				<%= f.label(l(:amortizationNorm)) %>
 				<%= f.text_field(:amortization_norm) %>
 			</p>
 			<p>
-				<%= f.label(amortization(session[:lan])) %>
+				<%= f.label(l(:amortization)) %>
 				<%= f.text_field(:amortization) %>
 			</p>
 			<p>
-				<%= f.label(netoValue(session[:lan])) %>
+				<%= f.label(l(:netoValue)) %>
 				<%= f.text_field(:neto_value) %>
 			</p>
 			<p>
-				<%= f.label(timeOfUse(session[:lan])) %>
+				<%= f.label(l(:timeOfUse)) %>
 				<%= f.text_field(:time_of_use) %>
 			</p>
 			<p>
-				<%= f.label(comment(session[:lan])) %>
+				<%= f.label(l(:comment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
 		</fieldset>
-			<%= f.submit(inventoryEditSubmit(session[:lan]))%>
+			<%= f.submit(l(:inventoryEditSubmit))%>
 	<%end%>
 </div>

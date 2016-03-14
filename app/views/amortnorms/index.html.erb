@@ -1,19 +1,15 @@
-<div style = "text-align: right; font-size: 0.9em;">
-	<%= link_to "English", "#{amortnorms_path}?lan=en" %> |
-	<%= link_to "Albanian", "#{amortnorms_path}?lan=al" %>
-</div>
 <div class = "contextual">
-	<%= link_to(addAmortnorm(session[:lan]), amortnorms_new_path, :class => "icon icon-add") %>
+	<%= link_to(l(:addAmortnorm(session[:lan]), amortnorms_new_path, :class => "icon icon-add") %>
 </div>
 <h2><%= amortnormHeader(session[:lan]) %></h2>
 <div class = "tabs">
 	<ul>
-		<li><%= link_to(goInventories(session[:lan]), inventories_path) %></li>
-		<li><%= link_to(goUnits(session[:lan]), units_path) %></li>
-		<li><%= link_to(goCategories(session[:lan]), categories_path) %></li>
-		<li><%= link_to(goRooms(session[:lan]), rooms_path) %></li>
-		<li><%= link_to(goAmortNorms(session[:lan]), amortnorms_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
-		<li><%= link_to(goHistories(session[:lan]), histories_path) %></li>
+		<li><%= link_to(l(:goInventories), inventories_path) %></li>
+		<li><%= link_to(l(:goUnits), units_path) %></li>
+		<li><%= link_to(l(:goCategories), categories_path) %></li>
+		<li><%= link_to(l(:goRooms), rooms_path) %></li>
+		<li><%= link_to(l(:goAmortNorms), amortnorms_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+		<li><%= link_to(l(:goHistories), histories_path) %></li>
 	</ul>
 </div>
 <div style = "width: 50%">
@@ -22,8 +18,8 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th><%= amortnormName(session[:lan]) %></th>
-					<th><%= amortnormComment(session[:lan]) %></th>
+					<th><%= l(:amortnormName) %></th>
+					<th><%= l(:amortnormComment) %></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -34,8 +30,8 @@
 						<td><%= amortnorm.name %></td>
 						<td><%= amortnorm.comment%></td>
 						<td class = "buttons">
-							<%= link_to(editAmortnorm(session[:lan]), amortnorms_edit_path(:id => amortnorm.id), :class => "icon icon-edit") %>
-							<%= link_to(deleteAmortnorm(session[:lan]), amortnorms_destroy_path(:id => amortnorm.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
+							<%= link_to(l(:editAmortnorm(session[:lan]), amortnorms_edit_path(:id => amortnorm.id), :class => "icon icon-edit") %>
+							<%= link_to(l(:deleteAmortnorm(session[:lan]), amortnorms_destroy_path(:id => amortnorm.id), :method => :delete, :class => "icon icon-del", data: dataConfirm(session[:lan])) %>
 						</td>	
 					</tr>
 				<% end %>

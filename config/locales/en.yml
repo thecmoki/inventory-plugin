@@ -1,3 +1,56 @@
-# English strings go here for Rails i18n
+---
 en:
-  # my_label: "My label"
+  addInventory: New Inventory
+  editInventory: Edit
+  deleteInventory: Delete
+  inventoryHeader: Inventories
+  inventoryLegend3: Filters
+  inventoryLegend4: List
+  inventoryApply: Apply
+  inventoryClear: Clear
+  dataConfirm: Are you sure?
+  goCategories: Categories
+  goUnits: Products
+  goRooms: Rooms
+  goAmortNorms: Amortization Norms
+  goHistories: History
+  goInventories: Inventories
+  inventoryPathEdit: » Edit Inventory
+  inventoryEditSubmit: Edit
+  inventoryPathNew: » New Inventory
+  inventoryNewSubmit: Create
+  inventoryLegend1: Required
+  inventoryLegend2: Information
+  userName: User Name
+  userLogin: User Login
+  roomName: Room Name
+  productName: Product Name
+  serialNumber: Serial Number
+  buyDate: Buy Date
+  activationDate: Activation Date
+  amortizationNorm: Amortization Norm
+  amortization: Amortization
+  netoValue: Neto Value
+  timeOfUse: Time Of Use
+  comment: Comment
+  productId: Product Id
+
+
+  addAmortnorm: New Amortization Norm
+  editAmortnorm: Edit
+  deleteAmortnorm: Delete
+  amortnormHeader: Amortization Norms
+  dataConfirm: Are you sure?
+  amortnormPathEdit: » Edit Amort Norm
+  amortnormEditSubmit: Edit
+  goCategories: Categories
+  goUnits: Products
+  goRooms: Rooms
+  goAmortNorms: Amortization Norms
+  goHistories: History
+  goInventories: Inventories
+  amortnormPathNew: » New Amort Norm
+  amortnormNewSubmit: Create
+  amortnormLegend: Required
+  amortnormName: Amortization Norm
+  amortnormComment: Amortization Norm Comment

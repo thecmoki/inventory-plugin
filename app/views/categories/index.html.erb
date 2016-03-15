@@ -20,6 +20,7 @@
 					<th>ID</th>
 					<th><%= l(:categoryName) %></th>
 					<th><%= l(:categoryComment) %></th>
+					<th>PrefixID</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -29,6 +30,7 @@
 						<td><%= category.id %></td>
 						<td><%= category.name %></td>
 						<td><%= category.comment %></td>
+						<td><%= category.prefixid %></td>
 						<td class = "buttons">
 							<%= link_to(l(:edit), categories_edit_path(:id => category.id), :class => "icon icon-edit") %>
 							<%= link_to(l(:delete), categories_destroy_path(:id => category.id), :method => :delete, :class => "icon icon-del", data: { confirm: l(:dataConfirm) }) %>

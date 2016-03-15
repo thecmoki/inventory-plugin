@@ -85,7 +85,7 @@ class CategoriesController < ApplicationController
  private
 
   def category_params
-    params.require(:category).permit(:name, :comment)
+    params.require(:category).permit(:name, :comment, :prefixid)
   end
 
   def find_project

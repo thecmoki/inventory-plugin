@@ -22,6 +22,7 @@
 				<th><%= l(:productQuantity) %></th>
 				<th><%= l(:productColor) %></th>
 				<th><%= l(:productComment) %></th>
+				<th>ProductID</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -34,6 +35,7 @@
 					<td><%= unit.quantity %></td>
 					<td><%= unit.color %></td>
 					<td><%= unit.comment%></td>
+					<td><%= unit.productid %></td>
 					<td class = "buttons">
 						<%= link_to(l(:edit), units_edit_path(:id => unit.id), :class => "icon icon-edit") %>
 						<%= link_to(l(:delete), units_destroy_path(:id => unit.id), :method => :delete, :class => "icon icon-del", data: { confirm: l(:dataConfirm) }) %>

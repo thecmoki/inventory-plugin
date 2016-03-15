@@ -1,5 +1,5 @@
-class UnitsController < ApplicationController
-  
+require 'securerandom'
+class UnitsController < ApplicationController  
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
   
   def index
@@ -66,6 +66,7 @@ class UnitsController < ApplicationController
     else
   	  @unit = Unit.new(unit_params)
   	  if(@unit.save)
+        @unit.update(:productid => @unit.uniquecode)
   		  redirect_to(:action => "index")
         createMessage(session[:lan])
   	  else

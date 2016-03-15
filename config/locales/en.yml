@@ -12,7 +12,7 @@ en:
   goAmortNorms: Amortization Norms
   goHistories: History
   goInventories: Inventories
-  apply: Apply
+  apply: Search
   clear: Clear
   edit: Edit
   delete: Delete
@@ -63,8 +63,8 @@ en:
   # Room
   roomHeader: Rooms
   addRoom: New Room
-  roomPathNew: » New Category
-  roomPathEdit: » Edit Category
+  roomPathNew: » New Room
+  roomPathEdit: » Edit Room
   roomName: Room Name
   roomComment: Room Comment
 

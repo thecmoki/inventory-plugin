@@ -1,0 +1,80 @@
+---
+de:
+
+  # For All
+  legend1: Erforderlich
+  legend2: Information
+  legend3: Filter
+  legend4: Liste
+  goCategories: Kategorien
+  goUnits: Produkte
+  goRooms: Zimmer
+  goAmortNorms: Abschreibungen Norm
+  goHistories: Geschichte
+  goInventories: Inventare
+  apply: Suche
+  clear: Klar
+  edit: Bearbeiten
+  delete: Löschen
+  newSubmit: Erstellen
+  editSubmit: Bearbeiten
+  dataConfirm: Sind Sie sicher?
+  
+  # Inventory and History
+  inventoryId: Inv-ID # History
+  historyHeader: Geschichte # History
+  days: Tage
+  inventoryHeader: Inventare
+  addInventory: Neues Inventar
+  inventoryPathEdit: » Bearbeiten Inventar
+  inventoryPathNew: » Neues Inventar
+  userName: Benutzername
+  userLogin: Benutzer Anmeldung
+  roomName: Zimmername
+  productName: Produktname
+  serialNumber: Seriennummer
+  buyDate: Kaufdatum
+  activationDate: Aktivierungsdatum
+  amortizationNorm: Abschreibungen Norm
+  amortization: Abschreibungen
+  netoValue: Neto Value
+  timeOfUse: Zeit der Nutzung
+  comment: Kommentar
+  productId: Produkt Id
+  createdAt: Erstellt bei
+  updatedAt: Aktualisiert bei
+
+  # Amortization Norm
+  amortnormHeader: Abschreibungen Norm
+  addAmortnorm: Neue Abschreibungen Norm
+  amortnormPathEdit: » Bearbeiten Abschreibungen Norm
+  amortnormPathNew: » Neue Abschreibungen Norm
+  amortnormName: Abschreibungen Norm
+  amortnormComment: Abschreibungen Norm Kommentar
+
+  # Category
+  categoryHeader: Kategorien
+  addCategory: Neue Kategorie
+  categoryPathNew: » Neue Kategorie
+  categoryPathEdit: » Bearbeiten Kategorie
+  categoryName: Kategoriename
+  categoryComment: Kategorie Kommentar
+
+  # Room
+  roomHeader: Zimmer
+  addRoom: Neue Zimmer 
+  roomPathNew: » Neues Zimmer
+  roomPathEdit: » Bearbeiten Zimmer
+  roomName: Zimmername
+  roomComment: Zimmer Kommentar
+
+  # Product
+  productHeader: Produkte
+  addProduct: Neues Produkt
+  productPathNew: » Neues Produkt
+  productPathEdit: » Bearbeiten Produkt
+  productName: Produktname
+  productComment: Produkt Kommentar
+  productCategoryId: Kategorie
+  productQuantity: Quantität
+  productColor: Farbe

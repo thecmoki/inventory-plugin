@@ -18,6 +18,7 @@
 			<tr>
 				<th>ID</th>
 				<th><%= l(:productCategoryId) %></th>
+				<th><%= "Amortnorm" %></th>
 				<th><%= l(:productName) %></th>
 				<th><%= l(:productQuantity) %></th>
 				<th><%= l(:productColor) %></th>
@@ -31,6 +32,7 @@
 				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= unit.id %></td>
 					<td><%= unit.category_id %></td>
+					<td><%= unit.normamort.to_s + " %" %></td>
 					<td><%= unit.name %></td>
 					<td><%= unit.quantity %></td>
 					<td><%= unit.color %></td>

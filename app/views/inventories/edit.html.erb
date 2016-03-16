@@ -37,7 +37,7 @@
 			<p>
 				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
-				<%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %>
+				<%= f.collection_select(:product_name, Unit.all, :id, :name, :prompt => "Select Product") %>
 			</p>
 			<p>
 				<%= f.label(l(:serialNumber)) %>

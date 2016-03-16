@@ -2,6 +2,7 @@ class Category < ActiveRecord::Base
 	has_many(:units)
 	validates :name, :presence => true
 	validates :comment, :length => { :maximum => 100}
+	validates :prefixid, presence: true, uniqueness: true
 
 	def uniquecode
           raw_string = SecureRandom.random_number( 2**80 ).to_s( 20 ).reverse

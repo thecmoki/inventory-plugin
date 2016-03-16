@@ -98,7 +98,7 @@ class UnitsController < ApplicationController
   private
   
   def unit_params
-    params.require(:unit).permit(:name, :comment, :category_id, :quantity, :color)
+    params.require(:unit).permit(:name, :normamort, :comment, :category_id, :quantity, :color)
   end
 
 

@@ -31,6 +31,11 @@
 				<%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => true)%>
 			</p>
 			<p>
+				<%= f.label("AmortNorm") %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:normamort, Amortnorm.all, :name, :name, :prompt => true)%>
+			</p>
+			<p>
 				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>

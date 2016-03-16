@@ -27,7 +27,7 @@
 				<% @amortnorms.each do |amortnorm| %>
 					<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 						<td><%= amortnorm.id %></td>
-						<td><%= amortnorm.name %></td>
+						<td><%= amortnorm.name + " %"%></td>
 						<td><%= amortnorm.comment%></td>
 						<td class = "buttons">
 							<%= link_to(l(:edit), amortnorms_edit_path(:id => amortnorm.id), :class => "icon icon-edit") %>

@@ -37,7 +37,7 @@
 			<p>
 				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
-				<%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %>
+				<%= f.collection_select(:product_name, Unit.all, :id, :name, :prompt => "Select Product") %>
 			</p>
 			<p>
 				<%= f.label(l(:serialNumber)) %>
@@ -54,24 +54,16 @@
 				<span class = "required">*</span>
 				<%= f.date_field(:activation_date) %>
 			</p>
+			<p>
+				<%= f.label(l(:netoValue)) %>
+				<%= f.text_field(:neto_value) %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
 			<p>
 				<%= f.label(l(:buyDate)) %>
 				<%= f.date_field(:buy_date) %>
-			</p>
-			<p>
-				<%= f.label(l(:amortizationNorm)) %>
-				<%= f.collection_select(:amortization_norm, Amortnorm.all, :name, :name, :prompt => "Select Amortization Norm")%>
-			</p>
-			<p>
-				<%= f.label(l(:amortization)) %>
-				<%= f.text_field(:amortization) %>
-			</p>
-			<p>
-				<%= f.label(l(:netoValue)) %>
-				<%= f.text_field(:neto_value) %>
 			</p>
 			<p>
 				<%= f.label(l(:timeOfUse)) %>

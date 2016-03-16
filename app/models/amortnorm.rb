@@ -1,4 +1,4 @@
 class Amortnorm < ActiveRecord::Base
-  has_many(:inventories)
+  has_many(:units)
   validates(:name, :presence => true)
 end

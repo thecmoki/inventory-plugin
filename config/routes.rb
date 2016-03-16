@@ -1,5 +1,7 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
+get("projects/:project_id/overviews" => "overviews#index", :as => "overviews")
+
 get("projects/:project_id/units" => "units#index", :as => "units")
 get("projects/:project_id/units/new" => "units#new", :as => "units_new")
 post("projects/:project_id/units" => "units#create")
@@ -45,3 +47,5 @@ delete("projects/:project_id/amortnorms/:id/destroy" => "amortnorms#destroy", :a
 get("projects/:project_id/histories" => "histories#index", :as => "histories")
 get("projects/:project_id/histories/search" => "histories#index")
 post("projects/:project_id/histories/search" => "histories#index", :as => "search_histories")
+
+

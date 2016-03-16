@@ -6,7 +6,7 @@
 		<h2><%= l(:historyHeader) %></h2>
 		<div class = "tabs">
 			<ul>
-				<li><%= link_to(l(:goOverviews), overviews_path)%></li>
+				<li><%= link_to("Overviews", overviews_path) %></li>
 				<li><%= link_to(l(:goInventories), inventories_path) %></li>
 				<% if User.current.admin == true %>
 					<li><%= link_to(l(:goUnits), units_path) %></li>

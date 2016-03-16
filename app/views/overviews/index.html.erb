@@ -20,6 +20,7 @@
 
 			<div class = "autoscroll">
 			<table class = "list">
+			<h3>Inventory Data</h3>
 				<thead>
 					<tr>
 						<th><%= link_to(l(:userName), user_path(User.current.id)) %></th>
@@ -75,8 +76,24 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<% content_for :sidebar do %>
+  			<h3>Reports</h3>
+  			<ul>
+   				 <li><%= link_to(l(:field_category), {:sort_by => 'category'},
+                    :class => (@sort_by == 'category' ? 'selected' :nil)) %></li>
+                 <li><%= link_to("Inventory", {:sort_by => 'date'},
+                    :class => (@sort_by == 'date' ? 'selected' :nil)) %></li>
+    			 <li><%= link_to("Room", {:sort_by => 'title'},
+                    :class => (@sort_by == 'title' ? 'selected' :nil)) %></li>
+   				 <li><%= link_to("History", {:sort_by => 'author'},
+                    :class => (@sort_by == 'author' ? 'selected' :nil)) %></li>
+			</ul>
+		<% end %>
+
 		<% content_for :header_tags do %>
     		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 		<% end %>
+
 	</body>
 </html>

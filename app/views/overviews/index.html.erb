@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h2>Inventory Overview</h2>
+			<div class = "tabs">
+				<ul>
+				<li><%= link_to("Overviews", overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+				<li><%= link_to(l(:goInventories), inventories_path) %></li>
+				<% if User.current.admin == true %>
+					<li><%= link_to(l(:goUnits), units_path) %></li>
+					<li><%= link_to(l(:goCategories), categories_path) %></li>
+					<li><%= link_to(l(:goRooms), rooms_path) %></li>
+					<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
+				<% end %>
+				<li><%= link_to(l(:goHistories), histories_path)%></li>
+			</ul>
+			<div class = "tabs-buttons"></div>
+		</div>
+			<br>
+
+			<div class = "autoscroll">
+			<table class = "list">
+				<thead>
+					<tr>
+						<th><%= link_to(l(:userName), user_path(User.current.id)) %></th>
+						<th><%= l(:roomName) %></th>
+						<th><%= l(:productName) %></th>
+						<th><%= l(:serialNumber) %></th>
+						<th><%= l(:netoValue) %></th>
+						<th><%= l(:timeOfUse) %></th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<% if(User.current.admin == true) %>
+						<% @inventories.each do |inventory| %>
+								<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+									<td>
+										<% @users.each do |user| %>
+											<% if(inventory.user_login == user.login) %>
+												<%= link_to("#{inventory.user_name}", user_path(user.id)) %>
+											<% end %>
+										<% end %>
+									</td>
+									
+									<td><%= inventory.room_name %></td>
+									<td><%= inventory.product_name %></td>
+									<td><%= inventory.serial_number %></td>
+									<td><%= inventory.neto_value %></td>
+									<td><%= inventory.days.to_s + " " + l(:days) %></td>
+									</tr>
+						<%end%>
+						</tbody>
+						</table>
+							
+						<% else %>
+						<% @inventories.each do |inventory| %>
+							<% @users.each do |user| %>
+								<tr class = "<%= cycle('user active odd', 'user active even') -%>">
+									<% if(inventory.user_login == User.current.login) %>
+										<td><%= link_to("#{inventory.user_name}", user_path(User.current.id)) %>
+										</td>
+										<td><%= inventory.room_name %></td>
+										<td><%= inventory.product_name %></td>
+										<td><%= inventory.serial_number %></td>
+										<td><%= inventory.neto_value %></td>
+										<td><%= inventory.days.to_s + " " + l(:days) %></td>
+										
+									<% end %>
+									<% break %>
+								</tr>
+							<% end%>
+						<% end %>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+		<% content_for :header_tags do %>
+    		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+		<% end %>
+	</body>
+</html>

@@ -58,6 +58,7 @@ de:
   categoryPathNew: » Neue Kategorie
   categoryPathEdit: » Bearbeiten Kategorie
   categoryName: Kategoriename
+  categoryPrefixid: Präfix ID
   categoryComment: Kategorie Kommentar
 
   # Room
@@ -74,6 +75,7 @@ de:
   productPathNew: » Neues Produkt
   productPathEdit: » Bearbeiten Produkt
   productName: Produktname
+  productNormamort: Abschreibungen Norm
   productComment: Produkt Kommentar
   productCategoryId: Kategorie
   productQuantity: Quantität

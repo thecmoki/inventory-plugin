@@ -17,6 +17,7 @@ class Inventory < ActiveRecord::Base
 			super - ['id', 'created_at', 'updated_at', 'user_name', 'room_name', 'user_login', 'time_of_use', 'comment']
 		end
 	end
+	
 	def days
 		((Time.now.to_date - activation_date)).to_i
 	end

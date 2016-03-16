@@ -29,6 +29,9 @@
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
+		</fieldset>
+		<fieldset class = "box tabular">
+			<legend><%= l(:legend2) %></legend>
 			<p>
 				<%= f.label(l(:roomComment)) %>
 				<%= f.text_area(:comment) %>

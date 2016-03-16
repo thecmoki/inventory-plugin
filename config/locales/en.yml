@@ -58,6 +58,7 @@ en:
   categoryPathNew: » New Category
   categoryPathEdit: » Edit Category
   categoryName: Category Name
+  categoryPrefixid: Prefix ID
   categoryComment: Category Comment
 
   # Room
@@ -74,6 +75,7 @@ en:
   productPathNew: » New Product
   productPathEdit: » Edit Product
   productName: Product Name
+  productNormamort: Amortization Norm
   productComment: Product Comment
   productCategoryId: Category
   productQuantity: Quantity

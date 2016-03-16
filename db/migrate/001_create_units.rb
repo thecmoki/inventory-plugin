@@ -4,7 +4,6 @@ class CreateUnits < ActiveRecord::Migration
       t.integer :category_id
       t.string :name
       t.string :quantity
-      t.string :color
       t.text :comment
       t.timestamps null: false
     end

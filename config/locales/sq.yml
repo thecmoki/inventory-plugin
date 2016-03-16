@@ -58,6 +58,7 @@ sq:
   categoryPathNew: » Krijo Kategori
   categoryPathEdit: » Ndrysho Kategori
   categoryName: Emri i Kategoris
+  categoryPrefixid: ID Prefiksi
   categoryComment: Komenti i Kategoris
 
   # Dhomat
@@ -74,6 +75,7 @@ sq:
   productPathNew: » Krijo Produkt
   productPathEdit: » Ndrysho Produkt
   productName: Emri i Produktit
+  productNormamort: Norma e Amortizimit
   productComment: Komenti i Produktit
   productCategoryId: Kategoria
   productQuantity: Sasia

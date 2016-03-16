@@ -19,12 +19,11 @@
 			<tr>
 				<th>ID</th>
 				<th><%= l(:productCategoryId) %></th>
-				<th><%= "Amortnorm" %></th>
 				<th><%= l(:productName) %></th>
-				<th><%= l(:productQuantity) %></th>
-				<th><%= l(:productColor) %></th>
-				<th><%= l(:productComment) %></th>
 				<th>ProductID</th>
+				<th><%= l(:productNormamort) %></th>
+				<th><%= l(:productQuantity) %></th>
+				<th><%= l(:productComment) %></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -32,13 +31,16 @@
 			<% @units.each do |unit| %>
 				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= unit.id %></td>
-					<td><%= unit.category_id %></td>
+					<% @categories.each do |category| %>
+						<% if(unit.normamort == category.name) %>
+							<td><%= category.name %></td>
+						<% end %>
+					<% end %>
+					<td><%= unit.productid %></td>
 					<td><%= unit.normamort.to_s + " %" %></td>
 					<td><%= unit.name %></td>
 					<td><%= unit.quantity %></td>
-					<td><%= unit.color %></td>
 					<td><%= unit.comment%></td>
-					<td><%= unit.productid %></td>
 					<td class = "buttons">
 						<%= link_to(l(:edit), units_edit_path(:id => unit.id), :class => "icon icon-edit") %>
 						<%= link_to(l(:delete), units_destroy_path(:id => unit.id), :method => :delete, :class => "icon icon-del", data: { confirm: l(:dataConfirm) }) %>

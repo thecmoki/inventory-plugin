@@ -54,6 +54,10 @@
 				<span class = "required">*</span>
 				<%= f.date_field(:activation_date) %>
 			</p>
+			<p>
+				<%= f.label(l(:netoValue)) %>
+				<%= f.text_field(:neto_value) %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
@@ -62,20 +66,8 @@
 				<%= f.date_field(:buy_date) %>
 			</p>
 			<p>
-				<%= f.label(l(:amortizationNorm)) %>
-				<%= f.text_field(:amortization_norm) %>
-			</p>
-			<p>
-				<%= f.label(l(:amortization)) %>
-				<%= f.text_field(:amortization) %>
-			</p>
-			<p>
-				<%= f.label(l(:netoValue)) %>
-				<%= f.text_field(:neto_value) %>
-			</p>
-			<p>
-				<%= f.label(l(:timeOfUse)) %>
-				<%= f.text_field(:time_of_use) %>
+				<%= f.label(l(:productColor)) %>
+				<%= f.text_field(:color) %>
 			</p>
 			<p>
 				<%= f.label(l(:comment)) %>

@@ -30,12 +30,16 @@
 				<%= f.text_field(:name) %>
 			</p>
 			<p>
+				<%= f.label(l(:categoryPrefixid)) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:prefixid) %>
+			</p>
+		</fieldset>
+		<fieldset class = "box tabular">
+			<legend><%= l(:legend2) %></legend>
+			<p>
 				<%= f.label(l(:categoryComment)) %>
 				<%= f.text_area(:comment) %>
-			</p>
-			<p>
-				<%= f.label(l(:PrefixID)) %>
-				<%= f.text_field(:prefixid) %>
 			</p>
 		</fieldset>
 		<p><%= f.submit(l(:editSubmit)) %></p>

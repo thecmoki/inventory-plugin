@@ -115,7 +115,7 @@ class InventoriesController < ApplicationController
   private
     
   def inventory_params
-  	params.require(:inventory).permit(:user_name, :user_login, :room_name, :product_name, :product_id, :serial_number, :buy_date, :activation_date, :amortization_norm, :amortization, :neto_value, :time_of_use, :comment)
+  	params.require(:inventory).permit(:user_name, :user_login, :room_name, :product_name, :color, :product_id, :serial_number, :buy_date, :activation_date, :amortization_norm, :amortization, :neto_value, :time_of_use, :comment)
   end
   def find_project
     # @project variable must be set before calling the authorize filter

@@ -1,6 +1,8 @@
 require 'securerandom'
 class UnitsController < ApplicationController  
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
+
+  
   
   def index
     if(session[:lan] == nil)
@@ -59,6 +61,9 @@ class UnitsController < ApplicationController
   	  @unit = Unit.new
     end
   end
+
+  
+
   
   def create
     if(User.current.admin == false)
@@ -66,7 +71,12 @@ class UnitsController < ApplicationController
     else
   	  @unit = Unit.new(unit_params)
   	  if(@unit.save)
-        @unit.update(:productid => @unit.uniquecode)
+        cat = Category.all
+        cat.each do |c|
+          if(c.id == @unit.category_id)
+            @unit.update(:productid => c.uniquecode)
+          end
+        end
   		  redirect_to(:action => "index")
         createMessage(session[:lan])
   	  else
@@ -90,6 +100,21 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(:name, :comment, :category_id, :quantity, :color)
   end
+
+
+    
+
+    
+
+    # raw_string = SecureRandom.random_number( 2**80 ).to_s( 20 ).reverse
+    # long_code = raw_string.tr( '0123456789abcdefghij', '234679QWERTYUPADFGHX' )
+    # if @unit.category_id == 1
+    #   +'-'+long_code[4..7]+'-'+long_code[8..11]
+    # else 
+    #   "AA2"+'-'+long_code[4..7]+'-'+long_code[8..11]
+    # end
+  
+  
 
   def find_project
     # @project variable must be set before calling the authorize filter

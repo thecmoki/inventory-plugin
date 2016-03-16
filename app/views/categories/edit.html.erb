@@ -33,6 +33,10 @@
 				<%= f.label(l(:categoryComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
+			<p>
+				<%= f.label(l(:PrefixID)) %>
+				<%= f.text_field(:prefixid) %>
+			</p>
 		</fieldset>
 		<p><%= f.submit(l(:editSubmit)) %></p>
 	<% end %>

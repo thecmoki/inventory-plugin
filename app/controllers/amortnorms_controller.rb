@@ -18,13 +18,6 @@ class AmortnormsController < ApplicationController
       errorMessage(session[:lan])
     else
       @amortnorms = Amortnorm.all
-       if(session[:lan] == nil)
-        session[:lan] = "en"
-      elsif(params[:lan] == "en" || params[:lan] == "al")
-        session[:lan] = params[:lan]
-      else
-        session[:lan]
-      end
     end
   end
 

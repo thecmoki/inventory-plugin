@@ -2,14 +2,14 @@ class InventoriesController < ApplicationController
   
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
-  def index
-    if(session[:lan] == nil)
-      session[:lan] = "en"
-    elsif(params[:lan] == "en" || params[:lan] == "al")
-      session[:lan] = params[:lan]
-    else
-      session[:lan]
-    end
+   def index
+  #   if(session[:lan] == nil)
+  #     session[:lan] = "en"
+  #   elsif(params[:lan] == "en" || params[:lan] == "al")
+  #     session[:lan] = params[:lan]
+  #   else
+  #     session[:lan]
+  #   end
     @users = User.all
     @units = Unit.all
   	#@inventories = Inventory.all

@@ -1,8 +1,11 @@
 class Category < ActiveRecord::Base
 	has_many(:units)
 	validates :name, :presence => true
-	validates :comment, :length => { :maximum => 100}
-	validates :prefixid, presence: true, uniqueness: true
+	validates :prefixid, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/}
+
+def err
+
+end
 
 	def uniquecode
           raw_string = SecureRandom.random_number( 2**80 ).to_s( 20 ).reverse

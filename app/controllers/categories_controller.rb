@@ -3,13 +3,6 @@ class CategoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
-    if(session[:lan] == nil)
-      session[:lan] = "en"
-    elsif(params[:lan] == "en" || params[:lan] == "al")
-      session[:lan] = params[:lan]
-    else
-      session[:lan]
-    end
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       errorMessage(session[:lan])

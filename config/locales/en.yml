@@ -6,12 +6,14 @@ en:
   legend2: Information
   legend3: Filters
   legend4: List
+  em1: only allows letters and numbers.
   goCategories: Categories
   goUnits: Products
   goRooms: Rooms
   goAmortNorms: Amortization Norms
   goHistories: History
   goInventories: Inventories
+  goOverviews: Overviews
   apply: Search
   clear: Clear
   edit: Edit
@@ -44,6 +46,7 @@ en:
   createdAt: Created At
   updatedAt: Updated At
 
+
   # Amortization Norm
   amortnormHeader: Amortization Norms
   addAmortnorm: New Amortization Norm
@@ -75,6 +78,7 @@ en:
   productPathNew: » New Product
   productPathEdit: » Edit Product
   productName: Product Name
+  productProductid: Product ID
   productNormamort: Amortization Norm
   productComment: Product Comment
   productCategoryId: Category

@@ -6,6 +6,7 @@ before_filter(:find_project, :authorize, :only => [:index])
   	#@histories = History.all
   	@users = User.all
   	@inventories = Inventory.all
+    @categories = Category.all
     
 
   	if(session[:lan] == nil)

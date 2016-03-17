@@ -32,13 +32,14 @@
 				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= unit.id %></td>
 					<% @categories.each do |category| %>
-						<% if(unit.normamort == category.name) %>
+						<% if(unit.category_id== category.id) %>
 							<td><%= category.name %></td>
-						<% end %>
+							<% end %>
 					<% end %>
+					
+					<td><%= unit.name %></td>
 					<td><%= unit.productid %></td>
 					<td><%= unit.normamort.to_s + " %" %></td>
-					<td><%= unit.name %></td>
 					<td><%= unit.quantity %></td>
 					<td><%= unit.comment%></td>
 					<td class = "buttons">

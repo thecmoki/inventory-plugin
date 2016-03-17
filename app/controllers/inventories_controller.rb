@@ -69,7 +69,7 @@ class InventoriesController < ApplicationController
         inv.update(:user_name => user.firstname + " " + user.lastname)
         inv.update(:user_login => user.login)
         inv.update(:product_name => unit.name)
-        @history = History.new(:inventory_id => inv.id,:user_name => inv.user_name, :user_login => inv.user_login, :room_name => inv.room_name, :product_name => inv.product_name, :product_id => inv.product_id, :serial_number => inv.serial_number, :buy_date => inv.buy_date, :activation_date => inv.activation_date, :amortization_norm => inv.amortization_norm, :amortization => inv.amortization, :neto_value => inv.neto_value, :time_of_use => inv.time_of_use, :comment => inv.comment, :updated_at => inv.updated_at)
+        @history = History.new(:inventory_id => inv.id, :color => inv.color :user_name => inv.user_name, :user_login => inv.user_login, :room_name => inv.room_name, :product_name => inv.product_name, :product_id => inv.product_id, :serial_number => inv.serial_number, :buy_date => inv.buy_date, :activation_date => inv.activation_date, :amortization_norm => inv.amortization_norm, :amortization => inv.amortization, :neto_value => inv.neto_value, :time_of_use => inv.time_of_use, :comment => inv.comment, :updated_at => inv.updated_at)
   		  @history.save
         redirect_to(:action => "index")
         createMessage(session[:lan])
@@ -92,7 +92,7 @@ class InventoriesController < ApplicationController
         @inventory.update(:product_name => unit.name)
         @inventory.update(:user_name => user.firstname + " " + user.lastname)
         @inventory.update(:user_login => user.login)
-        @history = History.new(:inventory_id => @inventory.id,:user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
+        @history = History.new(:inventory_id => @inventory.id, :color => :inv.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
   		  @history.save
         redirect_to(:action => "index")
         updateMessage(session[:lan])

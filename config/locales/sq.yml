@@ -2,6 +2,9 @@
 sq:
 
   # Per te gjitha
+  errorMessage: Ju nuk keni qasje.
+  createMessage: U krijua me sukses.
+  updateMessage: U ndryshua me sukses.
   legend1: Te Nevojshme
   legend2: Informacionet
   legend3: Filtrimi

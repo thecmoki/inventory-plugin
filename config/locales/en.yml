@@ -2,6 +2,9 @@
 en:
 
   # For All
+  errorMessage: You have no access.
+  createMessage: Successful created.
+  updateMessage: Successful update.
   legend1: Required
   legend2: Information
   legend3: Filters

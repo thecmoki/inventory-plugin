@@ -102,11 +102,14 @@ class InventoriesController < ApplicationController
   	  if (@inventory.update_attributes(inventory_params))
         user = User.find(@inventory.user_name)
         unit = Unit.find(@inventory.product_name)
+        room = Room.find_by name: @inventory.room_name
         @inventory.update(:amortization_norm => unit.normamort)
         @inventory.update(:amortization => (unit.normamort.to_f / 100) * @inventory.neto_value.to_f)
         @inventory.update(:product_name => unit.name)
         @inventory.update(:user_name => user.firstname + " " + user.lastname)
         @inventory.update(:user_login => user.login)
+        @inventory.update(:unit_id => unit.id)
+        @inventory.update(:room_id => room.id)
         @history = History.new(:inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
   		  @history.save
         redirect_to(:action => "index")

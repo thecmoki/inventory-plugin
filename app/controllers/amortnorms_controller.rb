@@ -65,7 +65,7 @@ class AmortnormsController < ApplicationController
   end
   def destroy
     @amortnorm = Amortnorm.find(params[:id])
-      @amortnorm.delete
+      @amortnorm.destroy
       redirect_to(:action => "index")
   end
 

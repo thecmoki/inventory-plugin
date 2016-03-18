@@ -77,7 +77,7 @@ class CategoriesController < ApplicationController
       redirect_to(:controller => "inventories", :action => "index")
     else
   	  @category = Category.find(params[:id])
-  	  @category.delete
+  	  @category.destroy
   	  redirect_to(:action => "index")
     end
   end

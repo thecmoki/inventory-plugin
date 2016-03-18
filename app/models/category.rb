@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-	has_many(:units)
+	has_many :units, :dependent => :destroy
 	validates :name, :presence => true
 	validates :comment, :length => { :maximum => 100}
 	validates :prefixid, presence: true, uniqueness: true

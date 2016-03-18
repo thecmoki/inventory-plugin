@@ -76,7 +76,7 @@ class RoomsController < ApplicationController
       redirect_to(:controller => "inventories", :action => "index")
     else
   	  @room = Room.find(params[:id])
-  	  @room.delete
+  	  @room.destroy
   	  redirect_to(:action => "index")
     end
   end

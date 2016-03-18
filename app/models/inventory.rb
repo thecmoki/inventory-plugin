@@ -6,7 +6,7 @@ class Inventory < ActiveRecord::Base
 	validates(:user_name, :presence => true)
 	validates(:room_name, :presence => true)
 	validates(:product_name, :presence => true)
-	validates(:product_id, :presence => true)
+	validates :product_id, :uniqueness => true
 	validates(:serial_number, :presence => true, :uniqueness => true)
 	validates(:activation_date, :presence => true)
 	validates(:neto_value, presence: true)

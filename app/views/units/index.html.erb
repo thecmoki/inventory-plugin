@@ -20,7 +20,6 @@
 				<th>ID</th>
 				<th><%= l(:productCategoryId) %></th>
 				<th><%= l(:productName) %></th>
-				<th>ProductID</th>
 				<th><%= l(:productNormamort) %></th>
 				<th><%= l(:productQuantity) %></th>
 				<th><%= l(:productComment) %></th>
@@ -32,13 +31,12 @@
 				<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 					<td><%= unit.id %></td>
 					<% @categories.each do |category| %>
-						<% if(unit.normamort == category.name) %>
+						<% if(unit.category_id == category.id) %>
 							<td><%= category.name %></td>
 						<% end %>
 					<% end %>
-					<td><%= unit.productid %></td>
-					<td><%= unit.normamort.to_s + " %" %></td>
 					<td><%= unit.name %></td>
+					<td><%= unit.normamort.to_s + " %" %></td>
 					<td><%= unit.quantity %></td>
 					<td><%= unit.comment%></td>
 					<td class = "buttons">

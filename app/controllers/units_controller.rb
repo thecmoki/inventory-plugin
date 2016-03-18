@@ -71,12 +71,6 @@ class UnitsController < ApplicationController
     else
   	  @unit = Unit.new(unit_params)
   	  if(@unit.save)
-        cat = Category.all
-        cat.each do |c|
-          if(c.id == @unit.category_id)
-            @unit.update(:productid => c.uniquecode)
-          end
-        end
   		  redirect_to(:action => "index")
         createMessage(session[:lan])
   	  else
@@ -90,7 +84,7 @@ class UnitsController < ApplicationController
       redirect_to(:controller => "inventories", :action => "index")
     else
   	  @unit = Unit.find(params[:id])
-  	  @unit.delete
+  	  @unit.destroy
   	  redirect_to(:action => "index")
     end
   end

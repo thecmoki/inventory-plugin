@@ -2,11 +2,15 @@
 de:
 
   # For All
+  errorMessage: Sie haben keinen Zugang.
+  createMessage: Erfolgreich erstellt.
+  updateMessage: Erfolgreiches Update.
   legend1: Erforderlich
   legend2: Information
   legend3: Filter
   legend4: Liste
   em1: erlaubt nur buchstaben und zahlen.
+  em2: wert sollte von 0 bis 100 sein.
   goCategories: Kategorien
   goUnits: Produkte
   goRooms: Zimmer

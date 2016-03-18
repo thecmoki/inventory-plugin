@@ -105,9 +105,9 @@
 										<td><%= inventory.serial_number %></td>
 										<td><%= inventory.buy_date %></td>
 										<td><%= inventory.activation_date %></td>
-										<td><%= inventory.amortization_norm %></td>
-										<td><%= inventory.amortization %></td>
-										<td><%= inventory.neto_value %></td>
+										<td><%= inventory.amortization_norm + " %" %></td>
+										<td><%= inventory.amortization + " €" %></td>
+										<td><%= inventory.neto_value + " €" %></td>
 										<td><%= inventory.days.to_s + " " + l(:days) %></td>
 										<td><%= inventory.comment %></td>
 									<% end %>

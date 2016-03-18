@@ -2,6 +2,14 @@ class AmortnormsController < ApplicationController
   
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
+  def index
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = l(:errorMessage)
+    else
+      @amortnorms = Amortnorm.all
+    end
+  end
 
   def new
     if(User.current.admin == false)
@@ -9,15 +17,6 @@ class AmortnormsController < ApplicationController
       flash[:error] = l(:errorMessage)
     else
       @amortnorm = Amortnorm.new
-    end
-  end
-
-  def index
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-      @amortnorms = Amortnorm.all
     end
   end
 
@@ -56,6 +55,7 @@ class AmortnormsController < ApplicationController
       @amortnorm = Amortnorm.find(params[:id])
     end
   end
+
   def destroy
     @amortnorm = Amortnorm.find(params[:id])
       @amortnorm.destroy
@@ -70,26 +70,5 @@ class AmortnormsController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
-  end
-  def errorMessage(lan = "en")
-    if(lan == "en")
-      flash[:error] = "You have no access."
-    elsif(lan == "al")
-      flash[:error] = "Ju nuk keni qasje."
-    end
-  end
-  def updateMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful update."
-    elsif(lan == "al")
-      flash[:notice] = "U ndryshua me sukses."
-    end
-  end
-  def createMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful created."
-    elsif(lan == "al")
-      flash[:notice] = "U krijua me sukses"
-    end
   end
 end

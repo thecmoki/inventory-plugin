@@ -73,9 +73,9 @@
 								<td><%= history.serial_number %></td>
 								<td><%= history.buy_date %></td>
 								<td><%= history.activation_date %></td>
-								<td><%= history.amortization_norm %></td>
-								<td><%= history.amortization %></td>
-								<td><%= history.neto_value %></td>
+								<td><%= history.amortization_norm + " %" %></td>
+								<td><%= history.amortization + " €" %></td>
+								<td><%= history.neto_value + " €" %></td>
 								<td><%= history.days.to_s + " " + l(:days) %></td>
 								<td><%= history.comment %></td>
 								<td><%= history.updated_at.to_date %></td>
@@ -100,9 +100,9 @@
 										<td><%= history.serial_number %></td>
 										<td><%= history.buy_date %></td>
 										<td><%= history.activation_date %></td>
-										<td><%= history.amortization_norm %></td>
-										<td><%= history.amortization %></td>
-										<td><%= history.neto_value %></td>
+										<td><%= history.amortization_norm + " %" %></td>
+										<td><%= history.amortization + " €" %></td>
+										<td><%= history.neto_value + " €" %></td>
 										<td><%= history.days.to_s + " " + l(:days) %></td>
 										<td><%= history.comment %></td>
 										<td><%= history.updated_at.to_date %></td>

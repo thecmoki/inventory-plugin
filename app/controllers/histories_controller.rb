@@ -24,6 +24,7 @@ class HistoriesController < ApplicationController
       @search.build_sort if @search.sorts.empty?
     end
   end
+  
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])

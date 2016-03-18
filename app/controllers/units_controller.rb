@@ -1,13 +1,12 @@
 require 'securerandom'
 class UnitsController < ApplicationController  
+
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
-  
-  
   def index
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @units = Unit.all
       @categories = Category.all
@@ -17,7 +16,7 @@ class UnitsController < ApplicationController
   def show
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @unit = Unit.find(params[:id])
     end
@@ -26,7 +25,7 @@ class UnitsController < ApplicationController
   def edit
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @unit = Unit.find(params[:id])
     end
@@ -39,7 +38,7 @@ class UnitsController < ApplicationController
   	  @unit = Unit.find(params[:id])
   	  if (@unit.update_attributes(unit_params))
   		  redirect_to(:action => "index")
-        updateMessage(session[:lan])
+        flash[:notice] = l(:updateMessage)
   	  else
   		  render(:controller => "units", :action => "edit")
   	  end
@@ -49,7 +48,7 @@ class UnitsController < ApplicationController
   def new
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @unit = Unit.new
     end
@@ -65,7 +64,7 @@ class UnitsController < ApplicationController
   	  @unit = Unit.new(unit_params)
   	  if(@unit.save)
   		  redirect_to(:action => "index")
-        createMessage(session[:lan])
+        flash[:notice] = l(:createMessage)
   	  else
   		  render("new")
   	  end
@@ -88,44 +87,8 @@ class UnitsController < ApplicationController
     params.require(:unit).permit(:name, :normamort, :comment, :category_id, :quantity)
   end
 
-
-    
-
-    
-
-    # raw_string = SecureRandom.random_number( 2**80 ).to_s( 20 ).reverse
-    # long_code = raw_string.tr( '0123456789abcdefghij', '234679QWERTYUPADFGHX' )
-    # if @unit.category_id == 1
-    #   +'-'+long_code[4..7]+'-'+long_code[8..11]
-    # else 
-    #   "AA2"+'-'+long_code[4..7]+'-'+long_code[8..11]
-    # end
-  
-  
-
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
-  end
-  def errorMessage(lan = "en")
-    if(lan == "en")
-      flash[:error] = "You have no access."
-    elsif(lan == "al")
-      flash[:error] = "Ju nuk keni qasje."
-    end
-  end
-  def updateMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful update."
-    elsif(lan == "al")
-      flash[:notice] = "U ndryshua me sukses."
-    end
-  end
-  def createMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful created."
-    elsif(lan == "al")
-      flash[:notice] = "U krijua me sukses"
-    end
   end
 end

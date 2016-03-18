@@ -45,7 +45,7 @@ class CategoriesController < ApplicationController
   	  @category = Category.new(category_params)
   	  if(@category.save)
   		  redirect_to(:action => "index")
-        flash[:error] = l(:createMessage)
+        flash[:notice] = l(:createMessage)
   	  else
   		  render("new")
   	  end
@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
   	  @category = Category.find(params[:id])
       if (@category.update_attributes(category_params))
         redirect_to(:action => "index")
-        flash[:error] = l(:updateMessage)
+        flash[:notice] = l(:updateMessage)
       else 
         render("edit") 
   	  end 
@@ -84,26 +84,5 @@ class CategoriesController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
-  end
-  def errorMessage(lan = "en")
-    if(lan == "en")
-      flash[:error] = "You have no access."
-    elsif(lan == "al")
-      flash[:error] = "Ju nuk keni qasje."
-    end
-  end
-  def updateMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful update."
-    elsif(lan == "al")
-      flash[:notice] = "U ndryshua me sukses."
-    end
-  end
-  def createMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful created."
-    elsif(lan == "al")
-      flash[:notice] = "U krijua me sukses"
-    end
   end
 end

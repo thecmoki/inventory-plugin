@@ -10,6 +10,7 @@ sq:
   legend3: Filtrimi
   legend4: Lista
   em1: lejon vetem shkronja dhe numra.
+  em2: vlera duhet te jete prej 0 deri 100.
   goCategories: Kategorit
   goUnits: Produktet
   goRooms: Dhomat

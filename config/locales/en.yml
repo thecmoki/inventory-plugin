@@ -10,6 +10,7 @@ en:
   legend3: Filters
   legend4: List
   em1: only allows letters and numbers.
+  em2: value should be from 0 to 100.
   goCategories: Categories
   goUnits: Products
   goRooms: Rooms

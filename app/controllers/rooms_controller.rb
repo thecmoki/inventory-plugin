@@ -2,10 +2,19 @@ class RoomsController < ApplicationController
 
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
+  def index
+    if(User.current.admin == false)
+      redirect_to(:controller => "inventories", :action => "index")
+      flash[:error] = l(:errorMessage)
+    else
+      @rooms = Room.all
+    end
+  end
+
   def edit
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	@room = Room.find(params[:id])
   end end
@@ -17,25 +26,17 @@ class RoomsController < ApplicationController
   	  @room = Room.find(params[:id])
   	  if (@room.update_attributes(room_params))
   		  redirect_to(:action => "index")
-        updateMessage(session[:lan])
+        flash[:notice] = l(:updateMessage)
   	  else
   		  render("edit")
   	  end
     end
   end
 
-  def index
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
-    else
-  	  @rooms = Room.all
-    end
-  end
   def new
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @room =Room.new
     end
@@ -48,7 +49,7 @@ class RoomsController < ApplicationController
   	  @room = Room.new(room_params)
   	  if(@room.save)
   		  redirect_to(:action => "index")
-        createMessage(session[:lan])
+        flash[:notice] = l(:createMessage)
   	  else
   		  render("new")
   	  end
@@ -58,7 +59,7 @@ class RoomsController < ApplicationController
   def show
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @room = Room.find(params[:id])
     end
@@ -83,26 +84,5 @@ class RoomsController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
-  end
-  def errorMessage(lan = "en")
-    if(lan == "en")
-      flash[:error] = "You have no access."
-    elsif(lan == "al")
-      flash[:error] = "Ju nuk keni qasje."
-    end
-  end
-  def updateMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful update."
-    elsif(lan == "al")
-      flash[:notice] = "U ndryshua me sukses."
-    end
-  end
-  def createMessage(lan = "en")
-    if(lan == "en")
-      flash[:notice] = "Successful created."
-    elsif(lan == "al")
-      flash[:notice] = "U krijua me sukses"
-    end
   end
 end

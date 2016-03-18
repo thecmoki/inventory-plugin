@@ -4,7 +4,7 @@
 		<h2>Inventory Overview</h2>
 			<div class = "tabs">
 				<ul>
-				<li><%= link_to("Overviews", overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+				<li><%= link_to(l(:goOverviews), overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
 				<li><%= link_to(l(:goInventories), inventories_path) %></li>
 				<% if User.current.admin == true %>
 					<li><%= link_to(l(:goUnits), units_path) %></li>
@@ -17,7 +17,8 @@
 			<div class = "tabs-buttons"></div>
 		</div>
 			<br>
-
+			<div class="splitcontentleft">
+			<div class="issues box">
 			<div class = "autoscroll">
 			<table class = "list">
 			<h3>Inventory Data</h3>
@@ -76,18 +77,46 @@
 				</tbody>
 			</table>
 		</div>
-		
+		</div>
+		</div>
+
+			<div class="splitcontentright">
+			<div class="issues box">
+			<div class = "autoscroll">
+			<table class = "list">
+			<h3>Category Data</h3>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th><%= l(:categoryName) %></th>
+					<th><%= l(:categoryComment) %></th>
+					<th><%= l(:categoryPrefixid) %></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<% @categories.each do |category| %>
+					<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+						<td><%= category.id %></td>
+						<td><%= category.name %></td>
+						<td><%= category.comment %></td>
+						<td><%= category.prefixid %></td>
+						</td>	
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+
 		<% content_for :sidebar do %>
   			<h3>Reports</h3>
   			<ul>
-   				 <li><%= link_to(l(:field_category), {:sort_by => 'category'},
-                    :class => (@sort_by == 'category' ? 'selected' :nil)) %></li>
-                 <li><%= link_to("Inventory", {:sort_by => 'date'},
-                    :class => (@sort_by == 'date' ? 'selected' :nil)) %></li>
-    			 <li><%= link_to("Room", {:sort_by => 'title'},
-                    :class => (@sort_by == 'title' ? 'selected' :nil)) %></li>
-   				 <li><%= link_to("History", {:sort_by => 'author'},
-                    :class => (@sort_by == 'author' ? 'selected' :nil)) %></li>
+   				 <li><%= link_to(l(:goInventories), inventories_path) %></li>
+                <li><%= link_to(l(:goCategories), categories_path) %></li>
+				<li><%= link_to(l(:goRooms), rooms_path) %></li>
+   				 <li><%= link_to(l(:goHistories), histories_path)%></li>
 			</ul>
 		<% end %>
 

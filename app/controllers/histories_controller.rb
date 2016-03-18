@@ -23,14 +23,6 @@ class HistoriesController < ApplicationController
       @search.build_condition if @search.conditions.empty?
       @search.build_sort if @search.sorts.empty?
     end
-
-  	if(session[:lan] == nil)
-      session[:lan] = "en"
-    elsif(params[:lan] == "en" || params[:lan] == "al")
-      session[:lan] = params[:lan]
-    else
-      session[:lan]
-    end
   end
   def find_project
     # @project variable must be set before calling the authorize filter

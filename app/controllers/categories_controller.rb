@@ -3,16 +3,9 @@ class CategoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
-    if(session[:lan] == nil)
-      session[:lan] = "en"
-    elsif(params[:lan] == "en" || params[:lan] == "al")
-      session[:lan] = params[:lan]
-    else
-      session[:lan]
-    end
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @categories = Category.all
     end
@@ -21,7 +14,7 @@ class CategoriesController < ApplicationController
   def show
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @category = Category.find(params[:id])
     end
@@ -30,7 +23,7 @@ class CategoriesController < ApplicationController
   def edit
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
   	  @category = Category.find(params[:id])
     end
@@ -39,7 +32,7 @@ class CategoriesController < ApplicationController
   def new
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      eflash[:error] = l(:errorMessage)
     else
   	  @category = Category.new
     end
@@ -52,7 +45,7 @@ class CategoriesController < ApplicationController
   	  @category = Category.new(category_params)
   	  if(@category.save)
   		  redirect_to(:action => "index")
-        createMessage(session[:lan])
+        flash[:error] = l(:createMessage)
   	  else
   		  render("new")
   	  end
@@ -65,7 +58,7 @@ class CategoriesController < ApplicationController
   	  @category = Category.find(params[:id])
       if (@category.update_attributes(category_params))
         redirect_to(:action => "index")
-        updateMessage(session[:lan])
+        flash[:error] = l(:updateMessage)
       else 
         render("edit") 
   	  end 

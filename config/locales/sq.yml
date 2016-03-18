@@ -2,16 +2,21 @@
 sq:
 
   # Per te gjitha
+  errorMessage: Ju nuk keni qasje.
+  createMessage: U krijua me sukses.
+  updateMessage: U ndryshua me sukses.
   legend1: Te Nevojshme
   legend2: Informacionet
   legend3: Filtrimi
   legend4: Lista
+  em1: lejon vetem shkronja dhe numra.
   goCategories: Kategorit
   goUnits: Produktet
   goRooms: Dhomat
   goAmortNorms: Normat e Amortizimit
   goHistories: Historia
   goInventories: Inventaret
+  goOverviews: Permbajtja
   apply: Kerko
   clear: Pastro
   edit: Ndrysho
@@ -75,6 +80,7 @@ sq:
   productPathNew: » Krijo Produkt
   productPathEdit: » Ndrysho Produkt
   productName: Emri i Produktit
+  productProductid: ID e Produktit
   productNormamort: Norma e Amortizimit
   productComment: Komenti i Produktit
   productCategoryId: Kategoria

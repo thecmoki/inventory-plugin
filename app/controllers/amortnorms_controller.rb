@@ -6,7 +6,7 @@ class AmortnormsController < ApplicationController
   def new
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
       @amortnorm = Amortnorm.new
     end
@@ -15,16 +15,9 @@ class AmortnormsController < ApplicationController
   def index
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
       @amortnorms = Amortnorm.all
-       if(session[:lan] == nil)
-        session[:lan] = "en"
-      elsif(params[:lan] == "en" || params[:lan] == "al")
-        session[:lan] = params[:lan]
-      else
-        session[:lan]
-      end
     end
   end
 
@@ -32,7 +25,7 @@ class AmortnormsController < ApplicationController
     @amortnorm = Amortnorm.new(amortnorm_params)
     if(@amortnorm.save)
       redirect_to(:action => "index")
-        createMessage(session[:lan])
+        flash[:notice] = l(:createMessage)
       else
         render("new")
       end
@@ -41,7 +34,7 @@ class AmortnormsController < ApplicationController
   def show
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     end
   end
 
@@ -49,7 +42,7 @@ class AmortnormsController < ApplicationController
      @amortnorm = Amortnorm.find(params[:id])
       if (@amortnorm.update_attributes(amortnorm_params))
         redirect_to(:action => "index")
-        updateMessage(session[:lan])
+        flash[:notice] = l(:updateMessage)
       else
         render("edit")
       end
@@ -58,7 +51,7 @@ class AmortnormsController < ApplicationController
   def edit
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
-      errorMessage(session[:lan])
+      flash[:error] = l(:errorMessage)
     else
       @amortnorm = Amortnorm.find(params[:id])
     end

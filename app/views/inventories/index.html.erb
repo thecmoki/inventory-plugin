@@ -45,6 +45,7 @@
 						<th><%= l(:productColor) %></th>
 						<th><%= l(:productId) %></th>
 						<th><%= l(:serialNumber) %></th>
+						<th><%= "Image" %></th>
 						<th><%= l(:buyDate) %></th>
 						<th><%= l(:activationDate) %></th>
 						<th><%= l(:amortizationNorm) %></th>
@@ -71,6 +72,7 @@
 									<td><%= inventory.color %></td>
 									<td><%= inventory.product_id %></td>
 									<td><%= inventory.serial_number %></td>
+									<td><%= image_tag(inventory.image1.url(:thumb)) %>, <%= image_tag(inventory.image2.url(:thumb)) %></td>
 									<td><%= inventory.buy_date %></td>
 									<td><%= inventory.activation_date %></td>
 									<td><%= inventory.amortization_norm + " %" %></td>
@@ -100,6 +102,7 @@
 										<td><%= inventory.color %></td>
 										<td><%= inventory.product_id %></td>
 										<td><%= inventory.serial_number %></td>
+										<td><%= image_tag(inventory.image1.url(:thumb)) %>, <%= image_tag(inventory.image2.url(:thumb)) %></td>
 										<td><%= inventory.buy_date %></td>
 										<td><%= inventory.activation_date %></td>
 										<td><%= inventory.amortization_norm + " %" %></td>

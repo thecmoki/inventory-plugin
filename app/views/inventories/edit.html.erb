@@ -21,7 +21,7 @@
 	</div>
 <% end %>
 <div class = "splitcontentleft">
-	<%= form_for(:inventory, :url => {:action => "update", :id => @inventory.id}) do |f| %>
+	<%= form_for(:inventory, html: { multipart: true }, :url => {:action => "update", :id => @inventory.id}) do |f| %>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend1) %></legend>
 			<p>
@@ -58,6 +58,14 @@
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
+			<p>
+				<%= f.label(:image1) %>
+				<%= f.file_field(:image1) %>
+			</p>
+			<p>
+				<%= f.label(:image2) %>
+				<%= f.file_field(:image2) %>
+			</p>
 			<p>
 				<%= f.label(l(:buyDate)) %>
 				<%= f.date_field(:buy_date) %>

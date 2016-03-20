@@ -40,7 +40,6 @@
 				<thead>
 					<tr>
 						<th><%= link_to(l(:userName), user_path(User.current.id)) %></th>
-						<th><%= l(:userLogin) %></th>
 						<th><%= l(:roomName) %></th>
 						<th><%= l(:productName) %></th>
 						<th><%= l(:productColor) %></th>
@@ -67,7 +66,6 @@
 											<% end %>
 										<% end %>
 									</td>
-									<td><%= inventory.user_login %></td>
 									<td><%= inventory.room_name %></td>
 									<td><%= inventory.product_name %></td>
 									<td><%= inventory.color %></td>
@@ -97,7 +95,6 @@
 									<% if(inventory.user_login == User.current.login) %>
 										<td><%= link_to("#{inventory.user_name}", user_path(User.current.id)) %>
 										</td>
-										<td><%= inventory.user_login %></td>
 										<td><%= inventory.room_name %></td>
 										<td><%= inventory.product_name %></td>
 										<td><%= inventory.color %></td>

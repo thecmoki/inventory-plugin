@@ -63,17 +63,17 @@ class InventoriesController < ApplicationController
   	  @inventory = Inventory.new(inventory_params)
   	  if(@inventory.save)
         inv = Inventory.last
-        cat = Category.all
         unit = Unit.find(inv.product_name)
         user = User.find(inv.user_name)
-        room = Room.find_by name: inv.room_name
+        room = Room.find_by(name: inv.room_name)
         inv.update(:amortization_norm => unit.normamort)
         inv.update(:amortization => (unit.normamort.to_f / 100) * inv.neto_value.to_f)
-        inv.update(:user_name => user.firstname + " " + user.lastname)
+        inv.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         inv.update(:user_login => user.login)
-        inv.update(:product_name => unit.name)
         inv.update(:unit_id => unit.id)
         inv.update(:room_id => room.id)
+        inv.update(:product_name => unit.name)
+        cat = Category.all
         cat.each do |c|
           if(c.id == inv.unit.category_id)
             inv.update(:product_id => c.uniquecode)
@@ -95,16 +95,34 @@ class InventoriesController < ApplicationController
     else
   	  @inventory = Inventory.find(params[:id])
   	  if (@inventory.update_attributes(inventory_params))
-        user = User.find(@inventory.user_name)
+        @units = Unit.all
+        @units.each do |u|
+          if(u.name == @inventory.product_name)
+            @inventory.update(:product_name => u.id)
+          end
+        end
         unit = Unit.find(@inventory.product_name)
-        room = Room.find_by name: @inventory.room_name
+        @users = User.all
+        @users.each do |u|
+          if(u.full_name == @inventory.user_name)
+            @inventory.update(:user_name => u.id)
+          end
+        end
+        user = User.find(@inventory.user_name)
+        room = Room.find_by(name: @inventory.room_name)
         @inventory.update(:amortization_norm => unit.normamort)
         @inventory.update(:amortization => (unit.normamort.to_f / 100) * @inventory.neto_value.to_f)
-        @inventory.update(:product_name => unit.name)
-        @inventory.update(:user_name => user.firstname + " " + user.lastname)
+        @inventory.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         @inventory.update(:user_login => user.login)
         @inventory.update(:unit_id => unit.id)
         @inventory.update(:room_id => room.id)
+        @inventory.update(:product_name => unit.name)
+        cat = Category.all
+        cat.each do |c|
+          if(c.id == @inventory.unit.category_id)
+            @inventory.update(:product_id => c.uniquecode)
+          end
+        end
         @history = History.new(:inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
   		  @history.save
         redirect_to(:action => "index")

@@ -27,7 +27,7 @@
 			<p>
 				<%= f.label(l(:userName)) %>
 				<span class = "required">*</span>
-				<%= f.collection_select(:user_name, User.all, :id, :full_name, :prompt => "Select User")%>
+				<%= f.collection_select(:user_name, User.all, :full_name, :full_name, :prompt => "Select User")%>
 			</p>
 			<p>
 				<%= f.label(l(:roomName)) %>
@@ -37,18 +37,13 @@
 			<p>
 				<%= f.label(l(:productName)) %>
 				<span class = "required">*</span>
-				<%= f.collection_select(:product_name, Unit.all, :id, :name, :prompt => "Select Product") %>
+				<%= f.collection_select(:product_name, Unit.all, :name, :name, :prompt => "Select Product") %>
 			</p>
 			<p>
 				<%= f.label(l(:serialNumber)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:serial_number) %>
 				<em class = "info" style = "margin-left: 10px;"><%= l(:em1) %></em>
-			</p>
-			<p>
-				<%= f.label(l(:productId)) %>
-				<span class = "required">*</span>
-				<%= f.text_field(:product_id) %>
 			</p>
 			<p>
 				<%= f.label(l(:activationDate)) %>

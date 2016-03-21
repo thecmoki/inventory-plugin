@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<h2>Inventory Overview</h2>
+		<h2><h2><%= l(:overviewHeader) %></h2></h2>
 			<div class = "tabs">
 				<ul>
 				<li><%= link_to(l(:goOverviews), overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
@@ -21,14 +21,13 @@
 			<div class="issues box">
 			<div class = "autoscroll">
 			<table class = "list">
-			<h3>Inventory Data</h3>
+			<h3><%= l(:overviewHeaderleft) %></h3>
 				<thead>
 					<tr>
 						<th><%= link_to(l(:userName), user_path(User.current.id)) %></th>
 						<th><%= l(:roomName) %></th>
 						<th><%= l(:productName) %></th>
 						<th><%= l(:serialNumber) %></th>
-						<th><%= l(:netoValue) %></th>
 						<th><%= l(:timeOfUse) %></th>
 						
 					</tr>
@@ -48,7 +47,6 @@
 									<td><%= inventory.room_name %></td>
 									<td><%= inventory.product_name %></td>
 									<td><%= inventory.serial_number %></td>
-									<td><%= inventory.neto_value %></td>
 									<td><%= inventory.days.to_s + " " + l(:days) %></td>
 									</tr>
 						<%end%>
@@ -65,7 +63,6 @@
 										<td><%= inventory.room_name %></td>
 										<td><%= inventory.product_name %></td>
 										<td><%= inventory.serial_number %></td>
-										<td><%= inventory.neto_value %></td>
 										<td><%= inventory.days.to_s + " " + l(:days) %></td>
 										
 									<% end %>
@@ -84,7 +81,7 @@
 			<div class="issues box">
 			<div class = "autoscroll">
 			<table class = "list">
-			<h3>Category Data</h3>
+			<h3><%= l(:overviewHeaderright) %></h3>
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -111,7 +108,7 @@
 		</div>
 
 		<% content_for :sidebar do %>
-  			<h3>Reports</h3>
+  			<h3><%= l(:reportsHeader) %></h3>
   			<ul>
    				 <li><%= link_to(l(:goInventories), inventories_path) %></li>
                 <li><%= link_to(l(:goCategories), categories_path) %></li>

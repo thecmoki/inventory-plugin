@@ -1,7 +1,6 @@
 class InventoriesController < ApplicationController
   
-  before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
-
+   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
    def index
   #   if(session[:lan] == nil)
   #     session[:lan] = "en"
@@ -12,7 +11,7 @@ class InventoriesController < ApplicationController
   #   end
     @users = User.all
     @units = Unit.all
-  	#@inventories = Inventory.all
+    update_time_of_use
     if(User.current.admin == true)
       if params[:q]  == nil
         @search = Inventory.search(params[:q])
@@ -34,10 +33,12 @@ class InventoriesController < ApplicationController
   end
 
   def show
+    update_time_of_use
   	@inventory = Inventory.find(params[:id])
   end
 
   def edit
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       flash[:error] = l(:errorMessage)
@@ -47,6 +48,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       flash[:error] = l(:errorMessage)
@@ -72,6 +74,7 @@ class InventoriesController < ApplicationController
         inv.update(:user_login => user.login)
         inv.update(:unit_id => unit.id)
         inv.update(:room_id => room.id)
+        inv.update(:time_of_use => inv.days)
         inv.update(:product_name => unit.name)
         cat = Category.all
         cat.each do |c|
@@ -94,6 +97,7 @@ class InventoriesController < ApplicationController
       redirect_to(:controller => "inventories", :action => "index")
     else
   	  @inventory = Inventory.find(params[:id])
+      @inv = Inventory.last
   	  if (@inventory.update_attributes(inventory_params))
         @units = Unit.all
         @units.each do |u|
@@ -111,16 +115,21 @@ class InventoriesController < ApplicationController
         user = User.find(@inventory.user_name)
         room = Room.find_by(name: @inventory.room_name)
         @inventory.update(:amortization_norm => unit.normamort)
-        @inventory.update(:amortization => (unit.normamort.to_f / 100) * @inventory.neto_value.to_f)
+        @inventory.update(:amortization => (@inventory.amortization_norm.to_f / 100) * @inventory.neto_value.to_f)
         @inventory.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         @inventory.update(:user_login => user.login)
         @inventory.update(:unit_id => unit.id)
         @inventory.update(:room_id => room.id)
+        @inventory.update(:time_of_use => @inventory.days)
         @inventory.update(:product_name => unit.name)
         cat = Category.all
         cat.each do |c|
           if(c.id == @inventory.unit.category_id)
-            @inventory.update(:product_id => c.uniquecode)
+            if(@inventory.product_name == @inv.product_name)
+              @inventory.update(:product_name => @inv.product_name)
+            else
+              @inventory.update(:product_id => c.uniquecode)
+            end
           end
         end
         @history = History.new(:inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
@@ -152,5 +161,11 @@ class InventoriesController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
+  end
+  def update_time_of_use
+    @inventories = Inventory.all
+    @inventories.each do |inventory|
+      inventory.update(:time_of_use => inventory.days)
+    end
   end
 end

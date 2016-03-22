@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       flash[:error] = l(:errorMessage)
@@ -12,6 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       flash[:error] = l(:errorMessage)
@@ -21,6 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       flash[:error] = l(:errorMessage)
@@ -30,6 +33,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
       eflash[:error] = l(:errorMessage)
@@ -84,5 +88,11 @@ class CategoriesController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
+  end
+  def update_time_of_use
+    @inventories = Inventory.all
+    @inventories.each do |inventory|
+      inventory.update(:time_of_use => inventory.days)
+    end
   end
 end

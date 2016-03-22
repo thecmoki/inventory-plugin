@@ -3,7 +3,7 @@ class HistoriesController < ApplicationController
   before_filter(:find_project, :authorize, :only => [:index])
 
   def index
-  	#@histories = History.all
+    update_time_of_use
   	@users = User.all
     if(User.current.admin == true)
       if params[:q]  == nil
@@ -28,5 +28,11 @@ class HistoriesController < ApplicationController
   def find_project
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
+  end
+  def update_time_of_use
+    @inventories = Inventory.all
+    @inventories.each do |inventory|
+      inventory.update(:time_of_use => inventory.days)
+    end
   end
 end

@@ -75,7 +75,15 @@
 									<td><%= inventory.color %></td>
 									<td><%= inventory.product_id %></td>
 									<td><%= inventory.serial_number %></td>
-									<td><%= image_tag(inventory.image1.url(:thumb)) %>, <%= image_tag(inventory.image2.url(:thumb)) %></td>
+									<% if inventory.image1.blank? && inventory.image2.blank? %>
+									<td><%= %></td>
+									<% elsif inventory.image1.blank? && inventory.image2.blank? == false %>
+									<td><%= image_tag(inventory.image2.url(:thumb)) %></td>
+									<% elsif inventory.image1.blank? == false && inventory.image2.blank? %>
+									<td><%= image_tag(inventory.image1.url(:thumb)) %></td>
+									<%else%>
+										<td><%= image_tag(inventory.image2.url(:thumb)) %>, <%= image_tag(inventory.image1.url(:thumb)) %></td>
+									<%end%>
 									<td><%= inventory.buy_date %></td>
 									<td><%= inventory.activation_date %></td>
 									<td><%= inventory.amortization_norm + " %" %></td>

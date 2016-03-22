@@ -60,8 +60,21 @@
 					</tr>
 				</thead>
 				<tbody>
+				 
 					<% if(User.current.admin == true) %>
+
 						<% @inventories.each do |inventory| %>
+						<script language="Javascript"> 
+
+    function PopupPic(sPicURL) { 
+
+      window.open( "popup.htm?"+sPicURL, "",  
+
+      "resizable=1,HEIGHT=200,WIDTH=200"); 
+
+    } 
+
+    </script>
 								<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 									<td>
 										<% @users.each do |user| %>
@@ -78,11 +91,15 @@
 									<% if inventory.image1.blank? && inventory.image2.blank? %>
 									<td><%= %></td>
 									<% elsif inventory.image1.blank? && inventory.image2.blank? == false %>
-									<td><%= image_tag(inventory.image2.url(:thumb)) %></td>
+									<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+										</td>
+
+
+
 									<% elsif inventory.image1.blank? == false && inventory.image2.blank? %>
-									<td><%= image_tag(inventory.image1.url(:thumb)) %></td>
+									<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
 									<%else%>
-										<td><%= image_tag(inventory.image2.url(:thumb)) %>, <%= image_tag(inventory.image1.url(:thumb)) %></td>
+										<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
 									<%end%>
 									<td><%= inventory.buy_date %></td>
 									<td><%= inventory.activation_date %></td>

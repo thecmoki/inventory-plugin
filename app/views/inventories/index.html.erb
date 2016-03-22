@@ -64,17 +64,6 @@
 					<% if(User.current.admin == true) %>
 
 						<% @inventories.each do |inventory| %>
-						<script language="Javascript"> 
-
-    function PopupPic(sPicURL) { 
-
-      window.open( "popup.htm?"+sPicURL, "",  
-
-      "resizable=1,HEIGHT=200,WIDTH=200"); 
-
-    } 
-
-    </script>
 								<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 									<td>
 										<% @users.each do |user| %>

@@ -12,6 +12,7 @@ class InventoriesController < ApplicationController
     @users = User.all
     @units = Unit.all
     update_time_of_use
+    llog_amort
     if(User.current.admin == true)
       if params[:q]  == nil
         @search = Inventory.search(params[:q])
@@ -69,7 +70,7 @@ class InventoriesController < ApplicationController
         user = User.find(inv.user_name)
         room = Room.find_by(name: inv.room_name)
         inv.update(:amortization_norm => unit.normamort)
-        inv.update(:amortization => (unit.normamort.to_f / 100) * inv.neto_value.to_f)
+        llog_amort
         inv.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         inv.update(:user_login => user.login)
         inv.update(:unit_id => unit.id)
@@ -115,7 +116,7 @@ class InventoriesController < ApplicationController
         user = User.find(@inventory.user_name)
         room = Room.find_by(name: @inventory.room_name)
         @inventory.update(:amortization_norm => unit.normamort)
-        @inventory.update(:amortization => (@inventory.amortization_norm.to_f / 100) * @inventory.neto_value.to_f)
+        llog_amort
         @inventory.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         @inventory.update(:user_login => user.login)
         @inventory.update(:unit_id => unit.id)
@@ -162,7 +163,7 @@ class InventoriesController < ApplicationController
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
-  
+
   def update_time_of_use
     @inventories = Inventory.all
     @inventories.each do |inventory|
@@ -171,18 +172,37 @@ class InventoriesController < ApplicationController
   end
 
   def llog_amort
-    if(self.buy_date.year == Time.now.year)
-      if(self.buy_date.month <= 6)
-       self.amortization_norm
-      
+    inventories = Inventory.all
+    inventories.each do |inventory|
+      dif = Time.now.year - inventory.buy_date.year
+      year = inventory.buy_date.year
+      an = ""
+      count = 0
+      if(inventory.buy_date.year.to_i >= Time.now.year.to_i)
+        inventory.update(:amortization => 0)
       else
-        a_n = self.amortization_norm.to_f / 2.0
-        self.assign_attributes(:amortization_norm => a_n)
+        for i in year...(year + dif)
+          if(i == inventory.buy_date.year)
+            if(inventory.buy_date.month <= 6)
+             a_n = inventory.amortization_norm
+             count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
+             inventory.update(:amortization => count)
+            else
+              a_n = inventory.amortization_norm.to_f / 2.0
+              count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
+              inventory.update(:amortization => count)
+            end
+          elsif(i < Time.now.year)
+             a_n = inventory.amortization_norm
+             count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
+             if(count > inventory.neto_value.to_f)
+              inventory.update(:amortization => inventory.neto_value)
+            else
+             inventory.update(:amortization => count)
+           end
+         end
+        end
       end
-
-    else
-       self.amortization_norm
-      
     end
   end
 end

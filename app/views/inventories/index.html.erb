@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<% @inventories.each do |inventory| %>
-			<%= inventory.llog_amort %>
-		<% end %>
+		<%# @inventories.each do |inventory| %>
+			<%#= inventory.llog_amort %>
+		<%# end %>
 		<% if(User.current.admin == true) %>
 			<div class = "contextual">
 				<%= link_to(l(:addInventory), inventories_new_path, :class => "icon icon-add") %>

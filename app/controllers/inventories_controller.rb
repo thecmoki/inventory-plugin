@@ -162,10 +162,27 @@ class InventoriesController < ApplicationController
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
+  
   def update_time_of_use
     @inventories = Inventory.all
     @inventories.each do |inventory|
       inventory.update(:time_of_use => inventory.days)
+    end
+  end
+
+  def llog_amort
+    if(self.buy_date.year == Time.now.year)
+      if(self.buy_date.month <= 6)
+       self.amortization_norm
+      
+      else
+        a_n = self.amortization_norm.to_f / 2.0
+        self.assign_attributes(:amortization_norm => a_n)
+      end
+
+    else
+       self.amortization_norm
+      
     end
   end
 end

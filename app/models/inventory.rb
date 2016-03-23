@@ -30,20 +30,4 @@ class Inventory < ActiveRecord::Base
 		(Time.now.to_date - activation_date).to_i
 		#self.update_attributes(:time_of_use => "#{(Time.now.to_date - activation_date)}")
 	end
-
-	def llog_amort
-		if(self.buy_date.year == Time.now.year)
-			if(self.buy_date.month <= 6)
-			 self.amortization_norm
-			
-			else
-				a_n = self.amortization_norm.to_f / 2.0
-				self.assign_attributes(:amortization_norm => a_n)
-			end
-
-		else
-			 self.amortization_norm
-			
-		end
-	end
 end

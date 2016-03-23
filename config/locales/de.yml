@@ -87,3 +87,9 @@ de:
   productCategoryId: Kategorie
   productQuantity: Quantität
   productColor: Farbe
+
+  # Overview-Inventory-Category
+  overviewHeader: Übersight
+  overviewHeaderleft: Inventare Daten
+  overviewHeaderright: Kategorie Daten
+  reportsHeader: Raporte

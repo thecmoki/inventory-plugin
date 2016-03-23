@@ -87,3 +87,9 @@ sq:
   productCategoryId: Kategoria
   productQuantity: Sasia
   productColor: Ngjyra
+
+  # Overview-Inventory-Category
+  overviewHeader: Permbajtja
+  overviewHeaderleft: Te dhenat e Inventarit
+  overviewHeaderright: Te dhenat e Kategorise
+  reportsHeader: Raportet

@@ -88,3 +88,9 @@ en:
   productCategoryId: Category
   productQuantity: Quantity
   productColor: Color
+
+  # Overview-Inventory-Category
+  overviewHeader: Overview
+  overviewHeaderleft: Inventory Data
+  overviewHeaderright: Category Data
+  reportsHeader: Reports

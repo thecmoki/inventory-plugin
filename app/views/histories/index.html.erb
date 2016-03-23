@@ -43,6 +43,7 @@
 						<th><%= l(:productColor) %></th>
 						<th><%= l(:productId) %></th>
 						<th><%= l(:serialNumber) %></th>
+						<th><%= "Image" %></th>
 						<th><%= l(:buyDate) %></th>
 						<th><%= l(:activationDate) %></th>
 						<th><%= l(:amortizationNorm) %></th>
@@ -69,11 +70,21 @@
 								<td><%= history.color %></td>
 								<td><%= history.product_id %></td>
 								<td><%= history.serial_number %></td>
+								<% if history.image1.blank? && history.image2.blank? %>
+									<td><%= %></td>
+								<% elsif history.image1.blank? && history.image2.blank? == false %>
+									<td><%=link_to image_tag(history.image2.url(:thumb)), history.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+									</td>
+								<% elsif history.image1.blank? == false && history.image2.blank? %>
+									<td><%=link_to image_tag(history.image1.url(:thumb)), history.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+								<%else%>
+									<td><%=link_to image_tag(history.image1.url(:thumb)), history.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(history.image2.url(:thumb)), history.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+								<%end%>
 								<td><%= history.buy_date %></td>
 								<td><%= history.activation_date %></td>
 								<td><%= history.amortization_norm + " %" %></td>
-								<td><%= history.amortization + " €" %></td>
-								<td><%= history.neto_value + " €" %></td>
+								<td><%= history.amortization.to_s + " €" %></td>
+								<td><%= history.neto_value.to_s + " €" %></td>
 								<td><%= history.days.to_s + " " + l(:days) %></td>
 								<td><%= history.comment %></td>
 								<td><%= history.updated_at.to_date %></td>
@@ -95,11 +106,21 @@
 										<td><%= history.color %></td>
 										<td><%= history.product_id %></td>
 										<td><%= history.serial_number %></td>
+										<% if history.image1.blank? && history.image2.blank? %>
+											<td><%= %></td>
+										<% elsif history.image1.blank? && history.image2.blank? == false %>
+											<td><%=link_to image_tag(history.image2.url(:thumb)), history.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+											</td>
+										<% elsif history.image1.blank? == false && history.image2.blank? %>
+											<td><%=link_to image_tag(history.image1.url(:thumb)), history.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<%else%>
+											<td><%=link_to image_tag(history.image1.url(:thumb)), history.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(history.image2.url(:thumb)), history.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<%end%>
 										<td><%= history.buy_date %></td>
 										<td><%= history.activation_date %></td>
-										<td><%= history.amortization_norm + " %" %></td>
-										<td><%= history.amortization + " €" %></td>
-										<td><%= history.neto_value + " €" %></td>
+										<td><%= history.amortization_norm.to_s + " %" %></td>
+										<td><%= history.amortization.to_s + " €" %></td>
+										<td><%= history.neto_value.to_s + " €" %></td>
 										<td><%= history.days.to_s + " " + l(:days) %></td>
 										<td><%= history.comment %></td>
 										<td><%= history.updated_at.to_date %></td>

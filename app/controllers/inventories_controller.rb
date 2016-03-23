@@ -34,11 +34,13 @@ class InventoriesController < ApplicationController
   end
 
   def show
+    llog_amort
     update_time_of_use
   	@inventory = Inventory.find(params[:id])
   end
 
   def edit
+    llog_amort
     update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
@@ -49,6 +51,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
+    llog_amort
     update_time_of_use
     if(User.current.admin == false)
       redirect_to(:controller => "inventories", :action => "index")
@@ -64,13 +67,13 @@ class InventoriesController < ApplicationController
       flash[:notice] = l(:createMessage)
     else
   	  @inventory = Inventory.new(inventory_params)
+      llog_amort
   	  if(@inventory.save)
         inv = Inventory.last
         unit = Unit.find(inv.product_name)
         user = User.find(inv.user_name)
         room = Room.find_by(name: inv.room_name)
         inv.update(:amortization_norm => unit.normamort)
-        llog_amort
         inv.update(:user_name => user.firstname + " " + user.lastname + " - " + user.login)
         inv.update(:user_login => user.login)
         inv.update(:unit_id => unit.id)
@@ -83,7 +86,7 @@ class InventoriesController < ApplicationController
             inv.update(:product_id => c.uniquecode)
           end
         end
-        @history = History.new(:inventory_id => inv.id, :color => inv.color, :user_name => inv.user_name, :user_login => inv.user_login, :room_name => inv.room_name, :product_name => inv.product_name, :product_id => inv.product_id, :serial_number => inv.serial_number, :buy_date => inv.buy_date, :activation_date => inv.activation_date, :amortization_norm => inv.amortization_norm, :amortization => inv.amortization, :neto_value => inv.neto_value, :time_of_use => inv.time_of_use, :comment => inv.comment, :updated_at => inv.updated_at)
+        @history = History.new(:image1 => inv.image1, :image2 => inv.image2, :inventory_id => inv.id, :color => inv.color, :user_name => inv.user_name, :user_login => inv.user_login, :room_name => inv.room_name, :product_name => inv.product_name, :product_id => inv.product_id, :serial_number => inv.serial_number, :buy_date => inv.buy_date, :activation_date => inv.activation_date, :amortization_norm => inv.amortization_norm, :amortization => inv.amortization, :neto_value => inv.neto_value, :time_of_use => inv.time_of_use, :comment => inv.comment, :updated_at => inv.updated_at)
   		  @history.save
         redirect_to(:action => "index")
         flash[:notice] = l(:createMessage)
@@ -133,7 +136,7 @@ class InventoriesController < ApplicationController
             end
           end
         end
-        @history = History.new(:inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
+        @history = History.new(:image1 => @inventory.image1, :image2 => @inventory.image2, :inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
   		  @history.save
         redirect_to(:action => "index")
         flash[:notice] = l(:updateMessage)
@@ -180,6 +183,7 @@ class InventoriesController < ApplicationController
       count = 0
       if(inventory.buy_date.year.to_i >= Time.now.year.to_i)
         inventory.update(:amortization => 0)
+        inventory.save
       else
         for i in year...(year + dif)
           if(i == inventory.buy_date.year)
@@ -187,18 +191,22 @@ class InventoriesController < ApplicationController
              a_n = inventory.amortization_norm
              count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
              inventory.update(:amortization => count)
+             inventory.save
             else
               a_n = inventory.amortization_norm.to_f / 2.0
               count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
               inventory.update(:amortization => count)
+              inventory.save
             end
           elsif(i < Time.now.year)
              a_n = inventory.amortization_norm
              count = count + ((a_n.to_f / 100.0) * inventory.neto_value.to_f)
              if(count > inventory.neto_value.to_f)
               inventory.update(:amortization => inventory.neto_value)
+              inventory.save
             else
              inventory.update(:amortization => count)
+             inventory.save
            end
          end
         end

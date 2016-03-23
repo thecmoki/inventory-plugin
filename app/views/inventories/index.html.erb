@@ -78,17 +78,14 @@
 									<td><%= inventory.product_id %></td>
 									<td><%= inventory.serial_number %></td>
 									<% if inventory.image1.blank? && inventory.image2.blank? %>
-									<td><%= %></td>
+										<td><%= %></td>
 									<% elsif inventory.image1.blank? && inventory.image2.blank? == false %>
-									<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+										<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
 										</td>
-
-
-
 									<% elsif inventory.image1.blank? == false && inventory.image2.blank? %>
-									<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
 									<%else%>
-										<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
 									<%end%>
 									<td><%= inventory.buy_date %></td>
 									<td><%= inventory.activation_date %></td>
@@ -119,7 +116,16 @@
 										<td><%= inventory.color %></td>
 										<td><%= inventory.product_id %></td>
 										<td><%= inventory.serial_number %></td>
-										<td><%= image_tag(inventory.image1.url(:thumb)) %>, <%= image_tag(inventory.image2.url(:thumb)) %></td>
+										<% if inventory.image1.blank? && inventory.image2.blank? %>
+											<td><%= %></td>
+										<% elsif inventory.image1.blank? && inventory.image2.blank? == false %>
+											<td><%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+											</td>
+										<% elsif inventory.image1.blank? == false && inventory.image2.blank? %>
+											<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<%else%>
+											<td><%=link_to image_tag(inventory.image1.url(:thumb)), inventory.image1.url(:original), :popup=>['original_image', 'height=700,width=900'] %>, <%=link_to image_tag(inventory.image2.url(:thumb)), inventory.image2.url(:original), :popup=>['original_image', 'height=700,width=900'] %></td>
+										<%end%>
 										<td><%= inventory.buy_date %></td>
 										<td><%= inventory.activation_date %></td>
 										<td><%= inventory.amortization_norm + " %" %></td>

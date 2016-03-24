@@ -13,10 +13,10 @@ class Inventory < ActiveRecord::Base
 	validates(:room_name, :presence => true)
 	validates(:product_name, :presence => true)
 	validates :product_id, :uniqueness => true
-	validates(:serial_number, :presence => true, :uniqueness => true)
 	validates(:serial_number, :presence => true, :uniqueness => true, format: { with: /\A[a-zA-Z0-9]+\z/})
 	validates(:activation_date, :presence => true)
 	validates(:neto_value, presence: true, :numericality => {:greater_than => -1})
+	validates(:buy_date, :presence => true)
 	
 	def self.ransackable_attributes(auth_object = nil)
 		if(User.current.admin == true)

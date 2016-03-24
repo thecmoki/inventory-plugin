@@ -46,6 +46,11 @@
 				<em class = "info" style = "margin-left: 10px;"><%= l(:em1) %></em>
 			</p>
 			<p>
+				<%= f.label(l(:buyDate)) %>
+				<span class = "required">*</span>
+				<%= f.date_field(:buy_date) %>
+			</p>
+			<p>
 				<%= f.label(l(:activationDate)) %>
 				<span class = "required">*</span>
 				<%= f.date_field(:activation_date) %>
@@ -59,16 +64,12 @@
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
 			<p>
-				<%= f.label(:image1) %>
+				<%= f.label(l(:image1)) %>
 				<%= f.file_field(:image1) %>
 			</p>
 			<p>
-				<%= f.label(:image2) %>
+				<%= f.label(l(:image2)) %>
 				<%= f.file_field(:image2) %>
-			</p>
-			<p>
-				<%= f.label(l(:buyDate)) %>
-				<%= f.date_field(:buy_date) %>
 			</p>
 			<p>
 				<%= f.label(l(:productColor)) %>

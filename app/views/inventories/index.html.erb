@@ -43,7 +43,7 @@
 			<%#= inventory.llog_amort %>
 		<%# end %>
 		<% if(User.current.admin == true) %>
-			<div class = "contextual">defined
+			<div class = "contextual">
 				<%= link_to(l(:addInventory), inventories_new_path, :class => "icon icon-add") %>
 			</div>
 		<% end %>
@@ -86,7 +86,7 @@
 						<th><%= l(:productColor) %></th>
 						<th><%= l(:productId) %></th>
 						<th><%= l(:serialNumber) %></th>
-						<th><%= "Image" %></th>
+						<th><%= l(:image) %></th>
 						<th><%= l(:buyDate) %></th>
 						<th><%= l(:activationDate) %></th>
 						<th><%= l(:amortizationNorm) %></th>
@@ -148,7 +148,7 @@
 									<td><%= inventory.buy_date %></td>
 									<td><%= inventory.activation_date %></td>
 									<td><%= inventory.amortization_norm + " %" %></td>
-									<td><%= inventory.amortization + " €" %></td>
+									<td><%= inventory.amortization.to_s + " €" %></td>
 									<td><%= inventory.neto_value + " €" %></td>
 									<td><%= inventory.time_of_use.to_s + " " + l(:days) %></td>
 									<td><%= inventory.comment %></td>
@@ -204,7 +204,6 @@
 										 <%#= image_tag(inventory.image1.url(:thumb)) %>
 										<!-- <a href="javascript:PopupPic('<%#= inventory.image1.url %>')"><%#= image_tag(inventory.image1.url(:thumb)) %></a> --></td>
 									<%end%>
-										<td><%= image_tag(inventory.image1.url(:thumb)) %>, <%= image_tag(inventory.image2.url(:thumb)) %></td>
 										<td><%= inventory.buy_date %></td>
 										<td><%= inventory.activation_date %></td>
 										<td><%= inventory.amortization_norm + " %" %></td>

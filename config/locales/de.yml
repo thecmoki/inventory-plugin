@@ -29,6 +29,7 @@ de:
   # Inventory and History
   inventoryId: Inv-ID # History
   historyHeader: Geschichte # History
+  image: Fotos
   days: Tage
   inventoryHeader: Inventare
   addInventory: Neues Inventar
@@ -47,6 +48,8 @@ de:
   timeOfUse: Zeit der Nutzung
   comment: Kommentar
   productId: Produkt Id
+  image1: Foto 1
+  image2: Foto 2
   createdAt: Erstellt bei
   updatedAt: Aktualisiert bei
 

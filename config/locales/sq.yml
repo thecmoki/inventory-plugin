@@ -29,6 +29,7 @@ sq:
   # Inventari dhe Historia
   inventoryId: ID-Inv # Historia
   historyHeader: Historia # Historia
+  image: Fotografit
   days: Dite
   inventoryHeader: Inventaret
   addInventory: Shto Inventar
@@ -47,6 +48,8 @@ sq:
   timeOfUse: Koha e Perdorimit
   comment: Komenti
   productId: Id e Produktit
+  image1: Fotografia 1
+  image2: Fotografia 2
   createdAt: Krijuar Me
   updatedAt: Ndryshuar Me
 

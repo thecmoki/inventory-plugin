@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<h2><h2><%= l(:overviewHeader) %></h2></h2>
+		<h2><%= l(:overviewHeader) %></h2>
 			<div class = "tabs">
 				<ul>
 				<li><%= link_to(l(:goOverviews), overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
@@ -120,6 +120,11 @@
 		<% content_for :header_tags do %>
     		<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
 		<% end %>
+
+
+	<!--<% other_formats_links do |f| %>
+  <%= f.link_to 'PDF', :url => params %>
+<% end %>-->
 
 	</body>
 </html>

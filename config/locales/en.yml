@@ -17,13 +17,13 @@ en:
   goAmortNorms: Amortization Norms
   goHistories: History
   goInventories: Inventories
-  goOverviews: Overviews
+  goOverviews: Dashboard
   apply: Search
   clear: Clear
   edit: Edit
   delete: Delete
   newSubmit: Create
-  editSubmit: Edit
+  editSubmit: Save
   dataConfirm: Are you sure?
   
   # Inventory and History
@@ -93,7 +93,7 @@ en:
   productColor: Color
 
   # Overview-Inventory-Category
-  overviewHeader: Overview
+  overviewHeader: Inventory Dashboard
   overviewHeaderleft: Inventory Data
   overviewHeaderright: Category Data
   reportsHeader: Reports

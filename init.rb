@@ -17,5 +17,6 @@ Redmine::Plugin.register :regjistrimi_inventarit do
                                          :overviews => [:index]})
     menu(:project_menu, :regjistrimi_inventarit, {:controller => "overviews", :action => "index"},
   						:caption => "Inventory", :after => :activity, :param => :project_id, :class => "activity")
+
   end
 end

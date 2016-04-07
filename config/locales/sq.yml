@@ -17,13 +17,13 @@ sq:
   goAmortNorms: Normat e Amortizimit
   goHistories: Historia
   goInventories: Inventaret
-  goOverviews: Permbajtja
+  goOverviews: Paneli
   apply: Kerko
   clear: Pastro
   edit: Ndrysho
   delete: Fshi
   newSubmit: Krijo
-  editSubmit: Ndrysho
+  editSubmit: Ruaj ndryshimin
   dataConfirm: A jeni te sigurt?
   
   # Inventari dhe Historia
@@ -92,7 +92,7 @@ sq:
   productColor: Ngjyra
 
   # Overview-Inventory-Category
-  overviewHeader: Permbajtja
+  overviewHeader: Paneli Invantarit
   overviewHeaderleft: Te dhenat e Inventarit
   overviewHeaderright: Te dhenat e Kategorise
   reportsHeader: Raportet

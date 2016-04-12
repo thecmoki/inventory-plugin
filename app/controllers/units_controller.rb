@@ -1,88 +1,53 @@
 require 'securerandom'
 class UnitsController < ApplicationController  
-
+  menu_item :overviews, :only => [:index, :show, :edit, :new, :update, :create]
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @units = Unit.all
-      @categories = Category.all
-    end
+	  @units = Unit.all
+    @categories = Category.all
   end
   
   def show
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @unit = Unit.find(params[:id])
-    end
+ 	  @unit = Unit.find(params[:id])
   end
   
   def edit
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @unit = Unit.find(params[:id])
-    end
+    @unit = Unit.find(params[:id])
   end
   
   def update
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @unit = Unit.find(params[:id])
-  	  if (@unit.update_attributes(unit_params))
-  		  redirect_to(:action => "index")
-        flash[:notice] = l(:updateMessage)
-  	  else
-  		  render(:controller => "units", :action => "edit")
-  	  end
-    end
+	  @unit = Unit.find(params[:id])
+	  if (@unit.update_attributes(unit_params))
+		  redirect_to(:action => "index")
+      flash[:notice] = l(:updateMessage)
+	  else
+		  render(:controller => "units", :action => "edit")
+	  end
   end
   
   def new
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @unit = Unit.new
-    end
+    @unit = Unit.new
   end
-
-  
-
   
   def create
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @unit = Unit.new(unit_params)
-  	  if(@unit.save)
-  		  redirect_to(:action => "index")
-        flash[:notice] = l(:createMessage)
-  	  else
-  		  render("new")
-  	  end
-    end
+    @unit = Unit.new(unit_params)
+	  if(@unit.save)
+		  redirect_to(:action => "index")
+      flash[:notice] = l(:createMessage)
+	  else
+		  render("new")
+	  end
   end
   
   def destroy
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @unit = Unit.find(params[:id])
-  	  @unit.destroy
-  	  redirect_to(:action => "index")
-    end
+	  @unit = Unit.find(params[:id])
+	  @unit.destroy
+	  redirect_to(:action => "index")
   end
 
   private

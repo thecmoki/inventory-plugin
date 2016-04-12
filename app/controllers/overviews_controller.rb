@@ -13,6 +13,7 @@ before_filter(:find_project, :authorize, :only => [:index])
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
+  
   def update_time_of_use
     @inventories = Inventory.all
     @inventories.each do |inventory|

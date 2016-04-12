@@ -47,5 +47,3 @@ delete("projects/:project_id/amortnorms/:id/destroy" => "amortnorms#destroy", :a
 get("projects/:project_id/histories" => "histories#index", :as => "histories")
 get("projects/:project_id/histories/search" => "histories#index")
 post("projects/:project_id/histories/search" => "histories#index", :as => "search_histories")
-
-

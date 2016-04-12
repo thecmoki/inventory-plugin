@@ -1,82 +1,51 @@
 class CategoriesController < ApplicationController
-  
+  menu_item :overviews, :only => [:index, :show, :edit, :new, :update, :create]
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @categories = Category.all
-    end
+  	@categories = Category.all
   end
 
   def show
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @category = Category.find(params[:id])
-    end
+  	@category = Category.find(params[:id])
   end
 
   def edit
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-  	  @category = Category.find(params[:id])
-    end
+  	@category = Category.find(params[:id])
   end
 
   def new
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      eflash[:error] = l(:errorMessage)
-    else
-  	  @category = Category.new
-    end
+  	@category = Category.new
   end
 
   def create
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @category = Category.new(category_params)
-  	  if(@category.save)
-  		  redirect_to(:action => "index")
-        flash[:notice] = l(:createMessage)
-  	  else
-  		  render("new")
-  	  end
-    end
-  end
-  def update
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @category = Category.find(params[:id])
-      if (@category.update_attributes(category_params))
-        redirect_to(:action => "index")
-        flash[:notice] = l(:updateMessage)
-      else 
-        render("edit") 
-  	  end 
+	  @category = Category.new(category_params)
+	  if(@category.save)
+		  redirect_to(:action => "index")
+      flash[:notice] = l(:createMessage)
+	  else
+		  render("new")
     end
   end
 
+  def update
+	  @category = Category.find(params[:id])
+    if (@category.update_attributes(category_params))
+      redirect_to(:action => "index")
+      flash[:notice] = l(:updateMessage)
+    else 
+      render("edit") 
+	  end 
+  end
+
   def destroy
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-    else
-  	  @category = Category.find(params[:id])
-  	  @category.destroy
-  	  redirect_to(:action => "index")
-    end
+	  @category = Category.find(params[:id])
+	  @category.destroy
+	  redirect_to(:action => "index")
   end
 
  private
@@ -89,6 +58,7 @@ class CategoriesController < ApplicationController
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
+
   def update_time_of_use
     @inventories = Inventory.all
     @inventories.each do |inventory|

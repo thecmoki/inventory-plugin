@@ -1,25 +1,15 @@
 class AmortnormsController < ApplicationController
-  
+  menu_item :overviews, :only => [:index, :show, :edit, :new, :update, :create]
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
 
   def index
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
       @amortnorms = Amortnorm.all
-    end
   end
 
   def new
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-      @amortnorm = Amortnorm.new
-    end
+    @amortnorm = Amortnorm.new
   end
 
   def create
@@ -34,30 +24,21 @@ class AmortnormsController < ApplicationController
 
   def show
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    end
   end
 
   def update
-     @amortnorm = Amortnorm.find(params[:id])
-      if (@amortnorm.update_attributes(amortnorm_params))
-        redirect_to(:action => "index")
-        flash[:notice] = l(:updateMessage)
-      else
-        render("edit")
-      end
+    @amortnorm = Amortnorm.find(params[:id])
+    if (@amortnorm.update_attributes(amortnorm_params))
+      redirect_to(:action => "index")
+      flash[:notice] = l(:updateMessage)
+    else
+      render("edit")
+    end
   end
 
   def edit
     update_time_of_use
-    if(User.current.admin == false)
-      redirect_to(:controller => "inventories", :action => "index")
-      flash[:error] = l(:errorMessage)
-    else
-      @amortnorm = Amortnorm.find(params[:id])
-    end
+    @amortnorm = Amortnorm.find(params[:id])
   end
 
   def destroy
@@ -75,6 +56,7 @@ class AmortnormsController < ApplicationController
     # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
+  
   def update_time_of_use
     @inventories = Inventory.all
     @inventories.each do |inventory|

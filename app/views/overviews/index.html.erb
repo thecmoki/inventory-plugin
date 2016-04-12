@@ -6,12 +6,10 @@
 				<ul>
 				<li><%= link_to(l(:goOverviews), overviews_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
 				<li><%= link_to(l(:goInventories), inventories_path) %></li>
-				<% if User.current.admin == true %>
-					<li><%= link_to(l(:goUnits), units_path) %></li>
-					<li><%= link_to(l(:goCategories), categories_path) %></li>
-					<li><%= link_to(l(:goRooms), rooms_path) %></li>
-					<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
-				<% end %>
+				<li><%= link_to(l(:goUnits), units_path) %></li>
+				<li><%= link_to(l(:goCategories), categories_path) %></li>
+				<li><%= link_to(l(:goRooms), rooms_path) %></li>
+				<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
 				<li><%= link_to(l(:goHistories), histories_path)%></li>
 			</ul>
 			<div class = "tabs-buttons"></div>

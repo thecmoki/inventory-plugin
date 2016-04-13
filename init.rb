@@ -8,7 +8,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
 
 
   project_module :regjistrimi_inventarit do
-<<<<<<< HEAD
+
     permission(:view_units, {:units => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_inventories, {:inventories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_overviews, {:overviews => [:index]})
@@ -26,7 +26,6 @@ Redmine::Plugin.register :regjistrimi_inventarit do
     menu(:project_menu, :overviews, {:controller => "overviews", :action => "index"},
   						:caption => "Inventory", :after => :activity, :param => :project_id)
    
-=======
     permission(:regjistrimi_inventarit, {:units => [:index, :show, :edit, :new, :create, :update, :destroy],
   									                     :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
                                          :histories => [:index],
@@ -36,7 +35,5 @@ Redmine::Plugin.register :regjistrimi_inventarit do
                                          :overviews => [:index]})
     menu(:project_menu, :regjistrimi_inventarit, {:controller => "overviews", :action => "index"},
   						:caption => "Inventory", :after => :activity, :param => :project_id, :class => "activity")
-
->>>>>>> f7ba02220f017a3af290ddf23f4588333b29f3be
   end
 end

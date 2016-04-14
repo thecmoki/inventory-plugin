@@ -1,5 +1,13 @@
 ---
 en:
+  permission_view_inventories: View Inventories
+  permission_view_overviews: View Overvies
+  permission_view_units: View Units
+  permission_view_rooms: View Rooms
+  permission_view_categories: View Categories
+  permission_view_amortnorms: View Amortization Norms
+  permission_view_histories: View Histories
+
 
   # For All
   errorMessage: You have no access.

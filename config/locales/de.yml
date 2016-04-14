@@ -1,5 +1,13 @@
 ---
 de:
+  
+  permission_view_inventories: Inventare Sehen
+  permission_view_overviews: Übersight Sehen
+  permission_view_units: Produkte Sehen
+  permission_view_rooms: Zimmer Sehen
+  permission_view_categories: Kategorien Sehen
+  permission_view_amortnorms: Abschreibungen Norm Sehen
+  permission_view_histories: Geschichte Sehen
 
   # For All
   errorMessage: Sie haben keinen Zugang.

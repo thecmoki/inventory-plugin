@@ -1,5 +1,13 @@
 ---
 sq:
+  
+  permission_view_inventories: Shiko Inventaret
+  permission_view_overviews: Shiko Dashbordin
+  permission_view_units: Shiko Pajisjet
+  permission_view_rooms: Shiko Dhomat
+  permission_view_categories: Shiko Kategorit
+  permission_view_amortnorms: Shiko Normen e Amortizimit
+  permission_view_histories: Shiko Historin
 
   # Per te gjitha
   errorMessage: Ju nuk keni qasje.

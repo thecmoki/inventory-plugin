@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'rqrcode_png'
 class UnitsController < ApplicationController  
   menu_item :overviews, :only => [:index, :show, :edit, :new, :update, :create]
   before_filter(:find_project, :authorize, :only => [:index, :show, :edit, :new, :update, :create])
@@ -12,6 +13,7 @@ class UnitsController < ApplicationController
   def show
     update_time_of_use
  	  @unit = Unit.find(params[:id])
+    @qr = RQRCode::QRCode.new(@unit.id.to_s+" "+@unit.name+" "+@unit.comment).to_img.resize(200, 200).to_data_url
   end
   
   def edit

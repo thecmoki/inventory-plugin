@@ -63,8 +63,14 @@
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
-
-			<!--<p id="attachments_form"><label><%= l(:label_attachment_plural) %></label><%= render :partial => 'attachments/form', :locals => {:container => @issue} %></p>-->
+			<p>
+				<%= f.label(l(:image1)) %>
+				<%= f.file_field(:image1) %>
+			</p>
+			<p>
+				<%= f.label(l(:image1)) %>
+				<%= f.file_field(:image2) %>
+			</p>
 			<p>
 				<%= f.label(l(:productColor)) %>
 				<%= f.text_field(:color) %>
@@ -72,12 +78,8 @@
 			<p>
 				<%= f.label(l(:comment)) %>
 				<%= f.text_area(:comment) %>
-
 			</p>
 		</fieldset>
-
-		
-
 			<%= f.submit(l(:newSubmit))%>
 	<%end%>
 </div>

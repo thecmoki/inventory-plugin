@@ -1,0 +1,40 @@
+<div class = "contextual">
+	<%= link_to("New Location", locations_new_path, :class => "icon icon-add") %>
+</div>
+<h2><%= "Locations" %></h2>
+<div class = "tabs">
+	<ul>
+		<li><%= link_to(l(:goOverviews), overviews_path) %></li>
+		<li><%= link_to(l(:goInventories), inventories_path) %></li>
+		<li><%= link_to(l(:goUnits), units_path) %></li>
+		<li><%= link_to(l(:goCategories), categories_path) %></li>
+		<li><%= link_to(l(:goRooms), rooms_path) %></li>
+		<li><%= link_to("Locations", locations_path, :onclick => "showTab('info', this.href); this.blur(); return false;", :id => "tab-info", :class => "selected") %></li>
+		<li><%= link_to(l(:goAmortNorms), amortnorms_path) %></li>
+		<li><%= link_to(l(:goHistories), histories_path) %></li>
+	</ul>
+	<div class = "tabs-buttons"></div>
+</div>
+<div style = "width: 50%">
+	<div class = "autoscroll">
+		<table class = "list">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Descripton</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @locations.each do |location| %>
+					<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
+						<td><%= location.name %></td>
+						<td><%= location.description %></td>
+						<td><%= link_to("Edit", locations_edit_path(:id => location.id), :class => "icon icon-edit") %> <%= link_to("Delete", locations_destroy_path(:id => location.id), :class => "icon icon-del", :method => :delete, data: { confirm: "Are you sure?" }) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+<% content_for :header_tags do %>
+	<%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

@@ -13,6 +13,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
     permission(:view_inventories, {:inventories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_overviews, {:overviews => [:index]})
     permission(:view_rooms, {:rooms => [:index, :show, :edit, :new, :create, :update, :destroy]})
+    permission(:view_locations, {:locations => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_categories, {:categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_amortnorms, {:amortnorms => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_histories, {:histories => [:index]})

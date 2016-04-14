@@ -1,0 +1,42 @@
+<style type="text/css">
+	.splitcontentleft fieldset input {
+		width: 90%;
+	}
+	.splitcontentleft fieldset select {
+		width: 90%;
+	}
+	.splitcontentleft textarea {
+		width: 90%;
+		height: 70px;
+	}
+</style>
+<h2><%= link_to("Locations", locations_path) + " " + "» Edit Location" %></h2>
+<% if @location.errors.any? %>
+	<div id = "errorExplanation">
+		<ul>
+			<% @location.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div class = "splitcontentleft">
+	<%= form_for(:location, :url => {:action => "update", :id => @location.id}) do |f| %>
+		<fieldset class = "box tabular">
+			<legend><%= l(:legend1) %></legend>
+			<p>
+				<%= f.label("Name") %>
+				<span class = "required">*</span>
+				<%= f.text_field(:name) %>
+			</p>
+		</fieldset>
+		<fieldset class = "box tabular">
+			<legend><%= l(:legend2) %></legend>
+			<p>
+				<%= f.label("Description") %>
+				<%= f.text_area(:description) %>
+			</p>
+		</fieldset>
+		<p><%= f.submit(l(:editSubmit)) %></p>
+	<% end %>
+<div>

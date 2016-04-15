@@ -86,6 +86,8 @@ en:
   roomPathEdit: » Edit Room
   roomName: Room Name
   roomComment: Room Comment
+  roomPrefixId: Prefix
+  roomLocationId: Location
 
   # Product
   productHeader: Products

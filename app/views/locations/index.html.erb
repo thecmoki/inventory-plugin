@@ -21,6 +21,7 @@
 			<thead>
 				<tr>
 					<th>Name</th>
+					<th>Prefix</th>
 					<th>Descripton</th>
 					<th></th>
 				</tr>
@@ -29,8 +30,9 @@
 				<% @locations.each do |location| %>
 					<tr class = "<%= cycle('user active odd', 'user active even') -%> user">
 						<td><%= location.name %></td>
+						<td><%= location.prefix %></td>
 						<td><%= location.description %></td>
-						<td><%= link_to("Edit", locations_edit_path(:id => location.id), :class => "icon icon-edit") %> <%= link_to("Delete", locations_destroy_path(:id => location.id), :class => "icon icon-del", :method => :delete, data: { confirm: "Are you sure?" }) %></td>
+						<td class="buttons"><%= link_to("Edit", locations_edit_path(:id => location.id), :class => "icon icon-edit") %> <%= link_to("Delete", locations_destroy_path(:id => location.id), :class => "icon icon-del", :method => :delete, data: { confirm: "Are you sure?" }) %></td>
 					</tr>
 				<% end %>
 			</tbody>

@@ -48,12 +48,12 @@
 			<p>
 				<%= f.label(l(:buyDate)) %>
 				<span class = "required">*</span>
-				<%= f.date_field(:buy_date) %>
+				<%= f.text_field :buy_date, :size => 10 %><%= calendar_for('inventory_buy_date') %>
 			</p>
 			<p>
 				<%= f.label(l(:activationDate)) %>
 				<span class = "required">*</span>
-				<%= f.date_field(:activation_date) %>
+				<%= f.text_field :activation_date, :size => 10 %><%= calendar_for('inventory_activation_date') %>
 			</p>
 			<p>
 				<%= f.label(l(:netoValue)) %>

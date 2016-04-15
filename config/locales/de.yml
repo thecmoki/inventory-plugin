@@ -85,6 +85,8 @@ de:
   roomPathEdit: » Bearbeiten Zimmer
   roomName: Zimmername
   roomComment: Zimmer Kommentar
+  roomPrefixId: Präfix
+  roomLocationId: Lage
 
   # Product
   productHeader: Produkte

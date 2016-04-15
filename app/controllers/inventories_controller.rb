@@ -35,7 +35,6 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    
     update_time_of_use
   	@inventory = Inventory.find(params[:id])
   end
@@ -120,7 +119,7 @@ class InventoriesController < ApplicationController
           end
         end
       end
-      @inventory = Inventory.last
+      @inventory = Inventory.find(params[:id])
       @history = History.new(:image1 => @inventory.image1, :image2 => @inventory.image2, :inventory_id => @inventory.id, :color => @inventory.color, :user_name => @inventory.user_name, :user_login => @inventory.user_login, :room_name => @inventory.room_name, :product_name => @inventory.product_name, :product_id => @inventory.product_id, :serial_number => @inventory.serial_number, :buy_date => @inventory.buy_date, :activation_date => @inventory.activation_date, :amortization_norm => @inventory.amortization_norm, :amortization => @inventory.amortization, :neto_value => @inventory.neto_value, :time_of_use => @inventory.time_of_use, :comment => @inventory.comment, :updated_at => @inventory.updated_at)
 		  @history.save
       hi = History.last

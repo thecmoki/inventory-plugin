@@ -85,6 +85,8 @@ sq:
   roomPathEdit: » Ndrysho Dhomen
   roomName: Emri i Dhomes
   roomComment: Komenti i Dhomes
+  roomPrefixId: Prefiksi
+  roomLocationId: Lokacioni
 
   # Produktet
   productHeader: Produktet

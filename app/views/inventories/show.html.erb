@@ -1,17 +1,21 @@
 <div class= "permbajtja">
-	<p><b>Inventari ID :</b><%= @inventory.id %></p>
-	<p><b>Perdoruesi :</b><%= @inventory.user_name %></p>
-	<p><b>Login :</b><%= @inventory.user_login %></p>
-	<p><b>Lokacioni :</b><%= @inventory.room_name %></p>
-	<p><b>Produkti :</b><%= @inventory.product_name %></p>
-	<p><b>Nr. Serik :</b><%= @inventory.serial_number %></p>
-	<p><b>Data e Blerjes :</b><%= @inventory.buy_date %></p>
-	<p><b>Norma Amortizimit :</b><%= @inventory.amortization_norm %></p>
-	<p><b>Amortizimi :</b><%= @inventory.amortization %></p>
-	<p><b>Vlera Neto :</b><%= @inventory.neto_value %></p>
-	<p><b>Koha e shfrytezimit :</b><%= @inventory.time_of_use %></p>
-	<p><b>Komenti :</b><%= @inventory.comment %></p>
-	<p><%= button_to("Kthehu tek Index", inventories_path, :method => "get") %></p>
+	<p><b>Inventari ID: </b><%= @inventory.id %></p>
+	<p><b>Produkti: </b><%= @inventory.product_name %></p>
+	<p><b>Nr.Serik: </b><%= @inventory.serial_number %></p>
+	<p><b>Ngjyra: </b><%= @inventory.color %></p>
+	<p><b>Lokacioni: </b><%= @inventory.room_name %></p>
+	<p><b>Data e Blerjes: </b><%= @inventory.buy_date %></p>
+	<p><b>Data e aktivizimit: </b><%= @inventory.activation_date %></p>
+	<p><b>Norma Amortizimit: </b><%= @inventory.amortization_norm + " %" %></p>
+	<p><b>Amortizimi: </b><%= @inventory.amortization %></p>
+	<p><b>Vlera Neto: </b><%= @inventory.neto_value %></p>
+	<p><b>Koha e shfrytezimit: </b><%= @inventory.time_of_use.to_s + " " + l(:days) %></p>
+	<p><b>Perdoruesi: </b><%= @inventory.user_name %></p>
+	<p><b>Komenti: </b><%= @inventory.comment %></p>
+
+	<td class = "buttons">
+	<%= button_to(l(:backSubmit), inventories_path, :method => "get") %>
+	</td>
 </div>
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>

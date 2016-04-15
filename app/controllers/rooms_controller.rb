@@ -15,6 +15,12 @@ class RoomsController < ApplicationController
   def update
 	  @room = Room.find(params[:id])
 	  if (@room.update_attributes(room_params))
+      @locations = Location.all
+      @locations.each do |location|
+        if(location.id == @room.location.id)
+          @room.update(:prefix_id => location.prefix + "-" + @room.prefix_id.to_s)
+        end
+      end
 		  redirect_to(:action => "index")
       flash[:notice] = l(:updateMessage)
 	  else
@@ -30,6 +36,12 @@ class RoomsController < ApplicationController
   def create
 	  @room = Room.new(room_params)
 	  if(@room.save)
+      @locations = Location.all
+      @locations.each do |location|
+        if(location.id == @room.location.id)
+          @room.update(:prefix_id => location.prefix + "-" + @room.prefix_id.to_s)
+        end
+      end
 		  redirect_to(:action => "index")
       flash[:notice] = l(:createMessage)
 	  else
@@ -51,7 +63,7 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-  	params.require(:room).permit(:name, :comment)
+  	params.require(:room).permit(:name, :prefix_id, :location_id, :comment)
   end
 
   def find_project

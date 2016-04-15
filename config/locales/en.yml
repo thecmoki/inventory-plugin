@@ -29,8 +29,10 @@ en:
   goLocations: Locations
   apply: Search
   clear: Clear
+  show: Show
   edit: Edit
   delete: Delete
+  backSubmit: Back
   newSubmit: Create
   editSubmit: Save
   dataConfirm: Are you sure?
@@ -87,6 +89,8 @@ en:
   roomPathEdit: » Edit Room
   roomName: Room Name
   roomComment: Room Comment
+  roomPrefixId: Prefix
+  roomLocationId: Location
 
   # Product
   productHeader: Products

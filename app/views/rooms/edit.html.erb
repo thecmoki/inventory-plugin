@@ -29,6 +29,21 @@
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
+			<p>
+				<%= f.label(l(:roomLocationId)) %>
+				<span class = "required">*</span>
+				<%= f.collection_select(:location_id, Location.all, :id, :name, :prompt => "Select a Location") %>
+			</p>
+			<p>
+				<%= f.label(l(:roomPrefixId)) %>
+				<span class = "required">*</span>
+				<% @locations = Location.all %>
+				<% @locations.each do |location| %>
+					<% if(location.id == @room.location.id) %>
+						<%= f.text_field(:prefix_id, :value => @room.prefix_id[location.prefix.length + 1, @room.prefix_id.length]) %>
+					<% end %>
+				<% end %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>

@@ -28,8 +28,10 @@ en:
   goOverviews: Dashboard
   apply: Search
   clear: Clear
+  show: Show
   edit: Edit
   delete: Delete
+  backSubmit: Back
   newSubmit: Create
   editSubmit: Save
   dataConfirm: Are you sure?

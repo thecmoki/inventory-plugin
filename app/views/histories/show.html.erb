@@ -1,0 +1,13 @@
+<div class= "permbajtja">
+	
+	<p><b>Perdoruesi:</b> 
+	<p><b>Produkti ID:</b><%= history.product_id %></p>
+	<p><b>Emri Produktit:</b><%= history.product_name %></p>
+	<p><b>Numri serik:</b><%= history.serial_number %></p>
+	<p><b>Ngjyra produktit:</b><%= history.color %></p>
+	<p><b>Lokacioni:</b><%= history.room_name %></p>
+	<p><%= button_to("Kthehu tek Index", inventories_path, :method => "get") %></p>
+</div>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'style', :plugin => 'regjistrimi_inventarit' %>
+<% end %>

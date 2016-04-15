@@ -5,4 +5,5 @@ class Unit < ActiveRecord::Base
 	validates(:category_id, :presence => true)
 	validates(:normamort, :presence => true)
 	validates :name, :presence => true, :uniqueness => true
+	validates(:quantity, :presence => true, :numericality => {:greater_than => 0, :only_integer => true})
 end

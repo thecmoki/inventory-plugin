@@ -26,6 +26,7 @@ de:
   goHistories: Geschichte
   goInventories: Inventare
   goOverviews: Übersichten
+  goLocations: Standorte
   apply: Suche
   clear: Klar
   edit: Bearbeiten
@@ -104,3 +105,15 @@ de:
   overviewHeaderleft: Inventare Daten
   overviewHeaderright: Kategorie Daten
   reportsHeader: Raporte
+
+  #Location
+
+  locationHeader: Standorte
+  locationName: Name
+  locationDescription: Beschreibungrai
+  locationCreate: Erstellen
+  locationPathNew: » Neuen Standort
+  addLocation: Neuen Standort
+  edit: Bearbeiten
+  delte: Löschen
+  dataConfirm: Sind Sie sicher?

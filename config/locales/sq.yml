@@ -26,6 +26,7 @@ sq:
   goHistories: Historia
   goInventories: Inventaret
   goOverviews: Paneli
+  goLocations: Lokacionet
   apply: Kerko
   clear: Pastro
   edit: Ndrysho
@@ -104,3 +105,15 @@ sq:
   overviewHeaderleft: Te dhenat e Inventarit
   overviewHeaderright: Te dhenat e Kategorise
   reportsHeader: Raportet
+
+
+  #Lokacioni
+  locationHeader: Lokacionet
+  locationName: Emri
+  locationDescription: Pershkrimi
+  locationCreate: Krijo
+  locationPathNew: » Krijo Lokacion
+  addLocation: Shto Lokacion
+  edit: Ndrysho
+  delte: Fshi
+  dataConfirm: A jeni te sigurt?

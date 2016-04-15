@@ -40,13 +40,14 @@
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
+			<p>
+				<%= f.label(l(:productQuantity)) %>
+				<span class = "required">*</span>
+				<%= f.text_field(:quantity) %>
+			</p>
 		</fieldset>
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
-			<p>
-				<%= f.label(l(:productQuantity)) %>
-				<%= f.text_field(:quantity) %>
-			</p>
 			<p>
 				<%= f.label(l(:productComment)) %>
 				<%= f.text_area(:comment) %>

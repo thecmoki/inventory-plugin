@@ -10,7 +10,7 @@
 		height: 70px;
 	}
 </style>
-<h2><%= link_to("Locations", locations_path) + " " + "» New Location" %></h2>
+<h2><%= link_to(l(:locationHeader), locations_path) + " " + l(:locationPathNew) %></h2>
 <% if @location.errors.any? %>
 	<div id = "errorExplanation">
 		<ul>
@@ -25,7 +25,7 @@
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend1) %></legend>
 			<p>
-				<%= f.label("Name") %>
+				<%= f.label(l(:locationName)) %>
 				<span class = "required">*</span>
 				<%= f.text_field(:name) %>
 			</p>
@@ -33,10 +33,10 @@
 		<fieldset class = "box tabular">
 			<legend><%= l(:legend2) %></legend>
 			<p>
-				<%= f.label("Description") %>
+				<%= f.label(l(:locationDescription)) %>
 				<%= f.text_area(:description) %>
 			</p>
 		</fieldset>
-		<p><%= f.submit("Create") %></p>
+		<p><%= f.submit(l(:locationCreate))%></p>
 	<% end %>
 <div>

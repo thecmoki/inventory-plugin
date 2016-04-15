@@ -26,6 +26,7 @@ en:
   goHistories: History
   goInventories: Inventories
   goOverviews: Dashboard
+  goLocations: Locations
   apply: Search
   clear: Clear
   edit: Edit
@@ -105,3 +106,14 @@ en:
   overviewHeaderleft: Inventory Data
   overviewHeaderright: Category Data
   reportsHeader: Reports
+
+ #Location
+  locationHeader: Locations
+  locationName: Name
+  locationDescription: Description
+  locationCreate: Create
+  locationPathNew: » New Location
+  addLocation: New Location
+  edit: Edit
+  delte: Delete
+  dataConfirm: Are you sure?

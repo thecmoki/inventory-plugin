@@ -113,6 +113,7 @@ sq:
   #Lokacioni
   locationHeader: Lokacionet
   locationName: Emri
+  locationPrefix: Prefiksi
   locationDescription: Pershkrimi
   locationCreate: Krijo
   locationPathNew: » Krijo Lokacion

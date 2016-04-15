@@ -23,6 +23,7 @@ class LocationsController < ApplicationController
   	@location = Location.new(location_params)
   	if(@location.save)
   		redirect_to(:action => "index")
+      flash[:notice] = l(:createMessage)
   	else
   		render(:action => "new")
   	end
@@ -32,6 +33,7 @@ class LocationsController < ApplicationController
   	@location = Location.find(params[:id])
   	if(@location.update_attributes(location_params))
   		redirect_to(:action => "index")
+      flash[:notice] = l(:updateMessage)
   	else
   		render(:action => "edit")
   	end

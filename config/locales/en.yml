@@ -114,6 +114,7 @@ en:
  #Location
   locationHeader: Locations
   locationName: Name
+  locationPrefix: Prefix
   locationDescription: Description
   locationCreate: Create
   locationPathNew: » New Location

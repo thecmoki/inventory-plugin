@@ -112,6 +112,7 @@ de:
 
   locationHeader: Standorte
   locationName: Name
+  locationPrefix: Präfix
   locationDescription: Beschreibungrai
   locationCreate: Erstellen
   locationPathNew: » Neuen Standort

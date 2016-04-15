@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
 
   def new
     update_time_of_use
-  	@room =Room.new
+  	@room = Room.new
   end
 
   def create

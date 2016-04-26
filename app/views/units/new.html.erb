@@ -52,6 +52,9 @@
 				<%= f.label(l(:productComment)) %>
 				<%= f.text_area(:comment) %>
 			</p>
+			<p>
+				<%= render :partial => 'attachments/form' %>
+				</p>
 		</fieldset>
 		<p><%= f.submit(l(:newSubmit)) %></p>
 	<% end %>

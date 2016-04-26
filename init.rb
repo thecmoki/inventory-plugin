@@ -9,7 +9,7 @@ Redmine::Plugin.register :regjistrimi_inventarit do
 
   project_module :regjistrimi_inventarit do
 
-    permission(:view_units, {:units => [:index, :show, :edit, :new, :create, :update, :destroy]})
+    permission :view_units, {:units => [:index, :show, :edit, :new, :create, :update, :destroy]}, :public => true
     permission(:view_inventories, {:inventories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_overviews, {:overviews => [:index]})
     permission(:view_rooms, {:rooms => [:index, :show, :edit, :new, :create, :update, :destroy]})
@@ -17,6 +17,8 @@ Redmine::Plugin.register :regjistrimi_inventarit do
     permission(:view_categories, {:categories => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_amortnorms, {:amortnorms => [:index, :show, :edit, :new, :create, :update, :destroy]})
     permission(:view_histories, {:histories => [:index]})
+    permission :view_attachments, {:attachments => [:show, :download, :upload, :thumbnail]}
+    #permission :view_attachments_helper, :attachments_helper => [:container_attachments_edit_path, :container_attachments_path,:link_to_attachments,:render_api_attachment]
     # permission(:regjistrimi_inventarit, {:units => [:index, :show, :edit, :new, :create, :update, :destroy],
   	#   							                     :inventories => [:index, :show, :edit, :new, :create, :update, :destroy],
     #                                      :histories => [:index],
